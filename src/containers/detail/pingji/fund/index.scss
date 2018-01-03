@@ -1,0 +1,29 @@
+.shifanTitle{
+    color: #2D3640;
+    font-size: 0.26rem;
+    padding: 0.4rem 0 0.2rem 0.2rem;
+}
+.shifanBox{
+    border-bottom: 1px solid #f2f2f2;
+    padding: 0.2rem;
+    .boxTitle{
+        color: #ccc;
+        font-size: 0.26rem;
+        margin-bottom: 0.16rem;
+        font-weight: normal;
+    }
+    .boxCon{
+        color: #ABB7C4;
+        line-height: 0.48rem;
+        font-size: 0.26rem;
+    }
+}
+.fundNullWp{
+    padding: 0.4rem 0.2rem 0 0.2rem; 
+    color: #ccc;
+    line-height: 0.52rem;
+    font-size: 0.26rem;
+    a{
+        color: #333;
+    }
+}

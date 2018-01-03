@@ -1,0 +1,115 @@
+.guanzhuWp{
+    padding: 0.3rem 0 1rem 0;
+    .nullAtt{
+        padding-left: 0.3rem;
+        color: #cdcdcd;
+    }
+    .loadMore{
+        margin: 0.2rem;
+    }
+}
+.guanzhuList{
+    li{
+        a{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .hd{
+            padding: 0.16rem 0 0.16rem 0.2rem;
+            background-color:#dfe5ea;     
+            display: flex;
+            flex-direction:row;
+            span{
+                display: block;
+                flex:none;
+            }
+            .platName{
+                width:2rem;
+                color: #333;
+            }
+            .state{
+                width: 1.6rem;
+                color: #009900;
+            }
+            .stateZhengyi {
+                color: #FFFF00;
+            }
+            .stateBlack {
+                color: red;
+            }
+            .shifan{
+                color: #009900;
+            }
+        }
+        .bd{
+            overflow: hidden;
+            padding: 0.24rem 0 0.24rem 0.2rem; 
+           
+            .rankZh{
+                display: flex;
+                flex-direction:row;
+                align-items: center;
+                margin-bottom: 0.1rem;
+                span{
+                    color: #333;
+                }
+                .order{
+                    padding-left: 0.08rem;
+                }
+                .arrow{
+                    padding: 0 0.15rem;
+                    position: relative;
+                    top: 0.05rem;
+                }
+                .num{
+                    color: #cdcdcd;
+                }
+            }
+            .rank{
+                flex-wrap:wrap;
+                display: flex;
+                flex-direction:row;
+                dd{
+                    flex:none;
+                    display: flex;
+                    flex-direction:row;
+                    align-items: center;
+                    width: 50%;
+                    height: 0.56rem;
+                    line-height: 0.56rem;
+                    color: #abb7c6;
+                    font-size: 0.24rem;
+                    .name{
+                        width: 0.9rem;
+                    }
+                    .paiming{
+                        display: flex;
+                        flex-direction:row;
+                        span{
+                            flex:none;
+                        }
+                        .order{
+                            width: 0.92rem;  
+                        }
+                        .arrow{
+                            position: relative;
+                            top: 0.05rem;
+                        }
+                        .num{
+                            color: #cdcdcd;
+                        }
+                    }
+                }
+            }
+            .null{
+                color: #cdcdcd;
+            }
+            .yulun{
+                margin-top: 0.15rem;
+                color: #333;
+                font-size: 0.24rem;
+            }
+        }
+    }
+}

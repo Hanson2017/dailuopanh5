@@ -1,0 +1,42 @@
+.accountSetWp{
+    padding-top: 0.2rem;
+    background-color: #e1e6eb;
+}
+.accountSet{
+    li{
+        position: relative;
+        padding: 0 0.3rem;
+        border-bottom: 1px solid #e1e6eb;
+        height: 0.9rem;
+        line-height: 0.9rem;
+        text-align: right;
+        background-color: #fff;
+        color: #8c96a0;
+        a{
+            display: block;
+            width: 100%;
+            height: 100%;
+            color: #8c96a0;
+        }
+        label{
+            position: absolute;
+            left: 0.3rem;
+            top: 0;
+            color: #28323c;
+            font-weight: bold;
+        }
+        svg{
+            position: absolute;
+            right: 0.3rem;
+            top: 0.26rem;
+        }
+    }
+    .logout{
+        margin-top:0.2rem; 
+        width: 100%;
+        height: 0.9rem;
+        background-color: #fff;
+        text-align: center;
+        font-weight: bold;
+    }
+}

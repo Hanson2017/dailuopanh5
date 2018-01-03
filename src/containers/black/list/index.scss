@@ -1,0 +1,65 @@
+.blackList{
+    .loadMore{
+        margin: 0.2rem;
+    }
+}
+.tabListBlack{
+   dt{
+       height: 0.8rem;   
+       line-height: 0.8rem;     
+       background: #e2e6ea;
+   }
+   dd{
+       padding:0.2rem 0;
+       background: #fff;
+       border-bottom: 1px solid #e2e6ea;
+       .info{
+           margin-top: 0.2rem;
+           padding-left: 0.2rem;
+           display: flex; 
+           .url,.yygs{
+               color: #ccc;
+               font-size: 0.24rem;
+           }
+           .url{
+               width: 40%;
+               overflow: hidden;
+               text-overflow: ellipsis;
+               white-space: nowrap;
+           }
+           .yygs{
+            width: 55%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            }
+       }
+       .item{
+        .ic3,.ic2{
+            color: #8c96a0;
+        }
+       }
+   }
+   dd.itemRowH{
+       height: 1.34rem;      
+   }
+   .item{
+        display: flex; 
+       span{
+         position: relative;
+         display: flex;          
+         font-size: 0.24rem;
+         color: #28323c;
+       }
+       .ic1,.ic2{
+           color: #28323c;
+       }
+       .ic1{
+           padding-left: 0.2rem;
+           width: 2.4rem;
+       }
+       .ic2{
+           width: 2rem;
+       }
+   }
+}

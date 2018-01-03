@@ -1,0 +1,42 @@
+.navbar,.navbar-left,.navbar-title,.navbar-right{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.navbar{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #fff;
+    height: .9rem;
+    background: #14191e;
+    z-index: 999;
+    .navbar-left,.navbar-title,.navbar-right{
+        -webkit-box-flex: 1;
+        height: 100%;
+        flex: none;
+    }
+    .navbar-left{
+        width: 1rem;
+        padding-left: 0.2rem;
+    }
+    .navbar-title{ 
+        justify-content: center;
+        flex:1;
+        .logo{
+            width: 0.48rem;
+            height: 0.48rem;
+        }
+    }
+    .navbar-right{
+         justify-content: flex-end;
+         width: 1rem;
+         padding-right: 0.2rem;
+    }
+    .portraitSmart{
+        width: 0.60rem;
+        height: 0.60rem;
+        border-radius: 50%;
+    }
+}

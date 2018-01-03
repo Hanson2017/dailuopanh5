@@ -1,0 +1,50 @@
+
+.queryDiquListTab{
+    overflow: hidden;
+    clear: both;
+    padding: 0 0 0 0.2rem;
+    li{ 
+        float: left;
+        margin: 0 0.2rem 0.2rem 0;
+        width:1rem;
+        height: 0.48rem;
+        line-height: 0.48rem;
+        text-align: center;
+        border: 1px solid #14191e;
+        background-color: #f2f2f2;
+        color: #333;
+        font-size: 0.24rem;
+    }
+    .on{
+       background-color: #14191e; 
+       color: #fff;
+    }
+}
+.queryDiquContent{
+    padding: 0 0.2rem;
+    overflow: hidden;
+    .platName{
+        font-size: 0.26rem;
+        margin: 0.4rem 0 0.2rem 0;
+        font-weight: normal;
+        color: #ccc;     
+    }
+    .list{
+        li{
+            float: left;
+            margin-bottom: 0.1rem;
+            width: 33%;
+            height: 0.44rem;
+            line-height: 0.44rem;
+            font-size: 0.24rem;
+            color: #666;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            span{
+                padding-left: 0.06rem;
+                color:#ccc;
+            }
+        }
+    }
+}

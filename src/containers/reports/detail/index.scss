@@ -1,0 +1,25 @@
+.containerReportDetail{
+    padding: 0.9rem 0.3rem 0.2rem 0.3rem;
+    .hd{
+        padding-top: 0.4rem;
+        margin-bottom: 0.3rem;
+        padding-bottom: 0.3rem;
+        border-bottom: 1px solid #f2f2f2;
+        .title{
+            font-size: 0.32rem;
+            color: #2a323b;   
+        }
+        .update{
+            margin-top: 0.2rem;
+            color: #8e969f;
+        }
+    }
+    .content{
+        img{width:100%} 
+        .code{width:auto}
+    }
+    .contentDlp{
+        line-height: 0.6rem;
+        font-size: 0.28rem;
+    }
+}

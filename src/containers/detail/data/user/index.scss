@@ -1,0 +1,73 @@
+.userData{
+    margin-top:0.4rem; 
+}
+.userDataList{
+    overflow: hidden;
+    padding: 0.2rem;
+    li{
+        overflow: hidden;
+        clear: both;
+        margin: 0.2rem 0;
+        line-height: 0.4rem;
+        span{
+            float: left;
+        }
+        .progress{
+            height: 0.4rem;
+            i{
+                width: 100%;
+                display: inline-block;
+                height: 0.4rem;
+                background-color: #ccc;
+            }
+        }
+    }
+}
+.areaList{
+    overflow: hidden;
+    padding: 0.2rem;
+    li{
+        .ic1{
+            width: 0.54rem;
+            height: 0.4rem;
+            line-height: 0.4rem;
+            text-align: center;
+            background-color: #a9b7c5;
+            color: #fff;
+        }
+        .ic2{
+            padding: 0 0.2rem;
+            width: 0.8rem;
+            color: #ABB7C4;
+        }
+        .ic3{
+            width: 60%;            
+        }
+        
+        .id0,.id1,.id2{
+            background-color: #000;
+        }
+    }
+}
+.ageList{
+    li{
+        span{
+            color: #ABB7C4;
+        }
+        .ic1{
+            width: 1.7rem;
+        }
+        .ic2{
+            width: 1.0rem;
+        }
+        .ic3{
+            width: 45%;            
+        }
+    }   
+}
+
+.echartSex{
+    margin: 0 auto 0.4rem auto;
+    width: 3rem;
+    height: 4rem;
+}

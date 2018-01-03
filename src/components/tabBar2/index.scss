@@ -1,0 +1,29 @@
+.tabBarNav2{
+    margin: 0 0.2rem;
+    height: 0.6rem;
+    background-color:#f2f2f2; 
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    z-index: 999;
+    border:1px solid #14191e;
+    .list{
+        border-right:1px solid #14191e;
+        flex: 1;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        text-align: center;
+        color: #666;
+        font-size: 0.24rem;
+        &:last-child{
+            border-right:none;
+        }
+    }
+    .current{
+        background: #14191e;
+        position: relative;
+        color: #fff;
+        font-weight: bold;
+    }
+}

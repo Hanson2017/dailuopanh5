@@ -1,0 +1,19 @@
+.reportList{
+    .list{
+        padding: 0.2rem;
+        border-bottom: 1px solid #e2e6ea;
+        .title{
+            font-size: 0.26rem;
+            font-weight: bold;
+            color: #2a323b;
+            margin-bottom: 0.16rem;
+        }
+        .ft{
+            font-size: 0.24rem;
+            color: #8e969f;
+            .addtime{
+                padding-left: 0.4rem;
+            }
+        }
+    }
+}

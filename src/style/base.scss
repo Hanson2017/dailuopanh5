@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0); //禁止链接高亮
+    -webkit-touch-callout: none;  //禁止链接长按弹出选项菜单
+}
+body {
+    background-color:#fff !important;
+    font-size: 0.26rem  !important;
+  }
+  
+ul {
+    list-style: none;
+}
+
+i{
+    font-style: normal;
+}
+
+.listContainer{
+    position: relative;
+    
+}
+
+
+.noTabContainer{
+    overflow: hidden;
+    padding-top: 1.4rem;
+}

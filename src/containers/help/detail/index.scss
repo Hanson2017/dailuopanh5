@@ -1,0 +1,18 @@
+.helpDetail{
+    padding: 0.3rem;
+    overflow: hidden;
+    .title{
+        margin-bottom: 0.4rem;
+        padding-bottom: 0.4rem;
+        font-size: 0.32rem;
+        color: #333;   
+        border-bottom: 1px solid #f2f2f2;
+    }
+    .content{
+        color: #999;
+        line-height: 0.40rem;
+        p{
+            text-indent: 2em;
+        }
+    }
+}

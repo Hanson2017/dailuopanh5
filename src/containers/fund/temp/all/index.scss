@@ -1,0 +1,24 @@
+.fundsTop{
+    padding: 0 0 0.3rem 0.2rem;
+    line-height: 0.48rem;
+    color:#2D3640;
+    i{
+        color: red;
+    }
+}
+.fundTitle{
+    padding: 0.3rem 0;
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+    text-align: center;
+}
+.fundEchartBox{
+    padding: 0.4rem 0 0.2rem 0;
+    border-bottom: 1px solid #f2f2f2; 
+    .fundEchartTitleText{
+        padding-left:0.4rem;
+        font-size: 0.26rem;
+        color: #ccc;
+        font-weight: normal;   
+    }
+}

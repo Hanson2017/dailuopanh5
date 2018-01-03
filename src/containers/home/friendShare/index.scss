@@ -1,0 +1,45 @@
+.shareContainer{
+    position:fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    z-index: 1005;
+    display: none;
+    
+    align-items:center;
+    justify-content:center;
+    .list{
+        flex: 1;
+        padding: 0 0.5rem;
+        display: flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        li{
+            display: flex;
+            margin-bottom: 0.4rem;
+            flex-direction:column;
+            align-items:center;
+            flex: none;
+            width: 33%;
+            .text{
+                display: block;
+                margin-top: 0.12rem;
+                color: #8c96a0;
+                font-size: 0.24rem;
+            }
+            
+        }
+    }
+    .am-icon-lg{
+        width: 0.86rem;
+        height: 0.86rem;
+    }
+    .close{
+        position: absolute;
+        bottom: 1.2rem;
+        left: 50%;
+        margin-left: -0.43rem;
+    }
+}

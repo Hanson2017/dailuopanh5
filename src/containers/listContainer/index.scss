@@ -1,0 +1,115 @@
+
+.table{
+    display: flex;
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling : touch;
+    z-index:1;    
+}
+.tabList{
+     
+    dt,dd{   
+        display: flex;
+    }
+    dt{
+        height: 0.8rem;   
+        align-items:center;  
+        background: #e2e6ea;
+    }
+    .doubleItem{
+        height: 1rem;
+        line-height: 0.4rem;
+    }
+    dd{
+        background: #fff;
+        padding: 0.3rem 0;
+        height: 0.28rem;  
+        border-bottom: 1px solid #e2e6ea;
+    }
+    dd.itemRowH{
+       padding-bottom: 0.72rem;       
+    }
+    .item{
+        span{
+          position: relative;
+          display: flex;          
+          font-size: 0.24rem;
+          color: #8c96a0;
+        }
+        .ic1,.ic2{
+            color: #28323c;
+        }
+        .ic1{
+            padding-left: 0.3rem;
+            width: 1.18rem;
+        }
+        .ic2{
+            width: 2rem;
+        }
+        .icon{
+           position: relative;
+           top: -0.02rem;
+           left: 0;
+        }
+        .tabTag{
+            height: 0.38rem;
+            position: absolute;
+            bottom: 0.2rem;
+            left: 0.3rem;
+            .hongbao,.tType{
+                display: inline-block;
+                float: left;  
+                height: 0.38rem;
+                line-height: 0.38rem;   
+                color: #fff;
+                font-size: 0.24rem;
+                text-align:  center;
+            }
+            .hongbao{
+                padding: 0 0.1rem;
+                background: #ff9900;
+            }
+            .tType{
+                margin-right:0.1rem;
+                width: 0.72rem;
+                background-color: #d7d7d7;          
+            }
+        }
+        
+    }
+}
+
+.doubleTabList{
+    dd.itemRowH{   
+        .db{
+            margin-top:0.16rem; 
+            display: block;
+        }
+ 
+         span{
+             display: block;
+         }
+ 
+     }
+}
+.tabList-Left{
+    z-index:2;    
+    background: #fff;
+    width: 3.48rem;
+    position: absolute;
+    top:0;
+    left: 0;
+    dd,dt{
+        width: 3.48rem; 
+       position: relative;
+    }
+}
+.fixed{
+     box-shadow: 0 0 0.1rem #ccc;
+}
+
+.listBotttom{
+    padding: 0.3rem;
+    background-color: #fff;
+}

@@ -1,0 +1,34 @@
+.pieEchart{
+    margin: 0 auto;
+    width: 100%;
+    height: 3.8rem;
+}
+.yulunList{
+    .link{
+        display: block;
+        padding: 0.2rem;
+        border-bottom: 1px solid #f2f2f2;
+        .title{
+            margin-bottom: 0.1rem;
+            line-height: 0.4rem;
+            font-size: 0.26rem;
+            color: #333;
+            font-weight: normal;
+        }
+        .time{
+            color: #ccc;
+        }
+    }
+    .loadMore{
+        margin: 0.2rem;
+    }
+}
+.yulunNum{
+    margin: 0.3rem 0 0.3rem 0;  
+    text-align: center;
+    color: #ccc;
+    font-size: 0.24rem;
+    .total{
+        padding-right: 0.8rem;
+    }
+}

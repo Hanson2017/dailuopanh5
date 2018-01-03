@@ -1,0 +1,39 @@
+.tabBarNav{
+    width: 100%;
+    position: fixed;
+    top: 1.38rem;
+    left: 0;
+    border-top: 1px solid #21272c;
+    height: 0.8rem;
+    background-color:#14191e; 
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    z-index: 999;
+    .list,a{
+        flex: 1;
+        height: 0.8rem;
+        line-height: 0.8rem;
+        text-align: center;
+        color: #646f7c;
+        font-size: 0.24rem;
+    }
+    .current{
+        position: relative;
+        color: #fff;
+        font-weight: bold;
+        &:before{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -.12rem;
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: .12rem solid transparent;
+            border-right: .12rem solid transparent;
+            border-bottom: .12rem solid #fff;
+        }
+    }
+}
