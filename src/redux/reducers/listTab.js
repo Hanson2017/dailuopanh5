@@ -30,7 +30,7 @@ function cd(_id) {
                     return state;
             }
         }
-        else if (_id == 'yulunList' || _id == 'guanzhuList' || _id == 'guanzhuListSider') {
+        else if (_id == 'yulunList' || _id == 'pingceList' || _id == 'guanzhuList' || _id == 'guanzhuListSider') {
             switch (action.type) {
                 case REQUEST_POSTS:
                     return Object.assign({}, state, {
@@ -159,6 +159,7 @@ export const healthChengzhang = cd('healthChengzhang')
 
 // 舆论
 export const yulunList = cd('yulunList')
+export const pingceList = cd('pingceList')
 
 // 流量
 export const flowAll = cd('flowAll')

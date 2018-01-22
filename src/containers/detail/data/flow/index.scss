@@ -1,0 +1,29 @@
+.flowwp{
+    border-top:1px solid #f2f2f2;
+    margin-top: 0.15rem;
+    padding: 0.4rem 0.2rem 0 0.2rem;
+}
+.flowList{
+    overflow: hidden;
+    clear: both;
+    margin-bottom: 0.4rem;
+    li{
+        float: left;
+        color: #abb7c4;
+    }
+    .flowListName{
+        width: 1.6rem;
+    }
+    .flowListChart{
+        position: relative;
+        width: 2.2rem;
+        height: 0.4rem;
+    }
+    .flowListNum{
+        margin-left: 0.4rem;
+        b{
+            padding-left: 0.4rem;
+            color: #666;
+        }
+    }
+}

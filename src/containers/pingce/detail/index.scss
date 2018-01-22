@@ -1,0 +1,32 @@
+.pingCeDetail{
+    padding: 0.3rem;
+    overflow: hidden;
+    .title{
+        margin-bottom: 0.4rem;
+        font-size: 0.32rem;
+        color: #333;   
+       
+    }
+    .header{
+        margin-bottom: 0.4rem;
+        padding-bottom: 0.4rem;
+        display: flex;
+        flex-direction:row;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #f2f2f2;
+        color: #999;
+        font-size: 0.24rem;
+    }
+    .content{
+        color: #999;
+        line-height: 0.40rem;
+        p{
+            text-indent: 2em;
+        }
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+}

@@ -33,6 +33,14 @@ export function deatail(state = {
         totalNum: 0,
         items: [],
     },
+    pingce: {
+        isFetching: true,
+        loadMore: false,
+        page: 1,
+        pageCount: 1,
+        totalNum: 0,
+        items: [],
+    },
     comment: {
         isFetching: true,
         loadMore: false,
@@ -180,6 +188,52 @@ export function deatail(state = {
                 //更多加载完成 
                 return Object.assign({}, state, {
                     yulun: {
+                        isFetching: false,
+                        loadMore: false,
+                        page: state.yulun.page + 1,
+                        pageCount: state.yulun.pageCount,
+                        totalNum: state.yulun.totalNum,
+                        items: state.yulun.items.concat(action.posts.dataList),
+                    }
+                })
+            }
+        case 'pingce':
+            if (action.type == REQUEST_POSTS_DETAIL) {
+                return Object.assign({}, state, {
+                    pingce: {
+                        isFetching: true
+                    }
+                })
+            }
+            else if (action.type == RECEIVE_POSTS_DETAIL) {
+                return Object.assign({}, state, {
+                    pingce: {
+                        isFetching: false,
+                        loadMore: false,
+                        page: 2,
+                        pageCount: action.posts.pageCount,
+                        totalNum: action.posts.totalNum,
+                        items: action.posts.dataList,
+                    }
+                })
+            }
+            else if (action.type == REQUEST_LOADMORE_DETAIL) {
+                //更多加载中   
+                return Object.assign({}, state, {
+                    pingce: {
+                        isFetching: false,
+                        loadMore: true,
+                        page: state.yulun.page,
+                        pageCount: state.yulun.pageCount,
+                        totalNum: state.yulun.totalNum,
+                        items: state.yulun.items,
+                    }
+                })
+            }
+            else if (action.type == RECEIVE_LOADMORE_DETAIL) {
+                //更多加载完成 
+                return Object.assign({}, state, {
+                    pingce: {
                         isFetching: false,
                         loadMore: false,
                         page: state.yulun.page + 1,

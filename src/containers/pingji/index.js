@@ -33,14 +33,17 @@ const listCoutWdzj = [
 
 const listCoutP2peye = [
     { title: '网贷天眼', field: 'level', field2: 'level_p2peye', 'isArrow': false, width: '1.8' },
-    { title: '偿兑性', field: 'claims', 'isArrow': false, width: '1.5' },
-    { title: '投资', field: 'investment', 'isArrow': false, width: '1.3' },
-    { title: '利率', field: 'rate', 'isArrow': false, width: '1.3' },
+    { title: '信披', field: 'xscore', 'isArrow': false, width: '1.5' },
+    { title: '合规', field: 'hscore', 'isArrow': false, width: '1.3' },
     { title: '期限', field: 'limit_t', 'isArrow': false, width: '1.3' },
-    { title: '地域性', field: 'regional', 'isArrow': false, width: '1.5' },
-    { title: '运营', field: 'operation', 'isArrow': false, width: '1.2' },
-    { title: '流动性', field: 'liquidity', 'isArrow': false, width: '1.5' },
-    { title: '借款', field: 'borrowing', 'isArrow': false, width: '1.2' }
+    { title: '利率', field: 'rate', 'isArrow': false, width: '1.3' },
+    { title: '偿兑性', field: 'claims', 'isArrow': false, width: '1.5' },
+    { title: '资金流入率', field: 'standard', 'isArrow': false, width: '1.2' },
+    { title: '运营', field: 'operation', 'isArrow': false, width: '1.5' },
+    { title: '地域性', field: 'regional', 'isArrow': false, width: '1.2' },
+    { title: '投资', field: 'investment', 'isArrow': false, width: '1.2' },
+    { title: '借款', field: 'borrowing', 'isArrow': false, width: '1.5' },
+    { title: '流动性', field: 'liquidity', 'isArrow': false, width: '1.2' }
 ];
 
 const listCoutDlp = [

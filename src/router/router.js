@@ -32,6 +32,9 @@ import HelpDetail from '../containers/help/detail/index';
 import AppDown from '../containers/appdown/index';
 import NotFoundPage from '../containers/404/index';
 
+import PingCe from '../containers/pingce';
+import PingCeDetail from '../containers/pingce/detail/index';
+
 
 
 const store = configureStore()
@@ -66,6 +69,8 @@ export default class Root extends Component {
                             <Route path="member/index" component={Member} />
                             <Route path="search" component={Search} />
                             <Route path="about/appdown" component={AppDown} />
+                            <Route path="pingce" component={PingCe} />
+                            <Route path="pingce/:id" component={PingCeDetail} />
                             <Route path='/404' component={NotFoundPage} />
                             <Redirect from='*' to='/404' />
 

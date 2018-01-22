@@ -139,15 +139,17 @@ const Shuzhi = createReactClass({
                                         {dataP2peye.changnum >= 0 ? dataP2peye.changnum : -dataP2peye.changnum}%
                                     </p>
                                     <div className='item'>
-                                        <span>偿兑性：{dataP2peye.claims}</span>
-                                        <span>成长性：{dataP2peye.standard}</span>
-                                        <span>期 限：{dataP2peye.limit_t}</span>
-                                        <span>投&nbsp;&nbsp;&nbsp;资：{dataP2peye.investment}</span>
-                                        <span>流动性：{dataP2peye.liquidity}</span>
+                                        <span>信 披：{dataP2peye.xscore}</span>
+                                        <span>合&nbsp;&nbsp;&nbsp;规：{dataP2peye.hscore}</span>
+                                        <span>期&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限：{dataP2peye.limit_t}</span>
                                         <span>利 率：{dataP2peye.rate}</span>
-                                        <span>运&nbsp;&nbsp;&nbsp;营：{dataP2peye.operation}</span>
+                                        <span>偿兑性：{dataP2peye.claims}</span>
+                                        <span>资金流入：{dataP2peye.standard}</span>
+                                        <span>运 营：{dataP2peye.operation}</span>
                                         <span>地域性：{dataP2peye.regional}</span>
+                                        <span>投&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资：{dataP2peye.investment}</span>
                                         <span>借 款：{dataP2peye.borrowing}</span>
+                                        <span>流动性：{dataP2peye.liquidity}</span>
                                     </div>
                                     <div id='lineEchartP2peye' className='lineEchartD' style={{width:width-20}}></div>
                                 </dd>

@@ -14,6 +14,7 @@ const iconList = [
     { title: '优惠活动', iconName: 'homeNav-hd', router: 'activity', tabId: null },
     { title: '数据查询', iconName: 'homeNav-data', router: 'data', tabId: null },
     { title: '健康指标', iconName: 'homeNav-health', router: 'health', tabId: { tab1: 0 } },
+    { title: '评测监控', iconName: 'homeNav-analytics', router: 'pingce', tabId: null },
     { title: '舆论监控', iconName: 'homeNav-yulun', router: 'yulun', tabId: null },
     { title: '流量监控', iconName: 'homeNav-flow', router: 'flow', tabId: null },
     { title: '风投系平台', iconName: 'homeNav-fengtou', router: 'query', tabId: { tab1: 0, tab2: 0, column: 'rongzi' } },

@@ -25,6 +25,8 @@ module.exports = {
     detail: host + 'GetPlatdetail',//详情页
     helpList: host + 'GetHelpList',//常见问题列表
     helpDetail: host + 'GetHelpdetail',//常见问题详情
+    pingCeList: host + 'GetMparticleList', //评测列表
+    pingCeDetail: host + 'GetArticledetail', //评测详情
     getUserinfo: domain + '/member/Login/QQlogin_h5', //QQ,wechat 登录
     attentionAdd: host + 'Member_follow_addplat', //添加关注
     attentionDel: host + 'Member_follow_delplat', //取消关注

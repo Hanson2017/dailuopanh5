@@ -37,10 +37,13 @@ class DetailComment extends React.Component {
                                         }
                                         return (
                                             <li key={i}>
-                                                <h6 className='hd'>
-                                                    <span className='name'>{text.username}</span>
-                                                    <span className='type'> <img src={source} /></span>
-                                                </h6>
+                                                <div className='hd'>
+                                                    <div>
+                                                        <span className='name'>{text.username}</span>
+                                                        <span className='type'> <img src={source} /></span>
+                                                    </div>
+                                                    <span className='update'>{text.creatdate}</span>
+                                                </div>
                                                 <p>{text.content}</p>
                                             </li>
                                         )

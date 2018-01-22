@@ -13,6 +13,10 @@
         padding-bottom: 0.2rem;
         border-bottom: 1px solid #f2f2f2;
         .hd{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 0.2rem;
             overflow: hidden;
             clear: both;
@@ -32,6 +36,9 @@
                     width: 0.32rem;
                     height: 0.32rem;
                 }
+            }
+            .update{
+                color:#ccc;
             }
         }
         

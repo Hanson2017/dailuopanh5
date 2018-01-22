@@ -9,6 +9,7 @@ import TabBar from '../../../components/tabBar2/tabs';
 import Yunying from './yunying';
 import Basic from './basic';
 import User from './user';
+import Flow from './flow';
 
 class DetailData extends React.Component {
     render() {
@@ -37,6 +38,9 @@ class DetailData extends React.Component {
                     </div>
                     <div name={'基础数据'}>
                         <Basic data={detailData.dataSource.comDetail} />
+                    </div>
+                    <div name={'流量数据'}>
+                        <Flow id={this.props.id} />
                     </div>
                 </TabBar>
             )
