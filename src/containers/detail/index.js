@@ -31,7 +31,7 @@ var Detail = createReactClass({
         else {
             return (
                 <div>
-                    <Header detailCommon={detailCommon.dataSource} />
+                    <Header detailCommon={detailCommon.dataSource} location={this.props.location} />
                     <DetailTop detailCommon={detailCommon.dataSource} />
                     <div className='detailContainer'>
                         <UpDateTime updatetime={detailCommon.dataSource.updatetime} />

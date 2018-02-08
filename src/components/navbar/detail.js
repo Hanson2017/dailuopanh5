@@ -24,11 +24,17 @@ var Navbar = createReactClass({
                 fundType = '活'
                 break;
         }
-        const { pathName } = this.props;
+        const { pathName ,location} = this.props;
         return (
             <div className='navbar'>
                 <div className="navbar-left" onClick={() => {
-                    this.history.goBack()
+                    if(location.action !== 'POP'){
+                        this.history.goBack()
+                    }
+                    else{
+                        this.history.replaceState(null, '/')
+                    }
+                    
                 }}>
                     <Icon type={require('../../assets/icons/left.svg')} color={'#fff'} />
                 </div>
