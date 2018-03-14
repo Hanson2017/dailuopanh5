@@ -13,7 +13,7 @@ import LoadMore from '../../../components/loadMore';
 import './index.scss';
 
 const DetailPingCe = createReactClass({
-    mixins: [ History ],
+    mixins: [History],
     render() {
         const { detailPingCe } = this.props;
         if (detailPingCe.isFetching) {
@@ -24,12 +24,12 @@ const DetailPingCe = createReactClass({
                 <div className='detailYulun'>
                     <Title titleText={'评测监控'} />
                     {
-                        detailPingCe.items.length > 0 ?
+                        detailPingCe.items !== null && detailPingCe.items.length > 0 ?
                             <ul className='detailYulunList'>
                                 {
                                     detailPingCe.items.map((text, i) => {
                                         return (
-                                            <li key={i} onClick={()=>this.history.pushState(null,'/pingce/'+text.id)}>
+                                            <li key={i} onClick={() => this.history.pushState(null, '/pingce/' + text.id)}>
                                                 <a className='title'>{text.title}</a>
                                                 <span className='update'>{Util.formatDate(text.updatetime)}</span>
                                             </li>
@@ -41,7 +41,7 @@ const DetailPingCe = createReactClass({
                             <div className='dataNull'>暂无舆论</div>
                     }
                     {
-                        detailPingCe.items.length >= 50 ?
+                        detailPingCe.items !== null && detailPingCe.items.length >= 50 ?
                             <LoadMore onClick={this.loadMore.bind(this)} data={detailPingCe} />
                             :
                             null
@@ -59,9 +59,7 @@ const DetailPingCe = createReactClass({
         }
     },
     componentDidMount() {
-        
         const url = Api.detail + '?type=article' + '&id_dlp=' + this.props.id + '&page=' + 1 + '&pagesize=50';
-        console.log(url)
         const { dispatch } = this.props;
         dispatch(fetchPostsDeatail('pingce', url))
     }

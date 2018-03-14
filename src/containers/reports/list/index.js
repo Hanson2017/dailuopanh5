@@ -23,7 +23,7 @@ const List = createReactClass({
                         <div>
                             <ul className='reportList'>
                                 {
-                                    data.items.length > 0 ?
+                                    data.items !== null && data.items.length > 0 ?
                                         data.items.map((item, index) => {
                                             return (
                                                 <li className='list'
@@ -37,11 +37,11 @@ const List = createReactClass({
                                             )
                                         })
                                         :
-                                        <li>暂无数据</li>
+                                        <li className='null'>暂无数据</li>
                                 }
                             </ul>
                             {
-                                totalNum > 50 ?
+                                data.items !== null && totalNum > 50 ?
                                     <LoadMore onClick={this.loadMore.bind(this)} data={data} />
                                     :
                                     null
