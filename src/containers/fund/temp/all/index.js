@@ -38,10 +38,6 @@ export default class All extends React.Component {
                     <h6 className='fundEchartTitleText'>3号示范投资（收益型）</h6>
                     <div className='fundEchart' id='fundEchart3'></div>
                 </div>
-                <div className='fundEchartBox'>
-                    <h6 className='fundEchartTitleText'>活期示范投资（高流动型）</h6>
-                    <div className='fundEchart' id='fundEchart4'></div>
-                </div>
             </div>
         )
     }
@@ -50,7 +46,7 @@ export default class All extends React.Component {
         var fund1Data = [];
         var fund2Data = [];
         var fund3Data = [];
-        var fund4Data = [];
+        
         for (let i = 0; i < data.fund1.length; i++) {
             fund1Data.push({ value: data.fund1[i].fund_amount, name: data.fund1[i].plat_name + '\n' + '(' + data.fund1[i].fund_amount + '万)' })
         }
@@ -59,9 +55,6 @@ export default class All extends React.Component {
         }
         for (let i = 0; i < data.fund3.length; i++) {
             fund3Data.push({ value: data.fund3[i].fund_amount, name: data.fund3[i].plat_name + '\n' + '(' + data.fund3[i].fund_amount + '万)' })
-        }
-        for (let i = 0; i < data.fund4.length; i++) {
-            fund4Data.push({ value: data.fund4[i].fund_amount, name: data.fund4[i].plat_name + '\n' + '(' + data.fund4[i].fund_amount + '万)' })
         }
 
         const fundEchart1 = document.getElementById('fundEchart1')
@@ -72,9 +65,6 @@ export default class All extends React.Component {
 
         const fundEchart3 = document.getElementById('fundEchart3')
         echarts.init(fundEchart3).setOption(pieFund(fund3Data));
-
-        const fundEchart4 = document.getElementById('fundEchart4')
-        echarts.init(fundEchart4).setOption(pieFund(fund4Data));
 
     }
 }

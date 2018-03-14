@@ -1,8 +1,8 @@
 'use strict';
 
-// const host = 'http://192.168.1.18:8080/MPAPI/';
+const host = 'http://192.168.1.18:8080/MPAPI/';
 // const domain = 'http://192.168.1.18:8080';
-const host = 'http://www.dailuopan.com/MPAPI/';
+// const host = 'http://www.dailuopan.com/MPAPI/';
 const domain = 'http://www.dailuopan.com';
 
 module.exports = {
@@ -36,5 +36,6 @@ module.exports = {
     getReportsList: host + 'GetReportsList', //数据报表列表
     getReportsDetail: host + 'GetReportsDetail', //数据报表列表
     getReportsDetail_dlp: host + 'GetReportsDetail_dlp', //贷罗盘数据报表列表
+    commentListNew:host+'/Getcomment_p2p_page', //评论列表
     commentList: 'http://www.76676.com/index.php?m=member&c=index&a=public_getcomment_dlp&p2pid='
 }

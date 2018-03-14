@@ -35,7 +35,8 @@ import NotFoundPage from '../containers/404/index';
 import PingCe from '../containers/pingce';
 import PingCeDetail from '../containers/pingce/detail/index';
 
-
+//评论
+import CommentForm from '../containers/commentForm/index';
 
 const store = configureStore()
 
@@ -71,6 +72,8 @@ export default class Root extends Component {
                             <Route path="about/appdown" component={AppDown} />
                             <Route path="pingce" component={PingCe} />
                             <Route path="pingce/:id" component={PingCeDetail} />
+                            <Route path="commentForm" component={CommentForm} />
+                            
                             <Route path='/404' component={NotFoundPage} />
                             <Redirect from='*' to='/404' />
 

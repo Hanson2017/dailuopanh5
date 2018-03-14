@@ -30,7 +30,7 @@ class Fund extends React.Component {
                             <List name={'稳健型'} data={funds.dataSource.fund1} fundType={1} fundEchartID={'fundEchartID1'} />
                             <List name={'平衡型'} data={funds.dataSource.fund2} fundType={2} fundEchartID={'fundEchartID2'} />
                             <List name={'收益型'} data={funds.dataSource.fund3} fundType={3} fundEchartID={'fundEchartID3'} />
-                            <List name={'活期'} data={funds.dataSource.fund4} fundType={4} fundEchartID={'fundEchartID4'} />
+                           
                         </TabBar>
                 }
 

@@ -259,7 +259,7 @@ export function deatail(state = {
                         page: 2,
                         pageCount: action.posts.pageCount,
                         totalNum: action.posts.totalNum,
-                        items: action.posts.comment,
+                        items: action.posts.dataList                        ,
                     }
                 })
             }
@@ -285,7 +285,7 @@ export function deatail(state = {
                         page: state.comment.page + 1,
                         pageCount: state.comment.pageCount,
                         totalNum: state.comment.totalNum,
-                        items: state.comment.items.concat(action.posts.comment),
+                        items: state.comment.items.concat(action.posts.dataList),
                     }
                 })
             }
