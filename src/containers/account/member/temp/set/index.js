@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-fetch'
-import createReactClass from 'create-react-class';
-import { History } from 'react-router';
 import { Icon } from 'antd-mobile';
 import Api from '../../../../../utils/api';
 import './index.scss';
 
-const Member = createReactClass({
-    mixins: [History],
-    getInitialState: function () {
-        return {
+export default class Member extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             loading: true,
             qqInfo: ''
         }
-    },
-    render: function () {
+    }
+    render() {
+        const { that } = this.props;
         const loginState = JSON.parse(localStorage.loginState);
         return (
             <div className='accountSet'>
@@ -29,7 +28,7 @@ const Member = createReactClass({
                                 '（微信登录）'
                         }
                     </li>
-                    <li onClick={()=> this.history.pushState(null, '/help')}>
+                    <li onClick={() => that.props.history.push('/help')}>
                         <label>常见问题</label>
                         <Icon type={require('../../../../../assets/icons/right.svg')} color={'#c7c7cc'} size={'xs'} />
                     </li>
@@ -40,15 +39,19 @@ const Member = createReactClass({
                         </a>
                     </li>
                 </ul>
-                <button type="button" className='logout' onClick={this.logout}>退出登录</button>
+                <button type="button" className='logout' onClick={this.logout.bind(this)}>退出登录</button>
             </div>
         )
-    },
-    logout: function () {
+    }
+    logout() {
+        const that = this.props.that;
         localStorage.clear();
-        this.history.replaceState(null, '/member/login')
-    },
-    componentDidMount: function () {
+        that.setState({
+            ref: !that.state.ref
+        });
+      
+    }
+    componentDidMount() {
         const url = Api.getqqun;
         const that = this;
         fetch(url)
@@ -67,6 +70,4 @@ const Member = createReactClass({
                 }
             });
     }
-})
-
-export default Member;
+}

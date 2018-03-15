@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Util from '../../../../utils/util';
 import UpDateTime from '../../../../components/upDateTime';
 

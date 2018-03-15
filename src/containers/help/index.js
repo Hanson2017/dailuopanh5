@@ -1,45 +1,46 @@
 import React, { Component, PropTypes } from 'react';
-import createReactClass from 'create-react-class';
-import { History } from 'react-router';
 import Loading from '../../components/loading/index';
 import Header from '../../components/navbar/index';
 import Api from '../../utils/api';
 import './index.scss';
-const HelpList = createReactClass({
-    mixins: [ History ],
-    getInitialState() {
-        return {
+
+export default class HelpList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             isFetching: true,
             dataList: []
         }
-    },
+    }
     render() {
+        const { history, location } = this.props;
+        const pathname = location.pathname;
         return (
             <div className='helpContainer'>
-                <Header title={'常见问题'} search='null' location={this.props.location} />
+                <Header title={'常见问题'} search='null' history={history} pathname={pathname} />
                 <div className='helpList'>
                     {
-                        this.state.isFetching?
-                        <Loading />
-                        :
-                        <ul>
-                            {
-                                this.state.dataList.map((item,i)=>{
-                                    return (
-                                        <li key={i} onClick={()=>this.history.pushState(null,'/help/'+item.id)}>{item.title}</li>
-                                    )    
-                                })
-                            }
-                        </ul>
-                    }    
+                        this.state.isFetching ?
+                            <Loading />
+                            :
+                            <ul>
+                                {
+                                    this.state.dataList.map((item, i) => {
+                                        return (
+                                            <li key={i} onClick={() => history.push('/help/' + item.id)}>{item.title}</li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                    }
 
                 </div>
             </div>
         )
-    },
-    componentDidMount(){
+    }
+    componentDidMount() {
         this.getData();
-    },
+    }
     getData() {
         const that = this;
         const url = Api.helpList
@@ -60,6 +61,4 @@ const HelpList = createReactClass({
 
             });
     }
-})
-
-export default HelpList;
+}

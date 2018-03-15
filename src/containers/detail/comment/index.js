@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { History } from 'react-router';
-import createReactClass from 'create-react-class';
 
 import Api from '../../../utils/api';
 import Util from '../../../utils//util';
@@ -12,10 +10,9 @@ import Title from '../../../components/title';
 
 import './index.scss';
 
-const DetailComment = createReactClass({
-    mixins: [History],
+class DetailComment extends React.Component {
     render() {
-        const { detailComment } = this.props;
+        const { detailComment, history } = this.props;
         if (detailComment.isFetching) {
             return <Loading />
         }
@@ -63,24 +60,25 @@ const DetailComment = createReactClass({
                             :
                             null
                     }
-                    <div onClick={()=>{this.history.pushState(null, '/commentForm')}}>我要评论</div>
+                    <div onClick={() => { history.push('/commentForm') }}>我要评论</div>
                 </div>
             )
         }
-    },
+    }
     loadMore() {
         const { dispatch, detailComment } = this.props;
         const url = Api.commentListNew + '?id_dlp=' + this.props.id + '&page=' + detailComment.page + '&pagesize=10';
         if (!detailComment.loadMore && detailComment.pageCount >= detailComment.page) {
             dispatch(fetchPostsDeatail('comment', url, 2))
         }
-    },
+    }
     componentDidMount() {
         const url = Api.commentListNew + '?id_dlp=' + this.props.id + '&page=' + 1 + '&pagesize=10';
         const { dispatch } = this.props;
         dispatch(fetchPostsDeatail('comment', url))
     }
-})
+}
+
 
 function mapStateToProps(state) {
     return { detailComment: state.deatail.comment };

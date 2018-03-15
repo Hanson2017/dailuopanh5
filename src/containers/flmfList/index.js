@@ -20,9 +20,11 @@ class FlmfList extends React.Component {
             return <Loading />
         }
         else {
+            const { history } = this.props;
+            const pathname = this.props.location.pathname;
             return (
                 <div className='flmfListWp'>
-                    <Header title={'优惠活动'} location={this.props.location} />
+                    <Header title={'优惠活动'} history={history} pathname={pathname} />
                     <NumBar numText={'活动平台数量：' + flmfListData.totalNum + '家'} />
                     <div className='noTabContainer'>
                         <UpDateTime updatetime={Util.setDate(new Date())} />

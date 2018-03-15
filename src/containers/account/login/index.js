@@ -6,10 +6,9 @@ const clientHeight = window.screen.height;
 const alertShow = Modal.alert;
 export default class Login extends React.Component {
     render() {
-        const  QQUrl=encodeURI("https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101402579&redirect_uri=http://m.dailuopan.com/member/Login/qqlogin&state=dlp")
+        const  QQUrl=encodeURI("https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101402579&redirect_uri=http://test.dailuopan.com/member/Login/qqlogin&state=dlp")
         return (
             <div className='loginContainer' style={{ height: clientHeight }}>
-                <Header title={''} search={'null'} location={this.props.location} backRouter={{state:null,pathname:'/'}} />
                 <div className='logowp'>
                     <img src={require('../../../assets/images/logo.png')} className='logo' />
                 </div>

@@ -1,8 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { History } from 'react-router';
-import createReactClass from 'create-react-class';
-
 import Loading from '../../components/loading/index';
 import Header from '../../components/navbar/index';
 import NumBar from '../../components/numBar/index';
@@ -13,18 +10,18 @@ import Api from '../../utils/api';
 import Util from '../../utils/util';
 import { fetchPosts } from '../../redux/actions/index';
 
-const Pingce =createReactClass({
-    mixins: [ History ],
+class Pingce extends React.Component {
     render() {
-        const { datas } = this.props;
+        const { datas,history } = this.props;
+        const pathname = this.props.location.pathname;
         var totalNum = 0;
         if (!datas.isFetching) {
             totalNum = datas.dataView;
         }
 
         return (
-            <div style={this.props.location ? null : { marginBottom: '1rem' }}>
-                <Header title={'评测监控'} location={this.props.location} />
+            <div>
+                <Header title={'评测监控'} history={history} pathname={pathname} />
                 <NumBar numText={'评测监控平台数量：' + totalNum + '家'} />
                 <div className='noTabContainer'>
                     <UpDateTime updatetime={Util.setDate(new Date())} />
@@ -39,7 +36,7 @@ const Pingce =createReactClass({
 
                                         datas.items.map((text, i) => {
                                             return (
-                                                <a onClick={()=>this.history.pushState(null,'/pingce/'+text.id)} key={i} className='link' target='_blank'>
+                                                <a onClick={() => history.push('/pingce/' + text.id)} key={i} className='link' target='_blank'>
                                                     <h6 className='title'>{text.title}</h6>
                                                     <p className='time'> {Util.formatDate(text.updatetime)}</p>
                                                 </a>
@@ -55,12 +52,12 @@ const Pingce =createReactClass({
 
             </div>
         )
-    },
+    }
     componentDidMount() {
         const url = Api.pingCeList + '?pagesize=50&page=' + 1;
         const { dispatch, datas } = this.props;
         dispatch(fetchPosts('pingceList', url, 1, 'dataList'))
-    },
+    }
     loadMore() {
         const { dispatch, datas } = this.props;
         const url = Api.pingCeList + '?pagesize=50&page=' + datas.page;
@@ -69,7 +66,8 @@ const Pingce =createReactClass({
             dispatch(fetchPosts('pingceList', url, 2, 'dataList'))
         }
     }
-})
+}
+
 
 
 function mapStateToProps(state) {

@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import createReactClass from 'create-react-class';
-import { History } from 'react-router';
 import { Icon } from 'antd-mobile';
 import { connect } from 'react-redux';
 import './index.scss';
 
-var Navbar = createReactClass({
-    mixins: [History],
-    render: function () {
-        const detailCommon = this.props.detailCommon;
+class Navbar extends React.Component {
+    render() {
+        const { detailCommon, history } = this.props;
         let fundType = null;
         switch (detailCommon.fundtype) {
             case 1:
@@ -24,17 +21,17 @@ var Navbar = createReactClass({
                 fundType = '活'
                 break;
         }
-        const { pathName ,location} = this.props;
         return (
             <div className='navbar'>
                 <div className="navbar-left" onClick={() => {
-                    if(location.action !== 'POP'){
-                        this.history.goBack()
+
+                    if (history.action !== 'POP') {
+                        history.goBack()
                     }
-                    else{
-                        this.history.replaceState(null, '/')
+                    else {
+                        history.replace('/')
                     }
-                    
+
                 }}>
                     <Icon type={require('../../assets/icons/left.svg')} color={'#fff'} />
                 </div>
@@ -62,7 +59,7 @@ var Navbar = createReactClass({
             </div>
         )
     }
-})
+}
 
 function mapStateToProps(state) {
     return {

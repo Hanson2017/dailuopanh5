@@ -17,19 +17,20 @@ const width = document.body.clientWidth;
 
 const Query = createReactClass({
     render() {
-        const { num, text, updatetime } = this.props;
+        const { num, text, updatetime, history } = this.props;
+        const pathname = this.props.location.pathname;
         const tabIndex = this.props.location.state;
         return (
-            <div className='container containerQuery' style={{ 'padding-top': '2.2rem' }}>
-                <Header title={'多维度查询'} location={this.props.location} />
+            <div className='container containerQuery' style={{ 'paddingTop': '2.2rem' }}>
+                <Header title={'多维度查询'} history={history} pathname={pathname} />
                 <NumBar numText={'多维度统计平台数量：' + num + '家'} />
                 <UpDateTime updatetime={updatetime} />
                 <TabBar current={tabIndex.tab1}>
-                    <Rongzi name={'融资背景'} tabIndex={tabIndex.column == 'rongzi' ? tabIndex.tab2 : null} />
-                    <Yewu name={'业务类型'} tabIndex={tabIndex.column == 'yewu' ? tabIndex.tab2 : null} />
-                    <ListTab name={'地区'} type={'diqu'} columnID={'queryDiqu'} tabWidth={(width - 0.2 * 50 * 8) / (50 * 6)} />
-                    <ListTab name={'上线时间'} type={'shangxian'} columnID={'queryShangxian'} tabWidth={(width - 0.2 * 50 * 5.5) / (50 * 4)} titleText={'年'} />
-                    <ListTab name={'银行存管'} type={'cunguan'} columnID={'queryCunguan'} tabWidth={(width - 0.2 * 50 * 4.5) / (50 * 3)} />
+                    <Rongzi name={'融资背景'} tabIndex={tabIndex.column == 'rongzi' ? tabIndex.tab2 : null} history={history} />
+                    <Yewu name={'业务类型'} tabIndex={tabIndex.column == 'yewu' ? tabIndex.tab2 : null} history={history} />
+                    <ListTab name={'地区'} type={'diqu'} columnID={'queryDiqu'} tabWidth={(width - 0.2 * 50 * 8) / (50 * 6)} history={history} />
+                    <ListTab name={'上线时间'} type={'shangxian'} columnID={'queryShangxian'} tabWidth={(width - 0.2 * 50 * 5.5) / (50 * 4)} titleText={'年'} history={history} />
+                    <ListTab name={'银行存管'} type={'cunguan'} columnID={'queryCunguan'} tabWidth={(width - 0.2 * 50 * 4.5) / (50 * 3)} history={history} />
                 </TabBar>
             </div>
         )

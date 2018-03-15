@@ -13,13 +13,13 @@ const tabNames = [
 
 export default class Rongzi extends React.Component {
     render() {
-        const tabIndex = this.props.tabIndex;
+        const { history, tabIndex } = this.props;
         return (
             <TabBar current={tabIndex}>
                 {
                     tabNames.map((tab, i) => {
                         return (
-                            <List key={i} name={tab.title} type={tab.type} Ttype={tab.Ttype} />
+                            <List key={i} name={tab.title} type={tab.type} Ttype={tab.Ttype} history={history} />
                         )
                     })
                 }

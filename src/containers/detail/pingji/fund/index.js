@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import { History } from 'react-router';
-import createReactClass from 'create-react-class';
 import Util from '../../../../utils/util';
 import './index.scss';
 
-const Fund = createReactClass({
-    mixins: [History],
+export default class Fund extends React.Component{
     render() {
-        let data = this.props.data;
-        let platName = this.props.platName;
+        const {data,platName,history}=this.props;
         let fundType;
         let fundS;
         if (data != null) {
@@ -96,13 +92,12 @@ const Fund = createReactClass({
                 <div className='fundNullWp'>
                     <p>示范投资目前没有投资“{platName}”</p>
                     <p>想了解示范投资目前进入了哪些平台，</p>
-                    <div>请进入<a onClick={() => this.history.pushState(null, '/fund')}>“示范投资”</a>模块进行查看。</div>
+                    <div>请进入<a onClick={() => history.push('/fund')}>“示范投资”</a>模块进行查看。</div>
                 </div>
             )
         }
 
 
     }
-})
+}
 
-export default Fund;

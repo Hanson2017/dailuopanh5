@@ -16,10 +16,11 @@ import './index.scss';
 class Fund extends React.Component {
 
     render() {
-        const { funds } = this.props;
+        const { funds, history } = this.props;
+        const pathname = this.props.location.pathname;
         return (
-            <div style={this.props.location ? { 'paddingTop': '2.2rem' } : { 'paddingTop': '2.2rem', marginBottom: '1rem' }}>
-                <Header title={'示范投资'} location={this.props.location} />
+            <div style={{ 'paddingTop': '2.2rem', marginBottom: '1rem' }}>
+                <Header title={'示范投资'} history={history} pathname={pathname} />
                 <NumBar numText={'示范投资为贷罗盘自有资金进行投资示范，可供广大投资人参考'} />
                 {
                     funds.isFetching ?
@@ -30,7 +31,7 @@ class Fund extends React.Component {
                             <List name={'稳健型'} data={funds.dataSource.fund1} fundType={1} fundEchartID={'fundEchartID1'} />
                             <List name={'平衡型'} data={funds.dataSource.fund2} fundType={2} fundEchartID={'fundEchartID2'} />
                             <List name={'收益型'} data={funds.dataSource.fund3} fundType={3} fundEchartID={'fundEchartID3'} />
-                           
+
                         </TabBar>
                 }
 

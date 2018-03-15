@@ -75,17 +75,18 @@ const Health = createReactClass({
         }
     },
     render() {
-        const { datas } = this.props;
+        const { datas, history } = this.props;
+        const pathname = this.props.location.pathname;
         const tabNames = this.state.tabNames;
         return (
-            <div className='container' style={{ 'padding-top': '2.2rem' }}>
-                <Header title={'健康度'} location={this.props.location} />
+            <div className='container' style={{ 'paddingTop': '2.2rem' }}>
+                <Header title={'健康度'} history={history} pathname={pathname} />
                 <NumBar numText={'健康度统计平台数量：' + datas + '家'} />
                 <TabBar>
                     {
                         tabNames.map((tab, i) => {
                             return (
-                                <List name={tab.title} type={tab.type} columnID={tab.columnID} listCout={tab.listCout} />
+                                <List key={i} name={tab.title} type={tab.type} columnID={tab.columnID} listCout={tab.listCout} history={history} />
                             )
                         })
                     }

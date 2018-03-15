@@ -19,7 +19,7 @@ const ListContainer = createReactClass({
         }
     },
     render() {
-        const { dispatch, datas, updatetime } = this.props;
+        const { dispatch, datas, updatetime,history } = this.props;
 
         return (
             <div>
@@ -36,7 +36,7 @@ const ListContainer = createReactClass({
                             datas.isFetching ?
                                 <Load />
                                 :
-                                <TabList pageName={this.props.pageName ? this.props.pageName : null} listCout={this.props.listCout} data={datas} Ttype={this.props.Ttype} />
+                                <TabList pageName={this.props.pageName ? this.props.pageName : null} listCout={this.props.listCout} data={datas} Ttype={this.props.Ttype} history={history} />
                         }
                     </div>
                     {
@@ -44,7 +44,7 @@ const ListContainer = createReactClass({
                             null
                             :
                             <div className='listBotttom'>
-                                <TabListFixed pageName={this.props.pageName ? this.props.pageName : null} data={datas} isFixed={this.state.fixed} Ttype={this.props.Ttype} />
+                                <TabListFixed pageName={this.props.pageName ? this.props.pageName : null} data={datas} isFixed={this.state.fixed} Ttype={this.props.Ttype}  history={history} />
                                 <LoadMore onClick={this.loadMore} data={datas} />
                             </div>
                     }

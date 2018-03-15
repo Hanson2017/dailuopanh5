@@ -6,13 +6,10 @@ import ListContainer from '../../listContainer/'
 
 export default class List extends React.Component {
     render() {
-       
-        const type=this.props.type;
-        const listCout=this.props.listCout;
+        const {history,type,listCout,columnID}=this.props;
         const url=Api.pingji+'?type='+type;
-        const columnID=this.props.columnID;
         return (
-            <ListContainer listCout={listCout} url={url} columnID={columnID} dataListName={'gradeList'} />
+            <ListContainer listCout={listCout} url={url} columnID={columnID} dataListName={'gradeList'} history={history} />
         )
     }
 }

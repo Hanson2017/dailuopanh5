@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd-mobile';
-import { Link } from 'react-router';
-import { History } from 'react-router';
-import createReactClass from 'create-react-class';
+import { Link } from 'react-router-dom';
 import './index.scss';
 
 import { lineChart } from '../../../../echart/line';
@@ -17,16 +15,17 @@ import 'echarts/lib/component/title';
 
 import Title from '../../../../components/title';
 const width = document.body.clientWidth;
-const Shuzhi = createReactClass({
-    mixins: [History],
-    getInitialState() {
-        return {
+
+export default class Shuzhi extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
             isHidden: [true, true, true, true, true, true, true],
             ref: false
         }
-    },
+    }
     render() {
-        const data = this.props.data;
+        const {data,history}=this.props;
         const isHidden = this.state.isHidden;
         const dataWdzj = data.wdzj;
         const dataP2peye = data.p2peye;
@@ -361,7 +360,7 @@ const Shuzhi = createReactClass({
                 </ul>
             </div>
         )
-    },
+    }
     componentDidMount() {
         const data = this.props.data;
         var dataWdzj = data.wdzj;
@@ -464,6 +463,5 @@ const Shuzhi = createReactClass({
         }
 
     }
-})
+}
 
-export default Shuzhi;

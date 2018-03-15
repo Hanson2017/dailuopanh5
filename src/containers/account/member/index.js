@@ -11,19 +11,20 @@ const clientHeight = window.screen.height;
 
 export default class Member extends React.Component {
     render() {
-        let tabIndex=null;
-        if(this.props.location){
-            tabIndex = this.props.location.state;
-        }   
+        var tabIndex = null;
+        const { that } = this.props;
+        if(that.props.location.state && that.props.location.state !== null){
+            tabIndex=that.props.location.state.tabId
+        }
         return (
-            <div  className='memberIndexWp'>
-                <Header title={'个人中心'} search={'null'} location={this.props.location} backRouter={{state:null,pathname:'/'}} />
-                <TabBar current={tabIndex?tabIndex:null}>
+            <div className='memberIndexWp'>
+                <Header title={'个人中心'} search={'null'} back={'null'} history={that.props.history} pathname={that.props.location.pathname} />
+                <TabBar current={tabIndex ? tabIndex : null}>
                     <div name={'关注平台'}>
                         <Guanzhu />
                     </div>
-                    <div className='accountSetWp' name={'设置'} style={{height:clientHeight-1.72*50}}>
-                        <Set />
+                    <div className='accountSetWp' name={'设置'} style={{ height: clientHeight - 1.72 * 50 }}>
+                        <Set that={that} />
                     </div>
                 </TabBar>
             </div>

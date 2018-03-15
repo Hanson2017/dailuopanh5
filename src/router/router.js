@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, Redirect, IndexRoute, browserHistory, hashHistory } from 'react-router';
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+    Redirect
+} from 'react-router-dom';
+
 import configureStore from '../redux/store/configureStore';
 import DevTools from '../containers/DevTools';
 
-import App from '../App';
 import TabBar from '../containers/tabBar';
 import Funds from '../containers/fund';
 import FlmfList from '../containers/flmfList';
@@ -38,52 +43,43 @@ import PingCeDetail from '../containers/pingce/detail/index';
 //评论
 import CommentForm from '../containers/commentForm/index';
 
+import '../style/base.scss'
+
 const store = configureStore()
 
-export default class Root extends Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <div>
-                    <Router history={browserHistory}>
-                        <Route path="/" component={App}>
-                            <IndexRoute component={TabBar} />
-                            <Route path="pingji" component={Pingji} />
-                            <Route path="fund" component={Funds} />
-                            <Route path="activity" component={FlmfList}></Route>
-                            <Route path="data" component={Data} />
-                            <Route path="health" component={Health} />
-                            <Route path="yulun" component={Yulun} />
-                            <Route path="flow" component={Flow} />
-                            <Route path="query" component={Query} />
-                            <Route path="fiveYears" component={FiveYears} />
-                            <Route path="black" component={Black} />
-                            <Route path="zhengyi" component={Zhengyi} />
-                            <Route path="reports" component={Reports} />
-                            <Route path="reportDetail/:id" component={ReportsDetail} />
-                            <Route path="detail/:id" component={Detail} />
-                            <Route path="help" component={HelpList} />
-                            <Route path="help/:id" component={HelpDetail} />
-                            <Route path="member" component={Account} />
-                            <Route path="member/Login/qqlogin" component={LoginCallback} />
-                            <Route path="member/login" component={Login} />
-                            <Route path="member/index" component={Member} />
-                            <Route path="search" component={Search} />
-                            <Route path="about/appdown" component={AppDown} />
-                            <Route path="pingce" component={PingCe} />
-                            <Route path="pingce/:id" component={PingCeDetail} />
-                            <Route path="commentForm" component={CommentForm} />
-                            
-                            <Route path='/404' component={NotFoundPage} />
-                            <Redirect from='*' to='/404' />
+const App = () => (
+    <Provider store={store}>
+        <Router>
+            <Switch>
+                <Route exact path="/" component={TabBar} />
+                <Route path="/yulun" component={TabBar} />
+                <Route path="/fund" component={TabBar} />
+                <Route path="/activity" component={TabBar}></Route>
+                <Route path="/about/appdown" component={TabBar} />
+                <Route path="/pingji" component={Pingji} />
+                <Route path="/data" component={Data} />
+                <Route path="/health" component={Health} />
+                <Route path="/flow" component={Flow} />
+                <Route path="/query" component={Query} />
+                <Route path="/fiveYears" component={FiveYears} />
+                <Route path="/black" component={Black} />
+                <Route path="/zhengyi" component={Zhengyi} />
+                <Route path="/search" component={Search} />
+                <Route path="/detail/:id" component={Detail} />
+                <Route exact path="/pingce" component={PingCe} />
+                <Route path="/pingce/:id" component={PingCeDetail} />
+                <Route exact path="/reports" component={Reports} />
+                <Route path="/reports/:id" component={ReportsDetail} />
+                <Route exact path="/help" component={HelpList} />
+                <Route path="/help/:id" component={HelpDetail} />
+                <Route exact path="/member" component={TabBar} />
+                <Route path="/member/Login/qqlogin" component={LoginCallback} />
+                <Route path="/commentForm" component={CommentForm} />
+                <Route path='/404' component={NotFoundPage} />
+                <Redirect from='*' to='/404' />
+            </Switch>
+        </Router >
+    </Provider>
+)
 
-                        </Route>
-
-                    </Router>
-
-                    {/* <DevTools /> */}
-                </div>
-            </Provider>
-        )
-    }
-}
+export default App;

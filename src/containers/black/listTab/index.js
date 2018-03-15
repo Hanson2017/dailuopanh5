@@ -9,7 +9,7 @@ import List from '../../query/temp/listTab/index';
 
 class ListTab extends React.Component {
     render() {
-        const { data, updatetime } = this.props;
+        const { data, updatetime, history } = this.props;
         if (data.isFetching) {
             return (
                 <Load />
@@ -19,7 +19,7 @@ class ListTab extends React.Component {
             return (
                 <div>
                     <UpDateTime updatetime={updatetime} />
-                    <List data={data.items} tabWidth={{width:this.props.tabWidth+'rem'}} titleText={this.props.titleText?this.props.titleText:null} />
+                    <List data={data.items} tabWidth={{ width: this.props.tabWidth + 'rem' }} titleText={this.props.titleText ? this.props.titleText : null} history={history} />
                 </div>
             )
         }
@@ -28,7 +28,7 @@ class ListTab extends React.Component {
     componentDidMount() {
         const columnID = this.props.columnID;
         const { dispatch, data } = this.props;
-        const url=Api.black+'?type='+this.props.type;
+        const url = Api.black + '?type=' + this.props.type;
         dispatch(fetchPosts(columnID, url, 1, 'dataList'))
     }
 }

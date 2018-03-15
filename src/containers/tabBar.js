@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from "react-router-dom";
 import { TabBar, Icon } from 'antd-mobile';
 
 import Home from './home/index'
@@ -17,13 +18,14 @@ class TabBars extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 'homeTab',
             hidden: false,
         };
     }
 
     render() {
         const { selectedColor, normalColor } = this.props;
+        const pathname = this.props.location.pathname;
+        const history = this.props.history;
         return (
 
             <TabBar
@@ -41,14 +43,12 @@ class TabBars extends Component {
                     selectedIcon={
                         <Icon type={require('../assets/icons/home-circle.svg')} color={selectedColor} />
                     }
-                    selected={this.state.selectedTab === 'homeTab'}
+                    selected={pathname === '/'}
                     onPress={() => {
-                        this.setState({
-                            selectedTab: 'homeTab',
-                        });
+                        history.push("/");
                     }}
                 >
-                    <Home />
+                    <Route path="/" component={Home} />
                 </TabBar.Item>
                 <TabBar.Item
                     icon={
@@ -59,14 +59,12 @@ class TabBars extends Component {
                     }
                     title="舆情"
                     key="舆情"
-                    selected={this.state.selectedTab === 'yuqingTab'}
+                    selected={pathname === '/yulun'}
                     onPress={() => {
-                        this.setState({
-                            selectedTab: 'yuqingTab',
-                        });
+                        history.push("/yulun");
                     }}
                 >
-                    <Yulun />
+                    <Route path="/yulun" component={Yulun} />
                 </TabBar.Item>
                 <TabBar.Item
                     icon={
@@ -77,14 +75,12 @@ class TabBars extends Component {
                     }
                     title="示范"
                     key="示范"
-                    selected={this.state.selectedTab === 'fundTab'}
+                    selected={pathname === '/fund'}
                     onPress={() => {
-                        this.setState({
-                            selectedTab: 'fundTab',
-                        });
+                        history.push("/fund");
                     }}
                 >
-                    <Fund />
+                    <Route path="/fund" component={Fund} />
                 </TabBar.Item>
                 <TabBar.Item
                     icon={
@@ -95,14 +91,12 @@ class TabBars extends Component {
                     }
                     title="活动"
                     key="活动"
-                    selected={this.state.selectedTab === 'activityTab'}
+                    selected={pathname === '/activity'}
                     onPress={() => {
-                        this.setState({
-                            selectedTab: 'activityTab',
-                        });
+                        history.push("/activity");
                     }}
                 >
-                    <FlmfList />
+                    <Route path="/activity" component={FlmfList} />
                 </TabBar.Item>
 
                 <TabBar.Item
@@ -114,14 +108,12 @@ class TabBars extends Component {
                     }
                     title="APP"
                     key="APP"
-                    selected={this.state.selectedTab === 'appdownTab'}
+                    selected={pathname === '/about/appdown'}
                     onPress={() => {
-                        this.setState({
-                            selectedTab: 'appdownTab',
-                        });
+                        history.push("/about/appdown");
                     }}
                 >
-                    <AppDown />
+                    <Route path="/about/appdown" component={AppDown} />
                 </TabBar.Item>
                 <TabBar.Item
                     icon={
@@ -132,14 +124,12 @@ class TabBars extends Component {
                     }
                     title="我"
                     key="我"
-                    selected={this.state.selectedTab === 'personalTab'}
+                    selected={pathname === '/member'}
                     onPress={() => {
-                        this.setState({
-                            selectedTab: 'personalTab',
-                        });
+                        history.push("/member");
                     }}
                 >
-                    <Account />
+                    <Route path="/member" component={Account} />
                 </TabBar.Item>
             </TabBar>
 

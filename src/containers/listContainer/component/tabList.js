@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd-mobile';
 import createReactClass from 'create-react-class';
-import { History } from 'react-router';
 
 const TabList = createReactClass({
-    mixins: [History],
     render() {
-        const data = this.props.data;
-        const listCout = this.props.listCout;
-
+        const {history,data,listCout}=this.props;
         var totalWidth = 8.18;
         for (var i = 0; i < listCout.length; i++) {
             totalWidth = parseFloat(listCout[i].width) + totalWidth
@@ -42,7 +38,7 @@ const TabList = createReactClass({
                 {
                     data.items.map((item, index) => {
                         return (
-                            <dd className={item.flmllist.length > 0 || this.props.Ttype || this.props.pageName ? "item itemRowH" : 'item'} key={index} onClick={() => { this.history.pushState(null, '/detail/' + item.id_dlp) }}>
+                            <dd className={item.flmllist.length > 0 || this.props.Ttype || this.props.pageName ? "item itemRowH" : 'item'} key={index} onClick={() => { history.push('/detail/' + item.id_dlp) }}>
                                 <span className='ic1'>&nbsp;</span>
                                 <span className='ic2'>&nbsp;</span>
                                 {

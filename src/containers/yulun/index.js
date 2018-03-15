@@ -45,14 +45,16 @@ class Yulun extends React.Component {
 
     render() {
         const { datas } = this.props;
+        const {history}=this.props;
+        const pathname = this.props.location.pathname;
         var totalNum = 0;
         if (!datas.isFetching) {
             totalNum = datas.dataView.plat_count;
         }
 
         return (
-            <div style={this.props.location?null:{marginBottom:'1rem'}}>
-                <Header title={'舆论监控'} location={this.props.location} />
+            <div style={{marginBottom:'1rem'}}>
+                <Header title={'舆论监控'} history={history} pathname={pathname} />
                 <NumBar numText={'舆论监控平台数量：' + totalNum + '家'} />
                 <div className='noTabContainer'>
                     <UpDateTime updatetime={Util.setDate(new Date())} />

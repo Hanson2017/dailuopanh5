@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import createReactClass from 'create-react-class';
 import { connect } from 'react-redux';
 import Header from '../../components/navbar/index';
 import NumBar from '../../components/numBar/index'
@@ -25,15 +24,17 @@ export default class Reports extends React.Component {
         };
     }
     render() {
+        const {history} = this.props;
+        const pathname = this.props.location.pathname;
         const tabNames = this.state.tabNames;
         return (
             <div className='containerReport'>
-                <Header title={'数据报表'} location={this.props.location} />
+                <Header title={'数据报表'} history={history} pathname={pathname} />
                 <TabBar>
                     {
                         tabNames.map((tab, i) => {
                             return (
-                                <List key={i} name={tab.title} type={tab.type} columnID={tab.columnID} />
+                                <List key={i} name={tab.title} type={tab.type} columnID={tab.columnID} history={history} />
                             )
                         })
                     }

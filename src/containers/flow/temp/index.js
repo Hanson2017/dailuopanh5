@@ -6,13 +6,10 @@ import ListContainer from '../../listContainer/'
 
 export default class List extends React.Component {
     render() {
-       
-        const type=this.props.type;
-        const listCout=this.props.listCout;
-        const url=Api.flow+'?type='+type;
-        const columnID=this.props.columnID;
+        const { history, type, listCout, columnID } = this.props;
+        const url = Api.flow + '?type=' + type;
         return (
-            <ListContainer listCout={listCout} url={url} columnID={columnID} dataListName={'dataList'} />
+            <ListContainer listCout={listCout} url={url} columnID={columnID} dataListName={'dataList'} history={history} />
         )
     }
 }

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import createReactClass from 'create-react-class';
-import { History } from 'react-router';
 import Api from '../../../utils/api'
 import { fetchPosts } from '../../../redux/actions/index';
 import Load from '../../../components/loading';
@@ -9,10 +7,9 @@ import LoadMore from '../../../components/loadMore';
 import UpDateTime from '../../../components/upDateTime';
 import './index.scss';
 
-const List = createReactClass({
-    mixins: [History],
+class List extends React.Component {
     render() {
-        const { dispatch, data, updatetime } = this.props;
+        const { dispatch, data, updatetime, history } = this.props;
         if (data.isFetching) {
             return (
                 <Load />
@@ -31,7 +28,7 @@ const List = createReactClass({
                         {
                             data.items.map((item, i) => {
                                 return (
-                                    <dd key={i} onClick={() => { this.history.pushState(null, '/detail/' + item.id_dlp) }}>
+                                    <dd key={i} onClick={() => { history.push('/detail/' + item.id_dlp) }}>
                                         <div className='item'>
                                             <span className='ic1'>{item.plat_name}</span>
                                             <span className='ic2'>{item.province}/{item.city}</span>
@@ -51,7 +48,7 @@ const List = createReactClass({
             )
         }
 
-    },
+    }
     loadMore() {
         const columnID = this.props.columnID;
         const { dispatch, data } = this.props;
@@ -60,14 +57,14 @@ const List = createReactClass({
         if (!data.loadMore && data.pageCount >= data.page) {
             dispatch(fetchPosts(columnID, url, 2, 'dataList'))
         }
-    },
+    }
     componentDidMount() {
         const columnID = this.props.columnID;
         const { dispatch, data } = this.props;
         const url = Api[this.props.column] + '?type=all&pagesize=50&page=' + 1;
         dispatch(fetchPosts(columnID, url, 1, 'dataList'))
     }
-})
+}
 
 function mapStateToProps(state, ownProps) {
     return {

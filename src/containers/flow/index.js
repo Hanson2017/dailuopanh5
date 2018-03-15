@@ -53,17 +53,18 @@ const Flow = createReactClass({
         }
     },
     render() {
-        const { dispatch, datas } = this.props;
+        const { dispatch, datas, history } = this.props;
+        const pathname = this.props.location.pathname;
         const tabNames = this.state.tabNames;
         return (
-            <div className='container' style={{ 'padding-top': '2.2rem' }}>
-                <Header title={'流量'} location={this.props.location} />
+            <div className='container' style={{ 'paddingTop': '2.2rem' }}>
+                <Header title={'流量'} history={history} pathname={pathname} />
                 <NumBar numText={'流量统计平台数量：' + datas + '家'} />
                 <TabBar>
                     {
                         tabNames.map((tab, i) => {
                             return (
-                                <List name={tab.title} type={tab.type} columnID={tab.columnID} listCout={tab.listCout} />
+                                <List key={i} name={tab.title} type={tab.type} columnID={tab.columnID} listCout={tab.listCout} history={history} />
                             )
                         })
                     }

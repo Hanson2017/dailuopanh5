@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { History } from 'react-router';
-import createReactClass from 'create-react-class';
 import { Modal, Toast } from 'antd-mobile';
 import Api from '../../../utils/api';
 import { fetchPostsDeatail } from '../../../redux/actions/index';
@@ -14,15 +12,16 @@ import './index.scss';
 
 const alertShow = Modal.alert;
 
-const DetailPingji = createReactClass({
-    mixins: [History],
-    getInitialState() {
-        return {
+
+class DetailPingji extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             isGuanzhu: false
         }
-    },
+    }
     render() {
-        const { detailPingji, detailCommon } = this.props;
+        const { detailPingji, detailCommon, history } = this.props;
         if (detailPingji.isFetching || detailCommon.isFetching) {
             return <Loading />
         }
@@ -35,7 +34,7 @@ const DetailPingji = createReactClass({
                                 detailCommon.dataSource.platstatus != 1 ?
                                     <span className='nullBlack'>黑名单平台，已停止数据监控</span>
                                     :
-                                    <Shuzhi data={detailPingji.dataSource.dataDetail} platName={detailPingji.dataSource.plat_name} replatData={detailPingji.dataSource.replat} />
+                                    <Shuzhi data={detailPingji.dataSource.dataDetail} platName={detailPingji.dataSource.plat_name} replatData={detailPingji.dataSource.replat} history={history} />
                             }
 
                         </div>
@@ -48,7 +47,7 @@ const DetailPingji = createReactClass({
                             }
                         </div>
                         <div name={'示范投资'}>
-                            <Fund data={detailPingji.dataSource.fundDetail} platName={detailPingji.dataSource.plat_name} />
+                            <Fund data={detailPingji.dataSource.fundDetail} platName={detailPingji.dataSource.plat_name} history={history} />
                         </div>
                     </TabBar>
                     <div className={this.state.isGuanzhu ? 'guanzhuBtn guanzhuBtnCancel' : 'guanzhuBtn'}
@@ -67,7 +66,7 @@ const DetailPingji = createReactClass({
                             else {
                                 alertShow('提示', '请先登录后关注！', [
                                     { text: '取消', onPress: () => console.log('cancel') },
-                                    { text: '确认', onPress: () => this.history.pushState(null, '/member/login') },
+                                    { text: '确认', onPress: () => history.push('/member') },
                                 ])
                             }
 
@@ -79,7 +78,7 @@ const DetailPingji = createReactClass({
                 </div>
             )
         }
-    },
+    }
     componentDidMount() {
         const url = Api.detail + '?type=all' + '&id_dlp=' + this.props.id;
         const { dispatch } = this.props;
@@ -88,7 +87,10 @@ const DetailPingji = createReactClass({
         if (localStorage.loginState) {
             this.isAttention()
         }
-    },
+    }
+    componentWillUnmount() {
+        this._isMounted = false
+    }
     //是否关注了该平台
     isAttention() {
         const that = this;
@@ -96,7 +98,7 @@ const DetailPingji = createReactClass({
         const loginState = JSON.parse(localStorage.loginState);
         const memberid = loginState.r_id;
         const url = Api.isAttention + '?id_dlp=' + id + '&memberid=' + memberid;
-
+        that._isMounted = true
         fetch(url)
             .then(function (response) {
                 if (response.status >= 400) {
@@ -106,19 +108,22 @@ const DetailPingji = createReactClass({
             })
             .then(function (json) {
                 if (json.result == 1) {
-                    if (json.data == 1) {
-                        that.setState({
-                            isGuanzhu: true,
-                        })
+                    if (that._isMounted) {
+                        if (json.data == 1) {
+                            that.setState({
+                                isGuanzhu: true,
+                            })
+                        }
+                        else {
+                            that.setState({
+                                isGuanzhu: false,
+                            })
+                        }
                     }
-                    else {
-                        that.setState({
-                            isGuanzhu: false,
-                        })
-                    }
+
                 }
             });
-    },
+    }
     // 添加关注
     attentionAdd() {
         const that = this;
@@ -144,7 +149,7 @@ const DetailPingji = createReactClass({
             });
 
 
-    },
+    }
     // 取消关注
     attentionDel() {
         const that = this;
@@ -170,14 +175,15 @@ const DetailPingji = createReactClass({
                     console.log('取消关注成功')
                 }
             });
-    },
+    }
     successToast() {
         Toast.success('关注成功', 2);
-    },
+    }
     failToast() {
         Toast.success('取消关注成功', 2);
     }
-})
+}
+
 
 function mapStateToProps(state) {
     return {

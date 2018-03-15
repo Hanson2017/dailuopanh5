@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import fetch from 'isomorphic-fetch';
 import Api from '../../utils/api';
 import Header from './header/index';
@@ -16,15 +15,18 @@ export default class SearchBar extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
     render() {
+        const {history}=this.props;
+        const pathname = this.props.location.pathname;
         return (
             <div>
-                <Header searchKey={this.state.searchKey} searchText={'微贷'} handleChange={this.handleChange.bind(this)} />
+                <Header history={history} pathname={pathname} searchKey={this.state.searchKey} searchText={'微贷'} that={this} />
                 <List data={this.state.searchList} searchKey={this.state.searchKey} />
             </div>
         )
     }
     componentDidMount() {
         const searchKey = this.props.location.state;
+        console.log(searchKey)
         if (searchKey) {
             this.setState({
                 searchKey: searchKey

@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { History } from 'react-router';
-import createReactClass from 'create-react-class';
 
 import Api from '../../../utils/api';
 import { fetchPostsDeatail } from '../../../redux/actions/index';
@@ -12,10 +10,9 @@ import LoadMore from '../../../components/loadMore';
 
 import './index.scss';
 
-const DetailPingCe = createReactClass({
-    mixins: [History],
+class DetailPingCe extends React.Component {
     render() {
-        const { detailPingCe } = this.props;
+        const { detailPingCe, history } = this.props;
         if (detailPingCe.isFetching) {
             return <Loading />
         }
@@ -29,7 +26,7 @@ const DetailPingCe = createReactClass({
                                 {
                                     detailPingCe.items.map((text, i) => {
                                         return (
-                                            <li key={i} onClick={() => this.history.pushState(null, '/pingce/' + text.id)}>
+                                            <li key={i} onClick={() => history.push('/pingce/' + text.id)}>
                                                 <a className='title'>{text.title}</a>
                                                 <span className='update'>{Util.formatDate(text.updatetime)}</span>
                                             </li>
@@ -49,7 +46,7 @@ const DetailPingCe = createReactClass({
                 </div>
             )
         }
-    },
+    }
     loadMore() {
         const { dispatch, detailPingCe } = this.props;
         const url = Api.detail + '?type=article' + '&id_dlp=' + this.props.id + '&page=' + detailPingCe.page + '&pagesize=50';
@@ -57,13 +54,13 @@ const DetailPingCe = createReactClass({
         if (!detailPingCe.loadMore && detailPingCe.pageCount >= detailPingCe.page) {
             dispatch(fetchPostsDeatail('pingce', url, 2))
         }
-    },
+    }
     componentDidMount() {
         const url = Api.detail + '?type=article' + '&id_dlp=' + this.props.id + '&page=' + 1 + '&pagesize=50';
         const { dispatch } = this.props;
         dispatch(fetchPostsDeatail('pingce', url))
     }
-})
+}
 
 function mapStateToProps(state) {
     return { detailPingCe: state.deatail.pingce };

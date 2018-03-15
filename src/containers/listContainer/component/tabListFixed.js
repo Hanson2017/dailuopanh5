@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import createReactClass from 'create-react-class';
-import { History } from 'react-router';
 
 var TabListFixed = createReactClass({
-    mixins: [History],
     render() {
-        const data = this.props.data;
-        const isFixed = this.props.isFixed;
+        const {history,data,isFixed}=this.props;
         return (
             <dl className={isFixed ? "tabList tabList-Left fixed" : 'tabList tabList-Left'}>
                 <dt className={this.props.pageName ? 'item doubleItem' : 'item'}>
@@ -16,7 +13,7 @@ var TabListFixed = createReactClass({
                 {
                     data.items.map((item, index) => {
                         return (
-                            <dd className={item.flmllist.length > 0 || this.props.Ttype || this.props.pageName ? "item itemRowH" : 'item'} key={index} onClick={() => { this.history.pushState(null, '/detail/' + item.id_dlp) }}>
+                            <dd className={item.flmllist.length > 0 || this.props.Ttype || this.props.pageName ? "item itemRowH" : 'item'} key={index} onClick={() => { history.push('/detail/' + item.id_dlp) }}>
                                 <span className='ic1'>{index + 1} </span>
                                 <span className='ic2'>{item.plat_name}</span>
                                 {

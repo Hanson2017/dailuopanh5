@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
 import { InputItem, Modal } from 'antd-mobile';
-import createReactClass from 'create-react-class';
-import { Link, History } from 'react-router';
+import { Link } from 'react-router-dom';
 import fetch from 'isomorphic-fetch';
 import Api from '../../../utils/api';
 import './index.scss';
 
-const SearchBar = createReactClass({
-    mixins: [History],
-    getInitialState: function () {
-        return {
+
+export default class SearchBar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             searchKey: '',
             searchList: [],
-            searchHotList:[],
+            searchHotList: [],
             errorText: '',
             modal1: false,
         }
-    },
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.onClose = this.onClose.bind(this);
+    }
     render() {
-        const searchList = this.state.searchList;
-        const searchKey = this.state.searchKey;
-        const searchHotList=this.state.searchHotList;
+        const history = this.props.history;
+        const { searchList, searchKey, searchHotList } = this.state;
         return (
             <div className='searchBar'>
                 <img src={require('../../../assets/images/s-logo.png')} className='sLogo' alt="贷罗盘" />
@@ -59,15 +61,15 @@ const SearchBar = createReactClass({
                 <div className="searchHot">
                     <span>热门搜索：</span>
                     {
-                        searchHotList.length>0?
-                        searchHotList.map((item,i)=>{
-                            const url = '/detail/' + searchHotList[i].id_dlp + '/pingji';
-                            return (
-                                <Link key={i} to={url}>{item.plat_name}</Link>
-                            )
-                        })
-                        :
-                        null
+                        searchHotList.length > 0 ?
+                            searchHotList.map((item, i) => {
+                                const url = '/detail/' + searchHotList[i].id_dlp;
+                                return (
+                                    <Link key={i} to={url}>{item.plat_name}</Link>
+                                )
+                            })
+                            :
+                            null
                     }
                 </div>
                 <Modal
@@ -85,10 +87,10 @@ const SearchBar = createReactClass({
                 </Modal>
             </div>
         )
-    },
+    }
     componentDidMount() {
         this.getHotSearch()
-    },
+    }
     getSearch(keywords) {
         const url = Api.search + '?keywords=' + keywords;
         const that = this;
@@ -104,7 +106,7 @@ const SearchBar = createReactClass({
                     searchList: json,
                 })
             });
-    },
+    }
     getHotSearch() {
         const url = Api.getSearchTop;
         const that = this;
@@ -120,7 +122,7 @@ const SearchBar = createReactClass({
                     searchHotList: json.hotplat,
                 })
             });
-    },
+    }
     handleChange(event) {
         this.setState({ searchKey: event.target.value });
         if (event.target.value != '') {
@@ -131,8 +133,9 @@ const SearchBar = createReactClass({
                 searchList: []
             })
         }
-    },
+    }
     handleSubmit() {
+        var history = this.props.history;
         const searchKey = this.state.searchKey;
         const searchList = this.state.searchList;
         if (searchKey == '') {
@@ -143,11 +146,15 @@ const SearchBar = createReactClass({
         }
         else {
             if (searchList.length == 1) {
-                const url = '/detail/' + searchList[0].id_dlp + '/pingji';
-                this.history.pushState(null, url)
+                const url = '/detail/' + searchList[0].id_dlp;
+                history.push(url)
             }
             else if (searchList.length > 1) {
-                this.history.pushState(searchKey, '/search')
+                const location = {
+                    pathname: '/search',
+                    state: searchKey
+                }
+                history.push(location)
             }
             else {
                 this.setState({
@@ -156,18 +163,17 @@ const SearchBar = createReactClass({
                 this.showModal('modal1')
             }
         }
-    },
+    }
     showModal(e) {
         // e.preventDefault(); // 修复 Android 上点击穿透
         this.setState({
             modal1: true,
         });
-    },
+    }
     onClose() {
         this.setState({
             modal1: false,
         });
     }
-})
+}
 
-export default SearchBar;

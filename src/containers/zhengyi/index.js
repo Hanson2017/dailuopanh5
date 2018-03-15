@@ -6,13 +6,14 @@ import List from '../black/list/index';
 
 class Zhengyi extends React.Component {
     render() {
-        const { totalNum } = this.props;
+        const { totalNum ,history} = this.props;
+        const pathname = this.props.location.pathname;
         return (
             <div className='container'>
-                <Header title={'争议中名单'} location={this.props.location} />
+                <Header title={'争议中名单'} history={history} pathname={pathname} />
                 <NumBar numText={'争议状态统计平台数量：' + totalNum + '家'} />
                 <div className='noTabContainer'>
-                    <List column={'zhengyi'} columnID={'zhengyiList'} ctype={'zhengyi'} />
+                    <List column={'zhengyi'} columnID={'zhengyiList'} ctype={'zhengyi'} history={history} />
                 </div>
             </div>
         )
