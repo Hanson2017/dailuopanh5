@@ -16,10 +16,11 @@ const listCout = [
 
 export default class List extends React.Component {
     render() {
+        const {history}=this.props;
         const typeInfo=this.props.type;
         const url=Api[typeInfo.column]+'?type='+typeInfo.type;
         return (
-            <ListContainer noupdate={true} listCout={listCout} url={url} columnID={typeInfo.columnID} dataListName={'dataList'} Ttype={this.props.Ttype} />
+            <ListContainer noupdate={true} listCout={listCout} url={url} columnID={typeInfo.columnID} dataListName={'dataList'} Ttype={this.props.Ttype} history={history} />
         )
     }
 }

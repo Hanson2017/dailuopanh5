@@ -1,31 +1,27 @@
 import React, { Component } from 'react';
-import createReactClass from 'create-react-class';
 import { connect } from 'react-redux';
-import { Link, History } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Icon } from 'antd-mobile';
 import { fetchPosts } from '../../../redux/actions/index';
 import Api from '../../../utils/api';
 import Loading from '../../../components/loading/index';
 import './index.scss'
 
-const Sidebar = createReactClass({
-    mixins: [History],
+class Sidebar extends React.Component {
     render() {
         let loginState;
-        const { datas } = this.props;
+        const { datas, history } = this.props;
         if (localStorage.loginState) {
             loginState = JSON.parse(localStorage.loginState);
         }
-
         return (
             <div className='sideBarContainer'>
                 <div className='sideBarHeader' onClick={() => {
-                    if (localStorage.loginState) {
-                        this.history.replaceState(1, '/member/index')
+                    const location = {
+                        pathname: '/member',
+                        state: { tabId: 1 }
                     }
-                    else {
-                        this.history.replaceState(null, '/member/login')
-                    }
+                    history.replace(location)
                 }}>
                     <div className='left'>
                         {
@@ -48,7 +44,7 @@ const Sidebar = createReactClass({
                             {
                                 datas.items.length > 0 ?
                                     <span className='more' onClick={() => {
-                                        this.history.replaceState(null, '/member/index')
+                                        history.replace('/member')
                                     }}>更多</span>
                                     :
                                     null
@@ -84,12 +80,11 @@ const Sidebar = createReactClass({
                         </li> */}
                         <li
                             onClick={() => {
-                                if (localStorage.loginState) {
-                                    this.history.replaceState(1, '/member/index')
+                                const location = {
+                                    pathname: '/member',
+                                    state: { tabId: 1 }
                                 }
-                                else {
-                                    this.history.replaceState(null, '/member/login')
-                                }
+                                history.replace(location)
                             }}
                         >
                             <span className='icon set'><Icon type={require('../../../assets/icons/set.svg')} color={'#8c96a0'} size='xxs' /></span>
@@ -100,24 +95,24 @@ const Sidebar = createReactClass({
                         <img src={require('../../../assets/images/logo2.png')} className='logo' />
                     </div>
                 </div>
-   
+
             </div>
         )
-    },
+    }
     getData() {
         const loginState = JSON.parse(localStorage.loginState);
         const memberid = loginState.r_id;
         const url = Api.attentionList + '?memberid=' + memberid + '&page=' + 1 + '&pagesize=20';
         const { dispatch, datas } = this.props;
         dispatch(fetchPosts('guanzhuListSider', url, 1, 'dataList'))
-    },
+    }
     componentDidMount() {
         if (localStorage.loginState) {
             this.getData();
         }
 
     }
-})
+}
 
 
 class Item extends React.Component {
