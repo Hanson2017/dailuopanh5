@@ -17,16 +17,8 @@ var TabListFixed = createReactClass({
                                 <span className='ic1'>{index + 1} </span>
                                 <span className='ic2'>{item.plat_name}</span>
                                 {
-                                    this.props.Ttype || item.flmllist.length > 0 ?
+                                   item.flmllist.length > 0 ?
                                         <div className='tabTag'>
-                                            {
-                                                this.props.Ttype ?
-                                                    <i className='tType'>
-                                                        {this.props.Ttype}
-                                                    </i>
-                                                    :
-                                                    null
-                                            }
                                             {
                                                 item.flmllist.length > 0 ?
                                                     item.flmllist.map((list, i) => {

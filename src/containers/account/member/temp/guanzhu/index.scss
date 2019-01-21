@@ -1,115 +1,205 @@
-.guanzhuWp{
-    padding: 0.3rem 0 1rem 0;
-    .nullAtt{
-        padding-left: 0.3rem;
-        color: #cdcdcd;
-    }
-    .loadMore{
-        margin: 0.2rem;
-    }
-}
-.guanzhuList{
-    li{
-        a{
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-        .hd{
-            padding: 0.16rem 0 0.16rem 0.2rem;
-            background-color:#dfe5ea;     
-            display: flex;
-            flex-direction:row;
-            span{
-                display: block;
-                flex:none;
+@import "../../../../../style/_mixin.scss";
+.guanzhuContainer{
+    .guanzhuList{
+        background-color: $bgColor;
+        .list{
+            margin-bottom: 0.2rem;
+            padding:0 0 0.2rem 0.4rem;
+            background-color: #fff;
+            &:last-child{
+                margin-bottom: 0;
             }
-            .platName{
-                width:2rem;
-                color: #333;
-            }
-            .state{
-                width: 1.6rem;
-                color: #009900;
-            }
-            .stateZhengyi {
-                color: #FFFF00;
-            }
-            .stateBlack {
-                color: red;
-            }
-            .shifan{
-                color: #009900;
-            }
-        }
-        .bd{
-            overflow: hidden;
-            padding: 0.24rem 0 0.24rem 0.2rem; 
-           
-            .rankZh{
+            .hd{
+                position: relative;
+                padding: 0.28rem 0.4rem 0.2rem 0;
+                border-bottom: 1px solid #eee;
                 display: flex;
-                flex-direction:row;
-                align-items: center;
-                margin-bottom: 0.1rem;
-                span{
-                    color: #333;
+                flex-direction: row;
+                justify-content: space-between;
+                .platContainer{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    .plat{
+                        padding-right: 0.05rem;
+                        font-size: 0.28rem;
+                        color: #333;
+                        font-weight: bold;
+                    }
+                    .fundtype{
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 0.36rem;
+                        height: 0.36rem;
+                    }
+                    .am-icon-md{
+                        width: 0.36rem;
+                        height: 0.36rem;
+                    }
+                    .fundtypeNo{
+                        display: inline-block;
+                        width: 0.36rem;
+                        height: 0.36rem;
+                        line-height: 0.30rem;
+                        text-align: center;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+
+                        color: #fff;
+                    }
                 }
-                .order{
-                    padding-left: 0.08rem;
+                .state{
+                    display: block;
+                    margin-top: 0.12rem;
+                    color: #bbb;
                 }
-                .arrow{
-                    padding: 0 0.15rem;
-                    position: relative;
-                    top: 0.05rem;
+                .stateBlack{
+                   
+                    width: 1.1rem;
+                    height: 0.34rem;
+                    line-height: 0.34rem;
+                    text-align: center;
+                    background-color: #1A1A1A;
+                    color: #fff;
                 }
-                .num{
-                    color: #cdcdcd;
+                .stateBlack.zy{
+                    background-color: #c1272d;
+                }
+                .activityCon{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 2.32rem;
+                    height: 0.36rem;
+                    border-radius: 0.08rem;
+                    background-color: #FFBC41;
+                    .icon{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 0.36rem;
+                        height: 0.36rem;
+                        border-radius: 0.08rem;
+                        background-color: #E30A0A;
+                        i{
+                            display: inline-block;
+                            width: 0.16rem;
+                            height: 0.16rem;
+                            background-color: #FFBC41;
+                            border-radius: 0.08rem;
+                        }
+                    }
+                    .text{
+                        display: inline-block;
+                        flex: 1;
+                        text-align: center;
+                        color: #fff;
+                    }
+                }
+                .activityConFt{
+                    margin-top: 0.1rem;
+                    background-color: #FF6F00;   
+                }
+                .right2{
+                    padding-right: 0.7rem;
+                }
+                .delBtn{
+                    position: absolute;
+                    top: 0.25rem;
+                    right: 0.4rem;
+                    width: 0.5rem;
+                    text-align: right;
                 }
             }
-            .rank{
-                flex-wrap:wrap;
-                display: flex;
-                flex-direction:row;
-                dd{
-                    flex:none;
+            .bd{
+                padding: 0.2rem 0 0 0;
+                .am-icon-xxs{
+                    width: 0.22rem;
+                    height: 0.22rem;
+                }
+                .paimingZh{
+                    margin-bottom: 0.12rem;
+                    padding-right: 0.4rem;
                     display: flex;
                     flex-direction:row;
-                    align-items: center;
-                    width: 50%;
-                    height: 0.56rem;
-                    line-height: 0.56rem;
-                    color: #abb7c6;
-                    font-size: 0.24rem;
-                    .name{
-                        width: 0.9rem;
-                    }
-                    .paiming{
+                    justify-content: space-between;
+                    .paimingZhList{
                         display: flex;
                         flex-direction:row;
-                        span{
-                            flex:none;
+                        align-items: center;
+                        .label{
+                            width: 1.08rem;
+                            color: #666;
+                            font-weight: bold;
                         }
-                        .order{
-                            width: 0.92rem;  
+                        .con{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
                         }
-                        .arrow{
-                            position: relative;
-                            top: 0.05rem;
+                        .odr{
+                            width: 0.85rem;
+                            font-size: #333;
+                            font-weight: bold;
+                            font-size: 0.28rem;
                         }
                         .num{
-                            color: #cdcdcd;
+                            padding-left: 0.06rem;
+                            color: #bbb;
+                        }
+                    }
+                    .yulun{
+                        color: #666;
+                        font-weight: bold;
+                        i{
+                         
+                            font-size: #333;
+                            font-weight: bold;
+                            font-size: 0.28rem;
+                        }
+                    }
+                }
+                .paiming{
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    .paimingList{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        width: 50%;
+                        line-height: 0.5rem;
+                        .label,.odr{
+                            color: #999;
+                        }
+                        .label{
+                            width: 1.08rem;
+                            
+                        }
+                        .num{
+                            padding-left: 0.06rem;
+                            color: #bbb;
+                        }
+                        .con{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                        }
+                        .odr{
+                            width: 0.85rem;
                         }
                     }
                 }
             }
-            .null{
+            .nul{
                 color: #cdcdcd;
             }
-            .yulun{
-                margin-top: 0.15rem;
-                color: #333;
-                font-size: 0.24rem;
-            }
+            
         }
     }
+    
 }

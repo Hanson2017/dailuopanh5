@@ -1,13 +1,37 @@
+@import "../../style/_mixin.scss";
 .helpContainer{
-    padding-top: 0.9rem;
-    
-}
-.helpList{
-    padding: 0 0.3rem;
-    li{
-       padding: 0.2rem 0;
-       line-height: 0.54rem;
-       border-bottom: 1px solid #f2f2f2;
-       color: #666; 
+    box-sizing: border-box;
+    background-color: #fff;
+    .list{
+        padding: 0 0 0 0.3rem; 
+            li{
+                padding: 0.2rem 0;
+                line-height: 0.54rem;
+                border-bottom: 1px solid $bottomColor;
+                color: #3B3B3B; 
+                font-size: 0.28rem;
+            }
+        
     }
- }
+
+    .helpDetail{
+        padding: 0.3rem;
+        overflow: hidden;
+        .title{
+            margin-bottom: 0.4rem;
+            padding-bottom: 0.4rem;
+            font-size: 0.32rem;
+            color: #333;   
+            border-bottom: 1px solid #f2f2f2;
+        }
+        .content{
+            color: #999;
+            line-height: 0.40rem;
+            img{
+                max-width: 100%;
+            }
+        }
+    }
+
+
+}

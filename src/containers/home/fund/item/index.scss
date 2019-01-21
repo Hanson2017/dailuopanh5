@@ -1,0 +1,64 @@
+@import "../../../../style/_mixin.scss";
+.fundMenuList{
+    padding:0.3rem 0 0.3rem 0.34rem;
+    display: flex;
+    flex-direction:row;
+    
+    .left{
+        margin-right: 0.34rem;
+        display: flex;
+        flex-direction:column;
+        align-items:center;
+        .num{
+            margin-bottom: 0.12rem;
+            display: block;
+            width: 0.96rem;
+            height: 0.48rem;
+            line-height: 0.48rem;
+            text-align: center;
+            border-radius: 0.06rem;
+            font-size: 0.32rem;
+            color: #fff;
+            font-weight: bold;
+        }
+        .num1{
+            background-color: $fund1Color;
+        }
+        .num2{
+            background-color: $fund2Color;
+        }
+        .num3{
+            background-color: $fund3Color;
+        }
+        .name{
+            color: #666;
+            font-weight: bold;
+            font-size: 0.32rem;
+        }
+    }
+    .right{
+        padding: 0 0 0.16rem 0.12rem ;
+        flex:1;
+        border-bottom: 1px solid $bottomColor;
+        display: flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+       
+        .plat{
+            display: inline-block;
+            width: 1.34rem;
+            line-height: 0.48rem;
+            font-size: 0.28rem;
+            color: #666;
+        }
+        .null{
+            font-size: 0.28rem;
+            color: #999;
+        }
+    }
+    &:last-child{
+        .right{
+            border-bottom: none;
+        }
+    }
+}

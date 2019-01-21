@@ -1,0 +1,17 @@
+$bgColor:#f1f1f1;		//背景颜色
+$color:#0096E6;    		//主颜色
+$color2:#007DDC;        //导航颜色
+$fund1Color:#4AB3FF;    //示范1颜色
+$fund2Color:#C69C6D;    //示范2颜色
+$fund3Color:#916DDE;    //示范3颜色
+$bottomColor:#eee;		//底部描边颜色
+$upColor:#E51C23;
+$downColor:#009963;
+
+
+//单行字数截取
+%singleline-ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

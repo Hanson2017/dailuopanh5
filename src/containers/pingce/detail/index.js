@@ -1,12 +1,14 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router-dom';
 import Loading from '../../../components/loading/index';
 import Header from '../../../components/navbar/index';
 import Api from '../../../utils/api';
 import Util from '../../../utils/util';
+import Foot from './foot';
 import './index.scss';
 
 
-class HelpDetail extends React.Component {
+class PingceDetail extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,25 +25,44 @@ class HelpDetail extends React.Component {
     }
     render() {
         const { history } = this.props;
-        const pathname = this.props.location.pathname;
-        const data = this.state.dataSource;
+        const {dataSource,id} = this.state;
+        const article=dataSource.article;
+        const plats=dataSource.plats;
+
         if (!this.state.isFetching) {
-            var con_str = data.detailinfo.replace(/\/atcpic/g, Api.domain + '/atcpic').replace(/.png\\/g, '.png')
+            var con_str = article.detailinfo.replace(/\/atcpic/g, Api.domain + '/atcpic').replace(/.png\\/g, '.png')
         }
+
         return (
-            <div className='helpContainer'>
-                <Header title={'评测文章'} search='null' history={history} pathname={pathname} />
+            <div className='ptNoTab pingceDetailContainer'>
+                <Header title={'评测文章'} search='null' history={history}/>
                 {
                     this.state.isFetching ?
                         <Loading />
                         :
-                        <div className='pingCeDetail'>
-                            <h1 className='title'>{data.title}</h1>
-                            <div className='header'>
-                                <div className='source'>来源：微信公众号-{data.mpname}</div>
-                                <div className='date'>时间：{Util.formatDate(data.updatetime)}</div>
+                        <div className='content'>
+                            <div className="top">
+                                <h1 className='title'>{article.title}</h1>
+                                <div className="sourceCon">
+                                    <span className="source">来源：微信公众号-{article.mpname}</span>
+                                    <span className="date">发布时间：{Util.formatDate(article.updatetime)}</span>
+                                </div>
+                                <div className="relate">
+                                    <span className="label">相关：</span>
+                                    {
+                                        plats !== '' && plats.length > 0 ?
+                                            plats.map((item, i) => {
+                                                return (
+                                                    <Link to={'/detail/' + item.id_dlp} className="plat" key={i}>{item.plat_name}</Link>
+                                                )
+                                            })
+                                            :
+                                            <span className="plat">其它</span>
+                                    }
+                                </div>
                             </div>
-                            <div className='content' dangerouslySetInnerHTML={{ __html: con_str }} />
+                            <div className='con' dangerouslySetInnerHTML={{ __html: con_str }} />
+                            <Foot  cid={id} history={history} commentcount={dataSource.commentcount} />
                         </div>
                 }
 
@@ -66,7 +87,7 @@ class HelpDetail extends React.Component {
                 if (json.result == 1) {
                     that.setState({
                         isFetching: false,
-                        dataSource: json.data.article
+                        dataSource: json.data
                     })
                 }
 
@@ -74,4 +95,4 @@ class HelpDetail extends React.Component {
     }
 }
 
-export default HelpDetail;
+export default PingceDetail;

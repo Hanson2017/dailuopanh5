@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router-dom';
+import { Icon } from 'antd-mobile';
 import Util from '../../../../utils/util';
-import UpDateTime from '../../../../components/upDateTime';
+import Theme from '../../../../utils/theme';
 
 import { pieFund } from '../../../../echart/pie';
 // 引入 ECharts 主模块
@@ -12,88 +13,162 @@ import 'echarts/lib/chart/pie';
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/component/title';
 
-import './index.scss';
-
 export default class List extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            fundData: '',
+        };
+    }
+    componentWillMount() {
+        let data = this.props.data;
+        let fundData = [];
+        for (let i = 0; i < data.length; i++) {
+            fundData.push({ value: data[i].fund_amount, name: data[i].plat_name + '\n' + '(' + data[i].fund_amount + '万)' })
+        }
+        this.setState({
+            fundData: fundData
+        })
+    }
     render() {
 
-        let data = this.props.data;
-        let type = this.props.fundType;
+        const { data, type, echartColor } = this.props;
 
-        let fundType, fundS, fundRenqun, star;
-        switch (type) {
-            case 1:
-                fundType = '1号';
-                fundS = '稳健型';
-                fundRenqun = '以稳健安全为首选目标，风险厌恶型的人群';
-                star = '★★★★★';
-                break;
-            case 2:
-                fundType = '2号';
-                fundS = '平衡型';
-                fundRenqun = '以平衡为首选目标，能承受低风险的人群';
-                star = '★★★★';
-                break;
-            case 3:
-                fundType = '3号';
-                fundS = '收益型';
-                fundRenqun = '以收益为首选目标，能承受少量风险的人群';
-                star = '★★★';
-                break;
-            case 4:
-                fundType = '活期';
-                fundS = '高流动型';
-                fundRenqun = '高流动性为首选目标，0-3万资金暂存的人群';
-                star = '★★★';
-                break;
-        }
+
+
         return (
-            <div>
-                <UpDateTime updatetime={Util.setDate(new Date())} />
-                <div className='fundListTitle'>示范投资({fundS}）</div>
-                <div className='fundlistTop'>
-                    <p>安全指数：{star}</p>
-                    <p>适合人群：{fundRenqun}</p>
-                    <p>投资组成如下：</p>
-                </div>
-                <div className='fundEchart' id={this.props.fundEchartID} style={{ 'width': '6.4rem' }}></div>
-                <div className='fundTextlist'>
+            <div className="fundListContainer">
+                <div className="top">
+                    <div className="hd">
+                        <span className={'type type' + type}>{type}号</span>
+                        <span className="tit">
+                            {
+                                type == 1 ?
+                                    '稳健型'
+                                    :
+                                    type == 2 ?
+                                        '平衡型'
+                                        :
+                                        '收益型'
+                            }
+                            示范投资
+                        </span>
+                    </div>
+                    <div className="sm">
+                        <dl>
+                            <dt>安全指数</dt>
+                            <dd className="icon">
+                                <Icon type={require('../../../../assets/icons/new/fund-dunpai.svg')} color={'#FF9800'} size={'xxs'} />
+                                <Icon type={require('../../../../assets/icons/new/fund-dunpai.svg')} color={'#FF9800'} size={'xxs'} />
+                                <Icon type={require('../../../../assets/icons/new/fund-dunpai.svg')} color={'#FF9800'} size={'xxs'} />
+                                {
+                                    type == 1 ?
+                                        <Icon type={require('../../../../assets/icons/new/fund-dunpai.svg')} color={'#FF9800'} size={'xxs'} />
+                                        :
+                                        null
+                                }
+                                {
+                                    type == 1 ?
+                                        <Icon type={require('../../../../assets/icons/new/fund-dunpai.svg')} color={'#FF9800'} size={'xxs'} />
+                                        :
+                                        null
+                                }
+                                {
+                                    type == 2 ?
+                                        <Icon type={require('../../../../assets/icons/new/fund-dunpai.svg')} color={'#FF9800'} size={'xxs'} />
+                                        :
+                                        null
+                                }
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>适合人群</dt>
+                            <dd>
+                                {
+                                    type == 1 ?
+                                        '适合以稳健安全为首选目标，风险厌恶型的人群。'
+                                        :
+                                        type == 2 ?
+                                            '适合以平衡为首选目标，能承受低风险的人群。'
+                                            :
+                                            '适合以收益为首选目标，能承受少量风险的人群。'
+                                }
+                            </dd>
+                        </dl>
+
+                    </div>
                     {
-                        data.map((text, i) => {
-                            return (
-                                <Link key={i} className='list' to={'/detail/' + text.id_dlp}>
-                                    <div className='fundlistHd'>
-                                        <span className='platname'>{text.plat_name}</span>
-                                        <span className='rate'>平均利率：<i>{text.fund_rate}%</i></span>
-                                        <span className='amount'>已投资：<i>{text.fund_amount}%</i></span>
+                        data.length > 0 ?
+                            <div>
+                                <div className='echart' id={'fundEchart' + type}></div>
+                                <div className="echartBtn">投资组成</div>
+                            </div>
+                            :
+                            <div className="null">暂无</div>
+                    }
+
+                </div>
+                {
+                    data.map((item, i) => {
+                        return (
+                            <div className="list" key={i}>
+                               
+                                <Link className="hd" to={'/detail/' + item.id_dlp}>
+                                    <div className="l">
+                                        <span className="icon"><Icon type={require('../../../../assets/icons/new/fund-icon.svg')} color={Theme['fund' + type + 'Color']} size={'xs'} /></span>
+                                        <span className="plat">{item.plat_name}</span>
                                     </div>
-                                    <div className='fundlistReasons'>
+                                    <div className="r"><Icon type={require('../../../../assets/icons/new/arrow-right.svg')} color={'#ccc'} size={'xxs'} /></div>
+                                </Link>
+                                <div className="bd">
+                                    <dl>
+                                        <dt className="item">
+                                            <span className="ic1">[在投项目]</span>
+                                            <span className="ic2">[投资额]</span>
+                                            <span className="ic3">[年化收益率]</span>
+                                        </dt>
                                         {
-                                            text.fund_reasons.split('<br />').map((list, index) => {
+                                            item.investlist.map((list, j) => {
                                                 return (
-                                                    <p key={index}>{list}</p>
+                                                    <dd key={j} className="item">
+                                                        <span className="ic1">{list.name}</span>
+                                                        <span className="ic2">{list.invest}万</span>
+                                                        <span className={"ic3 icc" + type}>{list.rate}%</span>
+                                                    </dd>
+                                                )
+                                            })
+                                        }
+                                    </dl>
+                                </div>
+                                <div className="reasons">
+                                    <h6 className="h6">[投资理由]</h6>
+                                    <div className="con">
+                                        {
+                                            item.fund_reasons.split('<br />').map((list, z) => {
+                                                return (
+                                                    <p key={z}>{list}</p>
                                                 )
                                             })
                                         }
                                     </div>
-                                    <div className='fundlistFt'>综上，{fundType}示范投资（{fundS}）决定进入投资。</div>
-                                </Link>
-                            )
-                        })
-                    }
-                </div>
+                                </div>
+                            </div>
+
+                        )
+
+                    })
+                }
+
             </div>
         )
     }
     componentDidMount() {
-        var data = this.props.data;
-        var fundEchartID = this.props.fundEchartID;
-        var fundData = [];
-        for (let i = 0; i < data.length; i++) {
-            fundData.push({ value: data[i].fund_amount, name: data[i].plat_name + '\n' + '(' + data[i].fund_amount + '万)' })
-        }
+        const { type, echartColor } = this.props;
+        const { fundData } = this.state;
 
-        const fundEchart = document.getElementById(fundEchartID)
-        echarts.init(fundEchart).setOption(pieFund(fundData));
+        if (fundData.length > 0) {
+            const fundEchart = document.getElementById('fundEchart' + type)
+            echarts.init(fundEchart).setOption(pieFund(fundData, echartColor));
+        }
     }
 }

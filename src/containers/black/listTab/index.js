@@ -17,9 +17,8 @@ class ListTab extends React.Component {
         }
         else {
             return (
-                <div>
-                    <UpDateTime updatetime={updatetime} />
-                    <List data={data.items} tabWidth={{ width: this.props.tabWidth + 'rem' }} titleText={this.props.titleText ? this.props.titleText : null} history={history} />
+                <div className="blackTabListContainer">
+                    <List data={data.items} updatetime={updatetime} tabWidth={{ width: this.props.tabWidth + 'rem' }} titleText={this.props.titleText ? this.props.titleText : null} history={history} />
                 </div>
             )
         }

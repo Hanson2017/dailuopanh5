@@ -9,7 +9,7 @@ import List from '../temp/listTab/index';
 
 class ListTab extends React.Component {
     render() {
-        const { data, history } = this.props;
+        const { data, updatetime,history } = this.props;
         if (data.isFetching) {
             return (
                 <Load />
@@ -17,7 +17,7 @@ class ListTab extends React.Component {
         }
         else {
             return (
-                <List data={data.items} tabWidth={{ width: this.props.tabWidth + 'rem' }} titleText={this.props.titleText ? this.props.titleText : null} history={history} />
+                <List tabIndex={this.props.tabIndex} data={data.items} updatetime={updatetime} tabWidth={{ width: this.props.tabWidth + 'rem' }} titleText={this.props.titleText ? this.props.titleText : null} history={history} />
             )
         }
     }
@@ -32,7 +32,8 @@ class ListTab extends React.Component {
 
 function mapStateToProps(state, ownProps) {
     return {
-        data: state[ownProps.columnID]
+        data: state[ownProps.columnID],
+        updatetime: state[ownProps.columnID].updatetime,
     };
 }
 

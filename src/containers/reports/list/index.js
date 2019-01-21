@@ -5,6 +5,8 @@ import Api from '../../../utils/api'
 import Load from '../../../components/loading'
 import LoadMore from '../../../components/loadMore';
 import { fetchPosts } from '../../../redux/actions/index'
+import Item from '../item';
+
 
 import './index.scss';
 
@@ -12,31 +14,18 @@ class List extends React.Component {
     render() {
         const { data, totalNum, history } = this.props;
         return (
-            <div>
+            <div className="reportContainer">
                 {
                     data.isFetching ?
                         <Load />
                         :
                         <div>
-                            <ul className='reportList'>
+                            <ul className='list'>
                                 {
                                     data.items !== null && data.items.length > 0 ?
-                                        data.items.map((item, index) => {
+                                        data.items.map((item, i) => {
                                             return (
-                                                <li key={index} className='list'
-                                                    onClick={() => {
-                                                        const location = {
-                                                            pathname: '/reports/' + item.id,
-                                                            state: { type: item.type }
-                                                        }
-                                                        history.push(location)
-                                                    }}
-                                                >
-                                                    <h6 className='title'>{item.title}</h6>
-                                                    <p className='ft'>
-                                                        发布时间<span className='addtime'>{Util.formatDate(item.addtime)}</span>
-                                                    </p>
-                                                </li>
+                                                <Item key={i} data={item} />
                                             )
                                         })
                                         :

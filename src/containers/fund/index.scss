@@ -1,5 +1,350 @@
-.fundEchart{
-    margin: 0 auto;
-    width: 100%;
-    height: 3.2rem;
+@import "../../style/_mixin.scss";
+.fundContainer{
+    .tabBarNav{
+        top: 1.3rem;
+    }
+}
+
+.fundAllContainer{
+    .top{
+        padding: 0.3rem;
+        background-color: #fff;
+        .intr{
+            line-height: 0.32rem;
+            color: #999;
+            p{
+                margin-top: 0.12rem;
+                color: #999;
+            }
+            .num{
+                color: $color;
+            }
+        }
+        .note{
+            padding-top: 0.2rem;
+            margin-top: 0.2rem;
+            border-top: 1px solid $bottomColor;
+            color: #bbb;
+            line-height: 0.32rem;
+        }
+    }
+    .fundCon{
+        margin-top: 0.2rem;
+        padding-bottom: 0.4rem;
+        background-color: #fff;
+        .hd{
+            padding-left: 0.3rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 0.76rem;
+            border-bottom: 1px solid $bottomColor;
+            .type{                
+                margin-right: 0.2rem;
+                display: inline-block;
+                width: 0.8rem;
+                height: 0.48rem;
+                line-height: 0.48rem;
+                text-align: center;
+                border-radius: 0.08rem;
+                font-size: 0.32rem;
+                color: #fff;
+            }
+            .type1{
+                background-color: $fund1Color;
+            }
+            .type2{
+                background-color: $fund2Color;
+            }
+            .type3{
+                background-color: $fund3Color;
+            }
+            .tit{
+                font-size: 0.32rem;
+                color: #333;
+                font-weight: bold;
+            }
+        }
+        .echart{
+            margin: 0 auto;
+            width: 100%;
+            height: 3.5rem;
+        }
+        .sm{
+            padding:0.3rem 0.3rem 0 0.6rem;
+            dl{
+                margin-bottom: 0.2rem;
+                display: flex;
+                flex-direction: row;
+            }
+            dt{
+                padding-right: 0.1rem;
+                width: 1.1rem;
+                color: #A1A1A1;
+            }
+            dd{
+              
+                flex: 1;
+                color: #707070;
+            }
+        }
+        .list{
+            padding: 0.4rem 0 0 0.6rem;
+            display: flex;
+            flex-direction: row;
+            .left{
+                padding-right: 0.1rem;
+                margin-right: 0.5rem;
+                border-right: 1px dashed #f2f2f2;
+            }
+            .left.notBt{
+                border-right: none;
+            }
+            .item{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .ic1{
+                    width: 1.68rem;
+                }
+                .ic2{
+                    width: 1.2rem;
+                }
+            }
+            dt{
+                margin-bottom: 0.2rem;
+                color: #A1A1A1
+            }
+            dd{
+                margin-top: 0.1rem;
+                font-size: 0.28rem;
+                .ic1{
+                    color: #707070;
+                }
+               
+                .icc1{
+                    color: $fund1Color;
+                }
+                .icc2{
+                    color: $fund2Color;
+                }
+                .icc3{
+                    color: $fund3Color;
+                }
+            }
+           
+        }
+        .null{
+            padding: 0.2rem 0.6rem;
+            color: #bbb;
+        }
+        .null2{
+            padding: 0.2rem 0.14rem;
+            color: #bbb;
+        }
+    }
+}
+
+.fundAllContainerNew{
+    .top{
+        padding: 0 0 0.34rem 0;
+    }
+    .notes{
+        margin-left: 0.2rem;
+        padding: 0.3rem 0 0.1rem 0.14rem;
+        line-height: 0.32rem;
+        color: #999;
+        border-bottom: 1px solid #eee;
+        p{
+            margin-bottom: 0.12rem;
+            color: #999;
+        }
+        .num{
+            color: $color;
+        }
+    }
+    .echart{
+        margin: 0 auto;
+        width: 100%;
+        height: 3.5rem;
+    }
+    .openBtn{
+        margin: 0.3rem 0 0 0.34rem;
+        width: 1.84rem;
+        height: 0.44rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.08rem;
+        background-color: #83CAFF;
+        color: #fff;
+    }
+    .listCon{
+        padding-left: 0.2rem;
+        .fundCon{
+            border-bottom: 1px solid $bottomColor;
+            &:last-child{
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            .hd{
+                padding-left: 0.14rem;
+                border-bottom: none;
+            }
+            .sm{
+                padding-left: 0.14rem;
+            }
+            .list{
+                padding: 0.1rem 0 0 0.14rem;
+            }
+        }
+    }
+    
+}
+
+
+.fundListContainer{
+    .top{
+       
+        padding: 0.4rem 0 0.4rem 0.4rem;
+        background-color: #fff;
+        .hd{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 0.48rem;
+            .type{                
+                margin-right: 0.2rem;
+                display: inline-block;
+                width: 0.8rem;
+                height: 0.48rem;
+                line-height: 0.48rem;
+                text-align: center;
+                border-radius: 0.08rem;
+                font-size: 0.32rem;
+                color: #fff;
+            }
+            .type1{
+                background-color: $fund1Color;
+            }
+            .type2{
+                background-color: $fund2Color;
+            }
+            .type3{
+                background-color: $fund3Color;
+            }
+            .tit{
+                font-size: 0.36rem;
+                color: #333;
+                font-weight: bold;
+            }
+        }
+        .echart{
+            margin: 0 auto;
+            width: 100%;
+            height: 3.5rem;
+        }
+        .echartBtn{
+            margin: 0.2rem auto 0 auto;
+            width: 2rem;
+            height: 0.44rem;
+            line-height: 0.44rem;
+            text-align: center;
+            border-radius: 0.08rem;
+            background-color: #F5F5F5;
+            color: #A1A1A1;
+        }
+        .sm{
+            padding:0.3rem 0 0 0;
+            dl{
+                margin-bottom: 0.2rem;
+                display: flex;
+                flex-direction: row;
+            }
+            dt{
+                padding-right: 0.1rem;
+                width: 1.1rem;
+                color: #A1A1A1;
+            }
+            dd{
+              
+                flex: 1;
+                color: #707070;
+            }
+        }
+    }
+    .list{        
+        margin-top: 0.2rem;
+        padding-bottom: 0.4rem;
+        background-color: #fff;
+        .hd{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid $bottomColor;
+            padding: 0 0.4rem 0 0.24rem;
+            height: 0.76rem;
+            .icon{
+                position: relative;
+                top: 0.06rem;
+            }
+            .plat{
+                padding-left: 0.1rem;
+                font-size: 0.32rem;
+                color: #333;
+                font-weight: bold;
+            }
+        }
+        .bd{
+            padding: 0.3rem 0.24rem 0.4rem 0.24rem;
+            .item{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .ic1{
+                    width: 2.6rem;
+                }
+                .ic2{
+                    width: 1.8rem;
+                }
+            }
+            dt{
+                margin-bottom: 0.12rem;
+                color: #A1A1A1;
+            }
+            dd{
+                margin-bottom: 0.1rem;
+                color: #707070;
+                font-size: 0.32rem;
+                .icc1{
+                    color: $fund1Color;
+                }
+                .icc2{
+                    color: $fund2Color;
+                }
+                .icc3{
+                    color: $fund3Color;
+                }
+            }
+        }
+        .reasons{
+            padding: 0 0.24rem 0 0.24rem;
+            .h6{
+                color: #707070;
+                font-weight: normal;
+            }
+            .con{
+                margin-top: 0.1rem;
+                padding: 0.16rem 0.12rem;
+                background-color: #F5F5F5;
+                color: #A1A1A1;
+                font-size: #bbb;
+                line-height: 0.36rem;
+            }
+        }
+    }
+    .null{
+        color: #bbb;
+    }
 }

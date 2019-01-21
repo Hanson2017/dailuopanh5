@@ -1,0 +1,13 @@
+@import "../../style/_mixin.scss";
+.topUpdate{
+  
+    position: fixed;
+    top: 0.84rem;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 0.46rem;
+    text-align: center;
+    background-color: $color2;
+    color: #83CAFF;
+}

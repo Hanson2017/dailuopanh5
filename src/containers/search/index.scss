@@ -1,0 +1,123 @@
+@import "../../style/_mixin.scss";
+
+.searchContainer{
+    padding: 1rem 0 0 0;  
+    .navbarSearch{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background-color: $color2;
+        .searchBtn{
+            width: 1rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            .am-icon-md {
+                width: 0.36rem;
+                height: 0.36rem;
+            }
+        }
+        .searchInputWp{
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-right: 0.4rem;
+            padding: 0 0.2rem 0 0.56rem;
+            height: 0.56rem;
+            background-color: #fff;
+            border-radius: 0.4rem;
+            .searchIcon{
+                position: absolute;
+                top: 0.13rem;
+                left: 0.13rem;
+            }
+            .searchInput{
+                height: 0.32rem;
+                line-height: 0.32rem;
+                width: 100%;
+                background: none;
+                color: #666;
+                &::-webkit-input-placeholder{
+                    color: #bbb
+                    }    /* 使用webkit内核的浏览器 */
+                    &:-moz-placeholder{color: #bbb}                  /* Firefox版本4-18 */
+                    &::-moz-placeholder{color: #bbb}                  /* Firefox版本19+ */
+                    &:-ms-input-placeholder{color: #bbb} 
+            }
+        }
+    }
+    .content{
+        background-color: #fff;
+        .tit{
+            margin-bottom: 0.2rem;
+            padding-left: 0.1rem;
+            color: #bbb;
+            font-weight: normal;
+        }
+        .hot{
+            padding: 0.4rem 0 0 0.4rem;
+            .list{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                .link{
+                    margin-right: 5%;
+                    margin-bottom: 0.2rem;
+                    width: 28%;
+                    height: 0.44rem;
+                    line-height: 0.44rem;
+                    text-align: center;
+                    background-color: #E6F4FF;
+                    border-radius: 0.08rem;
+                    color: #6E7A86;
+                }
+            }
+        }
+        .history{
+            padding: 0.6rem 0.6rem 0 0.4rem;
+            li{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                height: 0.84rem;
+                .name{
+                    height: 0.6rem;
+                    flex: 1;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    .plat{
+                        padding-left: 0.1rem;
+                        color: #707070;
+                    }
+                    .am-icon-xxs {
+                        width: 0.32rem;
+                        height: 0.32rem;
+                    }
+                }
+                .clear{
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    width: 1rem;
+                    height: 0.6rem;
+                    .am-icon-xxs {
+                        width: 0.26rem;
+                        height: 0.26rem;
+                    }
+                }    
+            }
+        }
+    }
+}

@@ -14,7 +14,7 @@ class ReportsDetail extends React.Component {
         const pathname = this.props.location.pathname;
         const data = dataSource.dataSource;
         return (
-            <div className='containerReportDetail'>
+            <div className='ptNoTab reportDetailContainer'>
                 <Header title={'数据报表'} search='null' history={history} pathname={pathname} />
                 {
                     dataSource.isFetching ?

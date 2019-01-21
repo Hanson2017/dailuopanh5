@@ -3,7 +3,7 @@ import Loading from '../../components/loading/index';
 import Header from '../../components/navbar/index';
 import Api from '../../utils/api';
 import './index.scss';
-
+const clientHeight = window.screen.height;
 export default class HelpList extends React.Component {
     constructor(props) {
         super(props);
@@ -13,12 +13,11 @@ export default class HelpList extends React.Component {
         }
     }
     render() {
-        const { history, location } = this.props;
-        const pathname = location.pathname;
+        const { history} = this.props;
         return (
-            <div className='helpContainer'>
-                <Header title={'常见问题'} search='null' history={history} pathname={pathname} />
-                <div className='helpList'>
+            <div className='ptNoTab helpContainer' style={{ minHeight: clientHeight}}>
+                <Header title={'常见问题'} search='null' history={history} />
+                <div className='list'>
                     {
                         this.state.isFetching ?
                             <Loading />

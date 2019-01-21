@@ -2,8 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Loading from '../../../components/loading/index';
 import Header from '../../../components/navbar/index';
 import Api from '../../../utils/api';
-import './index.scss';
-
+const clientHeight = window.screen.height;
 export default class HelpDetail extends React.Component {
     constructor(props) {
         super(props);
@@ -13,15 +12,14 @@ export default class HelpDetail extends React.Component {
         }
     }
     render() {
-        const { history, location } = this.props;
-        const pathname = location.pathname;
+        const { history } = this.props;
         const data = this.state.dataSource;
         if (!this.state.isFetching) {
             var con_str = data.con_str.replace(/\/ueditor_net/g, Api.domain + '/ueditor_net').replace(/.png\\/g, '.png')
         }
         return (
-            <div className='helpContainer'>
-                <Header title={'问答详情'} search='null' history={history} pathname={pathname} />
+            <div className='ptNoTab helpContainer' style={{ minHeight: clientHeight}}>
+                <Header title={'问答详情'} search='null' history={history} />
                 {
                     this.state.isFetching ?
                         <Loading />

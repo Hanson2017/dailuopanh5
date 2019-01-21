@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd-mobile';
 import createReactClass from 'create-react-class';
+import Theme from '../../../utils/theme';
 
 const TabList = createReactClass({
     render() {
@@ -54,7 +55,7 @@ const TabList = createReactClass({
                                         }
                                         else {
                                             return (
-                                                <span className={'ic' + (index + 3)} style={{ width: text.width + 'rem' }} key={index}>
+                                                <span className={'icc'+ (index + 3)+' ic' + (index + 3)} style={{ width: text.width + 'rem' }} key={index}>
 
                                                     <i style={text.isArrow ? { width: text.isArrowWidth + 'rem' } : null}>
                                                         {text.field == 'pr_zz' || text.field == 'pr_az' ? '权重  ' : null}
@@ -75,7 +76,7 @@ const TabList = createReactClass({
                                                             item.changnum != 0 ?
 
                                                                 <i className='icon'>
-                                                                    <Icon type={item.changnum >= 0 ? require('../../../assets/icons/arrow-up.svg') : require('../../../assets/icons/arrow-down.svg')} color={item.changnum >= 0 ? '#ff0063' : '#009963'} size={'xxs'} />
+                                                                    <Icon type={item.changnum >= 0 ? require('../../../assets/icons/new/arrow-up.svg') : require('../../../assets/icons/new/arrow-down.svg')} color={item.changnum >= 0 ? Theme.upColor : Theme.downColor} size={'xxs'} />
 
                                                                 </i>
                                                                 :

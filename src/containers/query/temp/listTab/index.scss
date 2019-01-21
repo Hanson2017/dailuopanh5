@@ -1,8 +1,15 @@
+@import "../../../../style/_mixin.scss";
+
+.querytabListContainer{
+    padding-bottom: 0.4rem;
+    background-color: #fff;
+}
+
 
 .queryDiquListTab{
     overflow: hidden;
     clear: both;
-    padding: 0 0 0 0.2rem;
+    padding: 0.15rem 0 0 0.2rem;
     li{ 
         float: left;
         margin: 0 0.2rem 0.2rem 0;
@@ -10,13 +17,13 @@
         height: 0.48rem;
         line-height: 0.48rem;
         text-align: center;
-        border: 1px solid #14191e;
-        background-color: #f2f2f2;
-        color: #333;
-        font-size: 0.24rem;
+        border: 1px solid #bbb;
+        color: #bbb;
+        border-radius: 0.12rem;
     }
     .on{
-       background-color: #14191e; 
+       border-color: $color; 
+       background-color: $color; 
        color: #fff;
     }
 }
@@ -27,7 +34,7 @@
         font-size: 0.26rem;
         margin: 0.4rem 0 0.2rem 0;
         font-weight: normal;
-        color: #ccc;     
+        color: #A1A1A1;     
     }
     .list{
         li{
@@ -37,13 +44,13 @@
             height: 0.44rem;
             line-height: 0.44rem;
             font-size: 0.24rem;
-            color: #666;
+            color: #707070;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             span{
                 padding-left: 0.06rem;
-                color:#ccc;
+                color:#A1A1A1;
             }
         }
     }

@@ -1,0 +1,91 @@
+.homeFundLiucContainer{
+    .content{
+        padding: 0.3rem 0 0.34rem 0.34rem;
+    }
+    .list{
+        padding-bottom: 0.24rem;
+        margin-bottom: 0.24rem;
+        border-bottom: 1px solid #eee;
+        &:last-child{
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        .hd{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .date{
+                color: #A1A1A1;
+            }
+            .am-icon-md {
+                width: 0.38rem;
+                height: 0.38rem;
+            }
+        }
+        .bd{
+            .platName{
+                display: block;
+                padding: 0.1rem 0;
+                font-weight: bold;
+                font-size: 0.32rem;
+                color: #0096E6;
+            }
+            .cc{
+                padding-right: 0.3rem;
+                font-size: 0.24rem;
+                color: #666;
+                line-height: 0.36rem;
+                font-weight: bold;
+            }
+            .bz{
+                margin-top: 0.26rem;
+                padding:0.2rem 0 0 0; 
+                border-top: 1px solid #f5f5f5;
+                line-height: 1.6;
+                color: #999;
+            }
+            .relatePic{
+                padding-top: 0.3rem;
+                margin-top: 0.3rem;
+                border-top: 1px solid #eee;
+                .tit{
+                    margin-bottom: 0.2rem;
+                    color: #666;
+                    font-weight: bold;
+                }
+                .picList{
+                    display: flex;
+                    flex-direction: row;
+                    li{
+                        margin-right: 0.3rem;
+                       border: 1px solid #eee;
+                    }
+                    li.more{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        background: #eee;
+                        color: #999;
+                        line-height: 1.6;
+                    }
+                }
+                
+            }
+            .relateHt{
+                margin-top: 0.4rem;
+                .tit{
+                    margin-bottom: 0.2rem;
+                    color: #666;
+                    font-weight: bold;
+                }
+                .showHt {
+                    font-size: 0.24rem;
+                    color: #999;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

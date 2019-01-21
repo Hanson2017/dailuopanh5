@@ -10,14 +10,15 @@ export default class Account extends React.Component {
         };
     }
     render() {
+        const { history } = this.props;
         if (localStorage.loginState) {
             return (
-                <Member that={this} />
+                <Member that={this} history={history} />
             )
         }
         else {
             return (
-                <Login />
+                <Login history={history} />
             )
 
         }

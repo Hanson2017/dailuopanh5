@@ -7,42 +7,34 @@ import Loading from '../../../components/loading/index';
 import TabBar from '../../../components/tabBar2/tabs';
 
 import Yunying from './yunying';
-import Basic from './basic';
-import User from './user';
 import Flow from './flow';
+import User from './user';
+
+
+import './index.scss';
 
 class DetailData extends React.Component {
     render() {
         const { detailData, detailCommon } = this.props;
-        if (detailData.isFetching || detailCommon.isFetching) {
+        if (detailData.isFetching) {
             return <Loading />
         }
         else {
             return (
-                <TabBar>
-                    <div name={'运营数据'}>
-                        {
-                            detailCommon.dataSource.platstatus != 1 ?
-                                <span className='nullBlack'>黑名单平台，已停止数据监控</span>
-                                :
-                                <Yunying data={detailData.dataSource.dataDetail} />
-                        }
-                    </div>
-                    <div name={'用户数据'}>
-                        {
-                            detailCommon.dataSource.platstatus != 1 ?
-                                <span className='nullBlack'>黑名单平台，已停止数据监控</span>
-                                :
-                                <User data={detailData.dataSource.userDetail} />
-                        }
-                    </div>
-                    <div name={'基础数据'}>
-                        <Basic data={detailData.dataSource.comDetail} />
-                    </div>
-                    <div name={'流量数据'}>
-                        <Flow id={this.props.id} />
-                    </div>
-                </TabBar>
+                <div className="detailDataContainer">
+                    <TabBar>
+                        <div name={'运营数据'}>
+                            <Yunying data={detailData.dataSource.dataDetail} />
+                        </div>
+                        <div name={'流量数据'}>
+                            <Flow id={this.props.id} />
+                        </div>
+                        <div name={'用户数据'}>
+                            <User data={detailData.dataSource.userDetail} platName={detailCommon.plat_name} />
+                        </div>
+                      
+                    </TabBar>
+                </div>
             )
         }
 
@@ -57,7 +49,7 @@ class DetailData extends React.Component {
 function mapStateToProps(state) {
     return {
         detailData: state.deatail.data,
-        detailCommon: state.deatail.common
+        detailCommon: state.deatail.common.dataSource
     };
 }
 

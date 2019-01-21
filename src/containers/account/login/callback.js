@@ -15,6 +15,7 @@ export default class Callback extends Component{
         const { history } = this.props;
         const code = Util.GetQueryString('code');
         const url = Api.getUserinfo + '?code=' + code + '&state=dlp';
+        console.log(url)
         fetch(url)
             .then(function (response) {
                 if (response.status >= 400) {
@@ -23,10 +24,12 @@ export default class Callback extends Component{
                 return response.json();
             })
             .then(function (json) {
+                console.log(json)
                 if (json.result == 1) {
                     const result = JSON.stringify(json)
                     localStorage.loginState = result
-                    history.replace('/member')
+                    history.replace('/')
+                    // history.goBack(-2)
                 }
                 else {
                     console.log('登陆失败')

@@ -1,0 +1,36 @@
+@import "../../../style/_mixin.scss";
+.yulunListContainer{
+    margin-bottom: 0.24rem;
+    padding: 0 0.3rem 0.24rem 0;
+    border-bottom: 1px solid $bottomColor;
+    &:last-child{
+        border-bottom: none;
+        margin-bottom: 0;
+    } 
+    .title{
+        margin-bottom: 0.2rem;
+        display: block;
+        font-size: 0.28rem;
+        color: #101010;
+        line-height: 0.36rem;
+    }
+    .ft{
+        display: flex;
+        flex-direction:row;
+        justify-content:space-between;
+        .date{
+            width: 1.8rem;
+            line-height: 0.4rem;
+            text-align: right;
+            color: #bbb;
+        }
+        .plats{
+            display: flex;
+            flex-direction:row;
+            flex-wrap: wrap;
+            .platBox{
+                margin:0 0.1rem 0.1rem 0; 
+            }
+        }
+    }
+}

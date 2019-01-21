@@ -1,0 +1,83 @@
+.tabDataContainer{
+    .data{
+        .list{
+            padding: 0.4rem 0 0.3rem 0.3rem;           
+            .item{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                span{
+                    color: #999;
+                }
+                .ic1{
+                    padding-right: 0.2rem;
+                    width: 0.6rem;
+                    text-align: center;
+                }
+                .ic2{
+                    width: 1.52rem;
+                }
+                .ic3{
+                    width: 1.75rem;
+                }
+                .ic4{
+                    width: 1.3rem;
+                }
+            }
+            dt{
+                padding: 0 0 0.2rem 0;
+                color: #999;
+            }
+            dd{
+                height: 0.72rem;
+                line-height: 0.72rem;
+                border-bottom: 1px solid #f2f2f2;
+                &:last-child{
+                    border-bottom: none;
+                }
+                .ic1,.ic2{
+                    color: #333;
+                }
+            }
+        }
+    }
+    .query{
+        .navQuery{
+            display: flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+            .nav{
+                box-sizing: border-box;
+                width: 25%;
+                height: 1.2rem;
+                line-height: 1.2rem;
+                text-align: center;
+                border: 1px solid #eee;
+                border-left-width: 0;
+                border-top-width: 0;
+                font-size: 0.28rem;
+                color: #333;
+                &:nth-child(4n){
+                    border-right-width: 0;
+                }
+                &:nth-child(n+13){
+                    border-bottom-width: 0;
+                }
+            }
+            .more{
+                color: #999;
+            }
+        }
+    }
+    .report{    
+        .list{
+            padding: 0 0 0 0.34rem;
+            li{
+                &:last-child{
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+  
+}

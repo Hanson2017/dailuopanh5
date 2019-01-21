@@ -2,105 +2,89 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Icon } from 'antd-mobile';
 import Api from '../../../../utils/api';
+import Theme from '../../../../utils/theme';
 import { fetchPostsDeatail } from '../../../../redux/actions/index';
 import Loading from '../../../../components/loading/index';
 import TabBar from '../../../../components/tabBar2/tabs';
 
-import { lineChartFlow } from '../../../../echart/line';
-// 引入 ECharts 主模块
+
 import echarts from 'echarts/lib/echarts';
-// 引入柱状图
-import 'echarts/lib/chart/bar';
 import 'echarts/lib/chart/line';
-// 引入提示框和标题组件
-import 'echarts/lib/component/tooltip';
-import 'echarts/lib/component/title';
+import LineChart from '../../../../echart/line';
 
-import './index.scss';
-
-
-class FlowList extends React.Component {
+class List extends React.Component {
     render() {
-        const flowEchartId = this.props.flowEchartId;
+        const { label, echartID, valText, score } = this.props;
         return (
-            <ul className='flowList'>
-                <li className='flowListName'>{this.props.flowName}</li>
-                <li className='flowListChart' id={flowEchartId}></li>
-                <li className='flowListNum'>{this.props.flowValName}<b>{this.props.dataZhishu}</b></li>
+            <ul className='list'>
+                <li className='name'>{label}</li>
+                <li className='echart' id={echartID}></li>
+                <li className='num'>{valText}<b>{score}</b></li>
             </ul>
         )
     }
     componentDidMount() {
-        const dataList = this.props.dataList;
-        const flowEchartId = this.props.flowEchartId;
+
+        const { dataList, label, echartID } = this.props;
 
         var dataListNew = [];
         if (dataList != 0) {
             dataListNew = dataList.split(',');
         }
 
-        const lineEchart = document.getElementById(flowEchartId)
-        echarts.init(lineEchart).setOption(lineChartFlow(this.props.flowName, dataListNew));
+        const lineEchart = document.getElementById(echartID)
+        echarts.init(lineEchart).setOption(LineChart.lineChartFlow(label, dataListNew));
     }
 
 }
 
 
-class DetailFlow extends React.Component {
+class DetailDataFlow extends React.Component {
     render() {
         const { detailFlow, detailCommon } = this.props;
-        if (detailFlow.isFetching || detailCommon.isFetching) {
+        if (detailFlow.isFetching) {
             return <Loading />
         }
         else {
             const data = detailFlow.dataSource.dataDetail
-            if (detailCommon.dataSource.platstatus != 1) {
-                return (
-                    <span className='nullBlack'>黑名单平台，已停止流量监控</span>
-                )
-            }
-            else {
-                return (
-                    <div>
-                        {
-                            data != null ?
-                                <div>
-                                    <div className='healthInfoHead'>
-                                        <div className='info'>
-                                            <span className="ic1">综合指数</span>
-                                            <span className="ic2">{data.score}</span>
-                                            <span className="ic3">( 统计{data.totalNum}家平台中排名<b>{data.ordernum}</b> )</span>
-                                        </div>
-                                        <p>较上月
-                            <span><Icon type={data.changnum >= 0 ? require('../../../../assets/icons/arrow-up.svg') : require('../../../../assets/icons/arrow-down.svg')} color={data.changnum >= 0 ? '#ff0063' : '#009963'} size={'xxs'} />
-                                            </span>
-                                            {data.changnum >= 0 ? data.changnum : -data.changnum}%
-                            </p>
-                                    </div>
-                                    <div className='flowwp'>
-                                        {
-                                            data != null ?
-                                                <div>
-                                                    <FlowList flowName={'百度指数'} flowValName={'指数'} dataList={data.zs_baidu_str} flowEchartId={'flowEchartBaiDu'} dataZhishu={data.zs_baidu} />
-                                                    <FlowList flowName={'站长工具'} flowValName={'权重'} dataList={data.pr_zz_str} flowEchartId={'flowEchartZhanzhang'} dataZhishu={data.pr_zz} />
-                                                    <FlowList flowName={'爱站网'} flowValName={'权重'} dataList={data.pr_az_str} flowEchartId={'flowEchartAizhan'} dataZhishu={data.pr_az} />
-                                                    <FlowList flowName={'好搜'} flowValName={'指数'} dataList={data.zs_so_str} flowEchartId={'flowEchartSo'} dataZhishu={data.zs_so} />
-                                                    <FlowList flowName={'76676'} flowValName={'指数'} dataList={data.zs_76676_str} flowEchartId={'flowEchart766'} dataZhishu={data.zs_76676} />
-                                                </div>
-                                                :
-                                                <div className='dataNull'>暂无负面数据</div>
 
-                                        }
 
-                                    </div>
-                                </div>    
-                                :
-                                <span className='dataNull'>暂无数据</span> 
-                        }
+            return (
+                <div className="detailDataFlowContainer">
+                    {
+                        data !== null ?
+                            <div>
+                                <ul className="box score">
+                                    <li>
+                                        <span className="label">流量综合指数</span>
+                                        <span className="num">{data.score}</span>
+                                        <span className="bijiao">
+                                            较上月
+                                    <Icon type={data.changnum >= 0 ? require('../../../../assets/icons/new/arrow-up.svg') : require('../../../../assets/icons/new/arrow-down.svg')} color={data.changnum >= 0 ? Theme.upColor : Theme.downColor} size={'xxs'} />
+                                            <i className={data.changnum >= 0 ? "up" : "down"}>{Math.abs(data.changnum)}%</i>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span className="label">流量排名</span>
+                                        <span className="num">{data.ordernum}</span>
+                                        <span className="tj">在统计的{data.totalNum}家平台中</span>
+                                    </li>
+                                </ul>
 
-                    </div>
-                )
-            }
+                                <div className="box mt10 listContainer">
+                                    <List dataList={data.zs_baidu_str} label={'百度指数'} echartID={'echartBaidu'} valText={'指数'} score={data.zs_baidu} />
+                                    <List dataList={data.pr_zz_str} label={'站长工具'} echartID={'echartZhanzhang'} valText={'权重'} score={data.pr_zz} />
+                                    <List dataList={data.pr_az_str} label={'爱站网'} echartID={'echartAizhan'} valText={'权重'} score={data.pr_az} />
+                                    <List dataList={data.zs_so_str} label={'好搜指数'} echartID={'echartSo'} valText={'指数'} score={data.zs_so} />
+                                </div>
+                            </div>
+                            :
+                            <div className='null'>暂无数据</div>
+                    }
+
+                </div>
+            )
+
 
         }
 
@@ -115,10 +99,10 @@ class DetailFlow extends React.Component {
 function mapStateToProps(state) {
     return {
         detailFlow: state.deatail.flow,
-        detailCommon: state.deatail.common
+        detailCommon: state.deatail.common.dataSource
     };
 }
 
-export default connect(mapStateToProps)(DetailFlow);
+export default connect(mapStateToProps)(DetailDataFlow);
 
 

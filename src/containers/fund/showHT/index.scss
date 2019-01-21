@@ -1,0 +1,29 @@
+.showPdfContainer{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: #fff;
+    .pdfDuc{
+        flex: 1;
+    }
+}
+.pagepdf{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 1rem;
+    .p{
+        flex: 1;
+        text-align: center;
+        color: #999;
+        font-size: 0.26rem
+    }
+    .n{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        height: 1rem;
+    }
+}

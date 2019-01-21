@@ -4,64 +4,72 @@ import './index.scss';
 
 export default class NavBar extends React.Component {
     render() {
-        const { history, pathname } = this.props;
+        const { history, onOpenChange, back, title, black } = this.props;
         let loginState;
         if (localStorage.loginState) {
             loginState = JSON.parse(localStorage.loginState);
         }
+        const pathname = history.location.pathname
         return (
-            <div className='navbar'>
+            <div className={black ? 'navbar navbarBlack' : 'navbar'}>
                 <div className="navbar-left" onClick={() => {
-                    if (pathname == '/') {
-                        this.props.onOpenChange()
+                    if (pathname == '/' || pathname == '/tabPingji' || pathname == '/tabData' || pathname == '/tabYulun' || pathname == '/tabFind') {
+                        onOpenChange()
                     }
                     else {
-                        if (history.action !== 'POP') {
-                            history.goBack()
-                        }
-                        else {
-                            history.replace('/')
-                        }
+                        history.goBack()
                     }
 
                 }}
                 >
                     {
-                        pathname == '/' ?
+                        pathname == '/' || pathname == '/tabPingji' || pathname == '/tabData' || pathname == '/tabYulun' || pathname == '/tabFind' ?
                             localStorage.loginState ?
                                 <img src={loginState.r_avatar_img} className='portraitSmart' />
                                 :
                                 <img src={require('../../assets/images/portrait2.png')} className='portraitSmart' />
                             :
-                            this.props.back && this.props.back === 'null' ?
+                            back && back === 'null' ?
                                 null
                                 :
-                                <Icon type={require('../../assets/icons/left.svg')} color={'#fff'} />
+                                <Icon type={require('../../assets/icons/new/arrow-left.svg')} color={'#fff'} />
 
                     }
                 </div>
                 <div className="navbar-title">
                     {
                         pathname == '/' ?
-                            <img src={require('../../assets/images/logoico.png')} className='logo' />
+                            <img src={require('../../assets/images/logo.png')} className='logo' />
                             :
-                            <span> {this.props.title}</span>
+                            <span>{title}</span>
                     }
                 </div>
-                <div className="navbar-right" onClick={() => {
-                    if (!this.props.search) {
-                        history.push('/search')
-                    }
+                {
+                    this.props.children ?
+                        null
+                        :
+                        <div className="navbar-right" onClick={() => {
+                            if (!this.props.search) {
+                                history.push('/search')
+                            }
 
-                }}>
-                    {
-                        this.props.search && this.props.search == 'null' ?
-                            null
-                            :
-                            <Icon type={require('../../assets/icons/search.svg')} size={'sm'} color={'#fff'} />
-                    }
+                        }}>
+                            {
+                                this.props.search && this.props.search == 'null' ?
+                                    null
+                                    :
+                                    <Icon type={require('../../assets/icons/new/ico-search.svg')} size={'sm'} color={'#fff'} />
+                            }
 
-                </div>
+                        </div>
+                }
+
+                {
+                    this.props.children ?
+                        this.props.children
+                        :
+                        null
+                }
             </div>
         )
     }

@@ -5,6 +5,10 @@ export function deatail(state = {
         isFetching: true,
         dataSource: null
     },
+    zonglan: {
+        isFetching: true,
+        dataSource: null
+    },
     pingji: {
         isFetching: true,
         dataSource: null
@@ -14,6 +18,10 @@ export function deatail(state = {
         dataSource: null
     },
     data: {
+        isFetching: true,
+        dataSource: null
+    },
+    yuqingAll: {
         isFetching: true,
         dataSource: null
     },
@@ -71,6 +79,22 @@ export function deatail(state = {
                     }
                 })
             }
+        case 'zonglan':
+            if (action.type == REQUEST_POSTS_DETAIL) {
+                return Object.assign({}, state, {
+                    zonglan: {
+                        isFetching: true
+                    }
+                })
+            }
+            else if (action.type == RECEIVE_POSTS_DETAIL) {
+                return Object.assign({}, state, {
+                    zonglan: {
+                        isFetching: false,
+                        dataSource: action.posts
+                    }
+                })
+            }
         case 'pingji':
             if (action.type == REQUEST_POSTS_DETAIL) {
                 return Object.assign({}, state, {
@@ -114,6 +138,24 @@ export function deatail(state = {
             else if (action.type == RECEIVE_POSTS_DETAIL) {
                 return Object.assign({}, state, {
                     data: {
+                        isFetching: false,
+                        dataSource: action.posts
+                    }
+                })
+            }
+        case 'yuqingAll':
+            if (action.type == REQUEST_POSTS_DETAIL) {
+ 
+                return Object.assign({}, state, {
+                    yuqingAll: {
+                        isFetching: true
+                    }
+                })
+            }
+            else if (action.type == RECEIVE_POSTS_DETAIL) {
+
+                return Object.assign({}, state, {
+                    yuqingAll: {
                         isFetching: false,
                         dataSource: action.posts
                     }
@@ -223,10 +265,10 @@ export function deatail(state = {
                     pingce: {
                         isFetching: false,
                         loadMore: true,
-                        page: state.yulun.page,
-                        pageCount: state.yulun.pageCount,
-                        totalNum: state.yulun.totalNum,
-                        items: state.yulun.items,
+                        page: state.pingce.page,
+                        pageCount: state.pingce.pageCount,
+                        totalNum: state.pingce.totalNum,
+                        items: state.pingce.items,
                     }
                 })
             }
@@ -236,10 +278,10 @@ export function deatail(state = {
                     pingce: {
                         isFetching: false,
                         loadMore: false,
-                        page: state.yulun.page + 1,
-                        pageCount: state.yulun.pageCount,
-                        totalNum: state.yulun.totalNum,
-                        items: state.yulun.items.concat(action.posts.dataList),
+                        page: state.pingce.page + 1,
+                        pageCount: state.pingce.pageCount,
+                        totalNum: state.pingce.totalNum,
+                        items: state.pingce.items.concat(action.posts.dataList),
                     }
                 })
             }
@@ -259,7 +301,7 @@ export function deatail(state = {
                         page: 2,
                         pageCount: action.posts.pageCount,
                         totalNum: action.posts.totalNum,
-                        items: action.posts.dataList                        ,
+                        items: action.posts.dataList,
                     }
                 })
             }

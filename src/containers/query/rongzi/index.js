@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import TabBar from '../../../components/tabBar2/tabs';
+import TabBar from '../../../components/tabBar/tabQuery';
 import List from '../temp/list';
 
 const tabNames = [
@@ -13,19 +13,20 @@ const tabNames = [
 
 export default class Rongzi extends React.Component {
     render() {
-        const { history, tabIndex } = this.props;
+        const { history, tabIndex, chageTab2 } = this.props;
         return (
-            <TabBar current={tabIndex}>
-                {
-                    tabNames.map((tab, i) => {
-                        return (
-                            <List key={i} name={tab.title} type={tab.type} Ttype={tab.Ttype} history={history} />
-                        )
-                    })
-                }
-
-            </TabBar>
+            <div className="ptTab2">
+                <TabBar current={tabIndex} chageTab2={chageTab2} >
+                    {
+                        tabNames.map((tab, i) => {
+                            return (
+                                <List key={i} name={tab.title} type={tab.type} Ttype={tab.Ttype} history={history} />
+                            )
+                        })
+                    }
+                </TabBar>
+            </div>
         )
-
     }
 }
+

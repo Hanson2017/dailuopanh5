@@ -21,17 +21,19 @@ class TabBar extends React.Component {
         const { dispatch } = this.props;
         return (
             <div id="outer">
-                <ul className='tabBarNav2'>
-                    {
-                        React.Children.map(this.props.children, (element, index) => {
-                            return (
-                                <List key={index} index={index} dispatch={dispatch} totalNum={element.props.totalNum} tab={element.props.name} handleClick={this.handleClick} currentClass={this.currentClass} />
+                <div className="tabBarNav2Container">
+                    <ul className='tabBarNav2'>
+                        {
+                            React.Children.map(this.props.children, (element, index) => {
+                                return (
+                                    <List key={index} index={index} dispatch={dispatch} totalNum={element.props.totalNum} tab={element.props.name} handleClick={this.handleClick} currentClass={this.currentClass} />
 
-                            )
-                        })
+                                )
+                            })
 
-                    }
-                </ul>
+                        }
+                    </ul>
+                </div>
 
                 {
                     React.Children.map(this.props.children, (element, index) => {

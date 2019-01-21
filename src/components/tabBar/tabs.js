@@ -16,20 +16,17 @@ export default class TabBar extends React.Component {
     render() {
         return (
             <div id="outer">
-                <ul className='tabBarNav'>
+                <ul className={this.props.black?'tabBarNav tabBarNavBlack':'tabBarNav'}>
                     {
                         React.Children.map(this.props.children, (element, index) => {
                             return (
-                                <List key={index} index={index} tab={element.props.name} handleClick={this.handleClick} currentClass={this.currentClass} />
+                                <List key={index} index={index} tab={element.props.name} that={this} handleClick={this.handleClick} currentClass={this.currentClass} />
                             )
                         })
                     }
                 </ul>
                 {
                     React.Children.map(this.props.children, (element, index) => {
-                        // return (
-                        //     <div className={this.contentClass(index)}>{element}</div>
-                        // )
                         if (this.state.current == index) {
                             return (
                                 <div className='tabBarContainer'>{element}</div>
@@ -55,6 +52,12 @@ export default class TabBar extends React.Component {
     contentClass(index) {
         return this.state.current === index ? 'active' : '';
     }
+    onChangeTab(index){
+        if(this.props.onChangeTab){
+            this.props.onChangeTab(index)
+        }
+        
+    }
 }
 
 class List extends React.Component {
@@ -63,12 +66,14 @@ class List extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
     handleClick() {
-        this.props.handleClick(this.props.index);
+        const {that,index}=this.props;
+        that.handleClick(index);
+        that.onChangeTab(index);
     }
     render() {
-        const tab = this.props.tab;
+        const {tab,that,index}=this.props;
         return (
-            <li className={'list ' + this.props.currentClass(this.props.index)} onClick={this.handleClick} >{tab}</li>
+            <li className={'list ' + that.currentClass(index)} onClick={this.handleClick} >{tab}</li>
         )
     }
 }
