@@ -53,7 +53,7 @@ class Detail extends React.Component {
                             <Health name={'健康度'} id={platId} />
                             <Data name={'数据'} id={platId} />
                             <Yuqing name={'舆情'} id={platId} history={history} />
-                            <Activity name={'活动'} id={platId} />
+                            
                             <Info name={'信息'} id={platId} />
                         </TabBar>
                     </div>

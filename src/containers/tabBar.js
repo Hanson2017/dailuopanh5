@@ -38,7 +38,7 @@ class TabBars extends Component {
                     className="drawer"
                     style={{ minHeight: document.documentElement.clientHeight }}
                     enableDragHandle
-                    sidebarStyle={{ backgroundColor: '#fff', width: '80%', opacity: 0.97, zIndex: 1002 }}
+                    sidebarStyle={{ backgroundColor: '#fff', width: '85%', opacity: 0.97, zIndex: 1002 }}
                     overlayStyle={{ zIndex: 1001 }}
                     contentStyle={{ color: '#A6A6A6', textAlign: 'center', paddingTop: 42 }}
                     dragHandleStyle={{ width: 0 }}

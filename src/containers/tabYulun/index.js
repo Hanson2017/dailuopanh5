@@ -11,7 +11,7 @@ import Mianze from '../mianze';
 import './index.scss';
 
 var data = [
-    { title: '贷罗盘论坛', iconName: 'nav-people', iconSize: 'lg', routerName: '/pingce', tabId: null },
+   
     { title: '评测监控', iconName: 'nav-pingce', iconSize: 'lg', routerName: '/pingce', tabId: 1 },
     { title: '舆论监控', iconName: 'nav-yulun', iconSize: 'lg', routerName: '/yulun', tabId: null },
     { title: '平台点评', iconName: 'nav-dianping', iconSize: 'lg', routerName: '/comment', tabId: null },
@@ -40,7 +40,7 @@ export default class TabYulun extends React.Component {
                         :
                         <div className="tabYulunContainer">
                             <TabTop data={data} />
-                            <BBS data={{ bbsHejList: bbsHejList, bbsBgtList: bbsBgtList }} />
+                            
                             <Pingce data={dataSource.mplist} />
                             <Yulun data={dataSource.sentlist} />
                             <Comment data={dataSource.commentlist} />

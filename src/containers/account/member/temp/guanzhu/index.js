@@ -96,7 +96,7 @@ class Item extends React.Component {
                         {this.item('网贷天眼', data.p2peye)}
                         {this.item('融360', data.rong360)}
                       
-                        {this.item('羿飞', data.yifei)}
+                        
                     </ul>
                 </div>
             </div>

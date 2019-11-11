@@ -41,12 +41,14 @@ export default class Home extends React.Component {
                             <Num data={dataSource.homenum} />
                             <NavList />
                             <Dapan history={history} data={{ inamount: dataSource.inamount, markent: dataSource.markent, echartYulun: dataSource.sentviewlist, numYulun: dataSource.sentday, newBlack: dataSource.reblacklist, newZhengyi: dataSource.rezhengyilist, gongshang: dataSource.gongshanglist }} />
-                            <BBs data={bbsData} />
+                            
                             <Pingce history={history} data={dataSource.mplisttop} />                           
                             <Yulun data={dataSource.sentlist} />
                             <Comment data={dataSource.commentlist} />
+                            
+                            <BBs data={bbsData} />
                             <Report data={dataSource.reportslist} />
-                            <Activity data={dataSource.flmf} />
+                           
                             <Fund data={dataSource.listfund_firm} />
                             <FundLiuc data={dataSource.fund_process} />
                            

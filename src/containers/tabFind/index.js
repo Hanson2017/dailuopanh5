@@ -32,7 +32,7 @@ export default class TabFind extends React.Component {
                             <Fund data={{ count: dataSource.fundcount, list: dataSource.fundlist_firm }} />
                             <FundLiuc  data={dataSource.fund_process} />
                            
-                            <Activity data={dataSource.flmf} />
+                            
                             <Mianze />
                         </div>
                 }

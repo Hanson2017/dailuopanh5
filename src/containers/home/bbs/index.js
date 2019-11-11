@@ -13,14 +13,7 @@ export default class HomeBBs extends React.Component {
                 <Title data={'论坛动态'} />
                 <div className="content">
                     <div className="hd">
-                        <a className="link l" target='_blank' href={Util.goBBs(Api.bbsHejUrl)}>
-                            <div className="img">
-                                <img src={require('../../../assets/images/hejicon.gif')} className='icon' alt="华尔街的旗帜" />
-                            </div>
-                            <div className="con">
-                                <h6 className="tit">华尔街的旗帜</h6>
-                            </div>
-                        </a>
+                       
                         <a className="link r" target='_blank' href={Util.goBBs(Api.bbsBgtUrl)}>
                             <div className="img">
                                 <img src={require('../../../assets/images/bgticon.png')} className='icon' alt="曝光台" />
