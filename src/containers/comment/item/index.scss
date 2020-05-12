@@ -1,0 +1,59 @@
+@import "../../../style/_mixin.scss";
+.commentListContainer{
+    margin-bottom: 0.3rem;
+    padding: 0 0.3rem 0.3rem 0;
+    border-bottom: 1px solid $bottomColor;
+    &:last-child{
+        border-bottom: none;
+    }
+    .hd{
+        display: flex;
+        flex-direction:row;
+        align-items:center;
+        justify-content:space-between;
+        .icon{
+            position: relative;
+            top: 0.05rem;
+        }
+        .username{
+            padding-left: 0.06rem;
+            color: #999;
+        }
+        .date{
+            color: #bbb;
+        }
+    }
+    .bd{
+        margin: 0.12rem 0 0.16rem 0;
+        font-size: 0.24rem;
+        color: #666;
+        line-height: 0.36rem;
+    }
+}
+
+.commentListContainer2{
+    display: flex;
+    flex-direction: row;
+    .leftC{
+        padding-top: 0.52rem;
+        width: 1.6rem;
+    }
+    .rightC{
+        flex: 1;
+    }
+    .openCon{
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+        justify-content:flex-end;
+        color: #bbb;
+        .icon{
+            position: relative;
+            padding-right: 0.06rem;
+            top: 0.02rem;
+        }
+        .close{
+            color: $color;
+        }
+    }
+}

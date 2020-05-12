@@ -102,17 +102,18 @@ const Pingji = createReactClass({
         }
     },
     render() {
-        const { datas } = this.props;
+        const { datas,history} = this.props;
+        const pathname = this.props.location.pathname;
         const tabNames = this.state.tabNames;
         return (
             <div className='container' style={{ 'paddingTop': '2.2rem' }}>
-                <Header title={'评级'} location={this.props.location} />
+                <Header title={'评级'} history={history} pathname={pathname} />
                 <NumBar numText={'参与评级平台数量：' + datas + '家'} />
                 <TabBar>
                     {
                         tabNames.map((tab, i) => {
                             return (
-                                <List key={i} name={tab.title} type={tab.type} columnID={tab.columnID} listCout={tab.listCout} />
+                                <List key={i} name={tab.title} type={tab.type} columnID={tab.columnID} listCout={tab.listCout} history={history} />
                             )
                         })
                     }

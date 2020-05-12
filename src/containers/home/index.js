@@ -1,53 +1,110 @@
 import React, { Component } from 'react';
-import createReactClass from 'create-react-class';
-import { Link, History } from 'react-router';
-import { Drawer } from 'antd-mobile';
-import NavBar from '../../components/navbar/'
-import SearchBar from './searchBar/'
-import NavList from './navList/'
-import Sidebar from './sidebar/'
-import FriendShare from './friendShare/'
-import './index.scss'
+import Api from '../../utils/api';
+import Loading from '../../components/loading';
+import NavBar from '../../components/navbar/';
+import Num from './num';
+import NavList from './navList';
+import Dapan from './dapan';
+import Pingce from './pingce';
+import BBs from './bbs';
+import Yulun from './yulun';
+
+import Comment from './comment';
+import Report from './report';
+import Activity from './activity';
+import FundLiuc from './fund/liucheng';
+import Fund from './fund';
+import Mianze from '../mianze';
+
+import './index.scss';
 
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            openDrawer: false,
+            isFetching: true,
+            dataSource: '',
+            bbsData: '',
         }
-        this.onOpenChange = this.onOpenChange.bind(this)
     }
     render() {
+        const { history, onOpenChange } = this.props;
+        const { isFetching, dataSource, bbsData } = this.state;
         return (
-            <div>
-                <Drawer
-                    className="drawer"
-                    style={{ minHeight: document.documentElement.clientHeight }}
-                    enableDragHandle
-                    sidebarStyle={{ backgroundColor: '#1d2225', width: '90%', opacity: 0.97, zIndex: 1002 }}
-                    overlayStyle={{ zIndex: 1001 }}
-                    contentStyle={{ color: '#A6A6A6', textAlign: 'center', paddingTop: 42 }}
-                    dragHandleStyle={{ width: 0 }}
-                    sidebar={<Sidebar />}
-                    open={this.state.openDrawer}
-                    onOpenChange={this.onOpenChange}
-                >
+            <div className='ptTabBar'>
+                <NavBar history={history} onOpenChange={onOpenChange} />
+                {
+                    isFetching ?
+                        <Loading />
+                        :
+                        <div className='homeContent'>
+                            <Num data={dataSource.homenum} />
+                            <NavList />
+                            <Dapan history={history} data={{ inamount: dataSource.inamount, markent: dataSource.markent, echartYulun: dataSource.sentviewlist, numYulun: dataSource.sentday, newBlack: dataSource.reblacklist, newZhengyi: dataSource.rezhengyilist, gongshang: dataSource.gongshanglist }} />
+                            
+                            <Pingce history={history} data={dataSource.mplisttop} />                           
+                            <Yulun data={dataSource.sentlist} />
+                            <Comment data={dataSource.commentlist} />
+                            
+                            <BBs data={bbsData} />
+                            <Report data={dataSource.reportslist} />
+                           
+                            <Fund data={dataSource.listfund_firm} />
+                            <FundLiuc data={dataSource.fund_process} />
+                           
+                            <Mianze />
+                        </div>
+                }
 
-                </Drawer>
-                <div className='homeContainer'>
-                    <NavBar componentPage={'home'} onOpenChange={this.onOpenChange} />
-                    <div className='homeContent'>
-                        <SearchBar />
-                        <NavList />
-                    </div>
-                </div>
             </div>
         )
     }
-    onOpenChange = (...args) => {
-        this.setState({ openDrawer: !this.state.openDrawer });
-    }
-    componentDidMount() {
 
+    componentDidMount() {
+        this.getData();
+    }
+    getData() {
+        const that = this;
+        const url = Api.home
+
+        fetch(url)
+            .then(function (response) {
+                if (response.status >= 400) {
+                    throw new Error("Bad response from server");
+                }
+                return response.json();
+            })
+            .then(function (json) {
+
+                if (json.result == 1) {
+                    
+                    that.setState({
+                        dataSource: json
+                    })
+                    that.getDataBBs()
+                }
+
+            });
+    }
+    getDataBBs() {
+
+        const that = this;
+        const url = Api.bbs + 'gettype=apphome&getnum=5';
+
+        fetch(url)
+            .then(function (response) {
+                if (response.status >= 400) {
+                    throw new Error("Bad response from server");
+                }
+                return response.json();
+            })
+            .then(function (json) {
+              
+                that.setState({
+                    isFetching: false,
+                    bbsData: json.forumlist,
+                })
+
+            });
     }
 }

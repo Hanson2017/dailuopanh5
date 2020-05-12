@@ -5,14 +5,15 @@ export function radarEchart(platname, platdata, platdata_ind) {
         },
         legend: {
             x: 'center',
+            y:'bottom',
             data: [{ name: platname, icon: 'circle' }, { name: '行业平均数值', icon: 'circle' }]
         },
         grid: {
             borderWidth: 0,
-            x: 20,
+            x: 0,
             x2: 0,
-            y: 0,
-            y2: 0
+            y: 40,
+            y2: 40
         },
         calculable: true,
         polar: [
@@ -27,8 +28,8 @@ export function radarEchart(platname, platdata, platdata_ind) {
                     { text: '忠诚度', min: -50, max: 100 },
                     { text: '成长性', min: -50, max: 100 }
                 ],
-                radius: '50%',
-                center: ['50%', '55%']
+                radius: '52%',
+                center: ['50%', '50%']
             }
         ],
         series: [

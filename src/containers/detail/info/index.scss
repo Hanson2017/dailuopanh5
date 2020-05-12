@@ -1,0 +1,341 @@
+@import "../../../style/_mixin.scss";
+
+.detailInfoContainer{
+    .gudong{
+        .gudongCon{
+            margin-top: 0;
+            .titleContainer{
+                border-bottom: none;
+            }
+            .gudongList{
+                padding: 0.3rem 0 0.3rem 0.34rem;
+            }
+        }
+        .shouyirenCon{
+            .shouyirenList{
+                padding: 0.3rem 0.3rem 0.3rem 0.34rem;
+            }
+        }
+       .memberCon{
+           .memberList{
+               padding: 0.3rem 0 0.4rem 0.34rem;  
+               display: flex;
+               flex-direction: row;
+               flex-wrap: wrap;
+               li{
+                padding-bottom:0.2rem;
+                margin-bottom: 0.2rem; 
+                width: 50%;
+                border-bottom: 1px solid #eee;
+                display: flex;
+                flex-direction: column;
+                .name{
+                    color: #666;
+                    font-size: 0.28rem;
+                }
+                .zhiwei{
+                    margin-top: 0.1rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 1.4rem;
+                    height: 0.36rem;
+                    border-radius: 0.08rem;
+                    background-color: #F5F5F5;
+                    color: #bbb;
+                }
+               }
+               li.notBt{
+                    padding-bottom:0;
+                    margin-bottom: 0; 
+                    border-bottom: none;
+               }
+           }
+       }
+       .biangengCon{
+           .biangengList{
+               padding: 0 0 0 0.34rem;
+           }
+       }
+       
+    }
+    .gongshang{
+        .gongshangList{
+            padding: 0.3rem;
+        }
+    }
+    .gongshang{
+        .null{
+            margin-left: -2.1rem;
+            padding-left: 50%;
+            padding-bottom: 0.4rem;
+        }
+    }
+   
+
+}
+
+
+
+
+// 股东监控
+.gudongList{
+    li{
+      margin-bottom: 0.24rem;
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid $bottomColor;
+      &:last-child{
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }  
+      .hd{
+          margin-bottom: 0.24rem;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          .name{
+              font-size: 0.28rem;
+              color: #666;
+              font-weight: bold;
+          }
+          .iconGd{
+              margin-left: 0.1rem;
+              display: block;
+              width: 0.8rem;
+              height: 0.32rem;
+              line-height: 0.32rem;
+              text-align: center;
+              background-color: #E51C23;
+              border-radius: 0.08rem;
+              color: #fff;
+          }
+      }
+      .bd{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          color: #999;
+          .bili{
+            width: 2.4rem;
+            i{
+                color: $color;
+            }
+          }
+          .chuzi{
+              width: 2.8rem;
+          }
+      }
+    }
+}
+
+
+// 最终受益人
+.shouyirenList{
+    margin-bottom: 0.2rem;
+    padding-bottom: 0.1rem;
+    border-bottom: 1px solid $bottomColor;
+    .list{
+        margin-bottom: 0.4rem;
+        &:last-child{
+            margin-bottom: 0; 
+        }
+    }
+    .shouyiren{
+        .number{
+            margin-bottom: 0.2rem;
+            font-size: 0.28rem;
+            color: #666;
+            font-weight: bold;
+        }
+        dd{
+            padding: 0.08rem 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: #999;
+            .label{
+                width: 1.5rem;
+            }
+            .text{
+                color: #666;
+            }
+        }
+    }
+    .guquanlian{
+        margin-bottom: 0.2rem;
+        width: 100%;
+        dt{
+            height: 0.6rem;
+            line-height: 0.6rem;
+            text-indent: 0.2rem;
+            background-color: #eee;
+            color: #999;
+        }
+        dd{
+            padding: 0.2rem;
+            background-color: #F5F5F5;
+            .guquanlianList{
+                margin-bottom: 0.16rem;
+                &:last-child{
+                    margin-bottom: 0;
+                }
+                span{
+                    display: block;
+                }
+                .guquanlianBili{
+                    margin-bottom: 0.16rem;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    i{
+                        color:$color;
+                    }
+                }
+                .name{
+                    color: #666;
+                }
+            }
+        }
+    }
+}
+
+// 工商变更
+.detailBiangengContainer{
+    .biangengList{
+        padding: 0.2rem 0 0 0.34rem;
+    }
+   
+}
+.biangengList{
+    .null{
+        padding: 0.3rem 0;
+    }
+    dl{
+        padding: 0.3rem 0;
+        border-bottom: 1px solid #eee;
+        &:last-child{
+            border-bottom: none;
+        }
+        dt{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.28rem;
+            color: #666;
+           .number{
+               padding-right: 0.12rem;
+               font-weight: bold;
+           }
+           .date{
+               font-size: 0.24rem;
+               color: #999;
+           }
+           .more{
+               padding: 0 0.3rem;
+               background-color: transparent;
+               .am-icon-sm{
+                   position: relative;
+                   top: 0.04rem;
+                    width: 0.46rem;
+                    height: 0.46rem;
+               }
+           }
+           .r{
+               display: flex;
+               flex-direction: row;
+               align-items: center;
+           }
+        }
+        dd{
+            padding: 0.3rem 0.3rem 0 0;
+            .note{
+                padding: 0 0 0.2rem 0.2rem;
+                color: #999;
+            }
+            .info{
+                .item{
+                    display: flex;
+                    flex-direction: row;
+                    .ic1,.ic2{
+                        padding-left: 0.2rem;
+                        width: 50%;
+                        box-sizing: border-box;
+                    }
+                    .ic1{
+                        border-right: 1px solid #ddd;
+                    }
+                }
+                .hd{
+                    height: 0.56rem;
+                    line-height: 0.56rem;
+                    background-color: #eee;
+                    color: #999;
+                }
+                .bd{
+                    background-color: #F5F5F5;
+                    .ic1,.ic2{
+                        padding-top:0.3rem;
+                        padding-bottom:0.3rem; 
+                        padding-right:0.2rem; 
+                    }
+                    .red{
+                        color: #0096E6;
+                    }
+                    p{
+                        margin: 0.12rem 0;
+                        line-height: 0.32rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 工商信息
+.gongshangList{
+    li{
+        margin-bottom: 0.2rem;
+        display: flex;
+        flex-direction: row;
+        line-height: 0.36rem;
+        .label{
+            padding-left: 0.2rem;
+            width: 2rem;
+            color: #707070;
+        }
+        .text{
+            flex: 1;
+            color: #101010;
+        }
+        .fanwei{
+            padding: 0.16rem;
+            background-color: #f5f5f5;
+            color: #707070;
+            line-height: 0.4rem;
+        }
+    }
+    li.fanweiCon{
+        flex-direction: column;
+        p{
+            margin-bottom: 0.2rem;
+        }
+        .moreCon{
+            padding: 0.14rem 0 0.1rem 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            span{
+                padding-left: 0.1rem;
+            }
+            .open{
+                color: #bbb;
+            }
+            .close{
+                color: $color;
+            }
+        }
+    }
+}

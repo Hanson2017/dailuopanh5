@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import Loading from '../../components/loading/index';
 import Header from '../../components/navbar/index';
-import NumBar from '../../components/numBar/index';
-import UpDateTime from '../../components/upDateTime';
+import UpDateTime from '../../components/topUpdate';
 import LoadMore from '../../components/loadMore';
+import Item from './item';
 
 import Api from '../../utils/api';
 import Util from '../../utils/util';
@@ -42,48 +42,46 @@ class PieEchart extends React.Component {
 }
 
 class Yulun extends React.Component {
-
-    render() {
-        const { datas } = this.props;
-        var totalNum = 0;
-        if (!datas.isFetching) {
-            totalNum = datas.dataView.plat_count;
+    constructor(props) {
+        super(props);
+        this.state = {
+            updatetime: Util.setDate(new Date())
         }
-
+    }
+    render() {
+        const { datas, history } = this.props;
+        const {updatetime}=this.state;
         return (
-            <div style={this.props.location?null:{marginBottom:'1rem'}}>
-                <Header title={'舆论监控'} location={this.props.location} />
-                <NumBar numText={'舆论监控平台数量：' + totalNum + '家'} />
-                <div className='noTabContainer'>
-                    <UpDateTime updatetime={Util.setDate(new Date())} />
+            <div className="yulunContainer">
+                <Header title={'舆论监控'} history={history} />
+                <UpDateTime updatetime={updatetime} /> 
                     {
                         datas.isFetching ?
                             <Loading />
                             :
-                            <div>
-                                <PieEchart data={datas.dataView.viewlist} />
-                                <div className='yulunNum'>
-                                    <span className='total'>舆论总条数{datas.dataView.viewinfo.all_num}条</span>    
-                                    <span>昨日条数{datas.dataView.viewinfo.date_num}条</span>
+                            <div className="content">            
+                                <div className="top">                     
+                                    <PieEchart data={datas.dataView.viewlist} />
+                                    <div className="echartsTitle">过去48小时舆论热点分布</div>
+                                    <div className='numCon'>
+                                        <span>舆论总条数：<i className="num">{datas.dataView.viewinfo.all_num}</i></span>
+                                        <span>昨日条数：<i className="num">{datas.dataView.viewinfo.date_num}</i></span>
+                                    </div>
                                 </div>
-                                <div className='yulunList'>
+                                <ul className='list'>
                                     {
 
-                                        datas.items.map((text, i) => {
+                                        datas.items.map((item, i) => {
                                             return (
-                                                <a href={text.siteurl} key={i} className='link' target='_blank'>
-                                                    <h6 className='title'>{text.title}</h6>
-                                                    <p className='time'> {Util.formatDate(text.pubtime)}</p>
-                                                </a>
+                                                <Item data={item} key={i} />
                                             )
                                         })
                                     }
-                                    <LoadMore onClick={this.loadMore.bind(this)} data={datas} />
-                                </div>
+                                   
+                                </ul>
+                                <LoadMore onClick={this.loadMore.bind(this)} data={datas} />
                             </div>
                     }
-
-                </div>
 
             </div>
         )

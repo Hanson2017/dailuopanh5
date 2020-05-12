@@ -1,0 +1,22 @@
+.collectionListAccountContainer{
+    .list{
+        padding: 0.4rem 0 0 0.3rem;
+        .yulunListContainer{
+            position: relative;
+            &:last-child{
+                margin-bottom: 0;
+            }
+            .title2{
+                padding-right: 0.7rem;
+            }
+        }
+        .delBtn{
+            position: absolute;
+            top: 0;
+            right: 0.3rem;
+            width: 0.5rem;
+            text-align: right;
+        }
+    }
+    
+}

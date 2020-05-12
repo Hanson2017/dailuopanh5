@@ -1,49 +1,49 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd-mobile';
-import './index.scss';
 import Title from '../../../../components/title';
-
-import { barChartHealth } from '../../../../echart/bar';
-// 引入 ECharts 主模块
-import echarts from 'echarts/lib/echarts';
-// 引入柱状图
-import 'echarts/lib/chart/bar';
-// 引入提示框和标题组件
-import 'echarts/lib/component/tooltip';
-import 'echarts/lib/component/title';
+import Theme from '../../../../utils/theme';
+import BarEchart from '../barEchart';
 
 class FuzhuModule extends React.Component {
     render() {
-        let data = this.props.data;
-        let EchartID = this.props.EchartID;
-        let titleText = this.props.titleText;
+        const { data, dataList, iconName, title, field, echartID, echartName, echartTitle, echartX, mt } = this.props;
+        var color;
+        if (data.status == '强' || data.status == '偏强' || data.status == '极强') {
+            color = '#39B54A';
+        }
+        else if (data.status == '偏弱' || data.status == '正常') {
+            color = '#FFA500';
+        }
+        else {
+            color = '#ED1C24';
+        }
         return (
-            <div>
-                <Title titleText={titleText} />
-                <div className='diagnoseBox'>
-                    <h6 className='diagnoseText'>{data.info}</h6>
-                    <div className='diagnoseState'>
-                        <span>
-                            状态：
-                        <i className={
-                                data.status == '强' || data.status == '偏强' || data.status == '极强' || data.status == '正常' ?
-                                    'good'
-                                    :
-                                    data.status == '偏弱' ?
-                                        'normal'
-                                        :
-                                        'bad'}>
-                                {data.status}
-                            </i>
-                        </span>
-                        <span className='qushi'>
-                            后续趋势预判：  <Icon type={data.change == 'up' ? require('../../../../assets/icons/arrow-up.svg') : require('../../../../assets/icons/arrow-down.svg')} color={data.change == 'up' ? '#ff0063' : '#009963'} size={'xxs'} />
-                        </span>
+            <div className={mt ? 'diagnoseBox box' : 'diagnoseBox box mt10'}>
+                <div className="hd">
+                    <div className="l">
+                        <Icon type={require('../../../../assets/icons/new/' + iconName + '.svg')} color={color} size={'lg'} />
                     </div>
-                    <div id={EchartID} className='barEchartH'></div>
-                    <div className='diagnoseInstruction'>
-                        {this.props.children}
+                    <div className="r">
+                        <h6 className="tit">{title}</h6>
+                        <p className="info">{data.info}</p>
                     </div>
+                </div>
+                <ul className="stateCon">
+                    <li>
+                        <span className="label">状态：</span>
+                        <span className="status" style={{ backgroundColor: color }}>{data.status}</span>
+                    </li>
+                    <li>
+                        <span className="label">后续趋势预判：</span>
+                        <span className="icon">
+                            <Icon type={data.change == 'up' ? require('../../../../assets/icons/new/arrow-up.svg') : require('../../../../assets/icons/new/arrow-down.svg')} color={data.change == 'up' ? Theme.upColor : Theme.downColor} size={'xxs'} />
+                        </span>
+                    </li>
+                </ul>
+                <BarEchart data={dataList} field={field} echartID={echartID} name={echartName} title={echartTitle} x={echartX} />
+                <div className='instruction'>
+                    <p>说明：</p>
+                    {this.props.children}
                 </div>
             </div>
         )
@@ -51,7 +51,7 @@ class FuzhuModule extends React.Component {
 }
 
 
-export default class Fuzhu extends React.Component {
+export default class DetailHealthFuzhu extends React.Component {
     render() {
         let data = this.props.data;
         if (data.dataDetail != null && data.dataDetail != '') {
@@ -62,111 +62,97 @@ export default class Fuzhu extends React.Component {
             var loyalty = data.dataDetail.loyalty; //忠诚度基本信息
             var growth = data.dataDetail.growth; //成长性基本信息
             var rate = data.dataDetail.rate; //收益率基本信息
+            var negative = data.dataDetail.negative; //负面信息
         }
-        if (data.listdata != null && data.listdata.length > 0) {
+        if (data.listdata !== null && data.listdata.length > 0) {
             return (
-                <div>
-                    <div className='healthTop'>
-                        <p>辅助指标为参考性指标，可辅助判断。</p>
-                        <p>数据说明：极强 > 强 > 偏强 > 正常 > 偏弱 > 弱 > 极弱</p>
+                <div className="detailHealthFuzhu">
+                    <div className='note'>
+                        辅助指标为参考性指标，可辅助判断。
                     </div>
-                    <FuzhuModule titleText={'流动性诊断'} data={mobility} EchartID={'barEchartFuzhuLiudong'}>
-                        <p>说明：1. 借款期限数值越低代表流动性越好，资金的灵活性越高;</p>
+                    <FuzhuModule mt={true} data={mobility} dataList={data.listdata} iconName={'zb-liudong'} title={'流动性诊断'} field={'loanPeriod'} echartID={'barEchartLiudong'} echartName={'借款期限(月)'} echartTitle={'借款期限'} echartX={30}>
+                        <p>1. 借款期限数值越低代表流动性越好，资金的灵活性越高;</p>
                         <p>2. 借款期限数值越高代表流动性越差，资金的灵活性越低。</p>
                     </FuzhuModule>
                     {/*流动性诊断 end*/}
 
-                    <FuzhuModule titleText={'分散度诊断'} data={dispersion} EchartID={'barEchartFuzhuFensan'}>
-                        <p>说明：1. 借款金额数值越低代表分散度越好，系统性风险越低;</p>
-                        <p> 2. 借款金额数值越高代表分散度越差，系统性风险越高。</p>
+                    <FuzhuModule data={dispersion} dataList={data.listdata} iconName={'zb-fensan'} title={'分散度诊断'} field={'avgBorrowMoney'} echartID={'barEchartFensan'} echartName={'人均借款金额(万元)'} echartTitle={'人均借款金额'} echartX={30}>
+                        <p>1. 借款金额数值越低代表分散度越好，系统性风险越低;</p>
+                        <p>2. 借款金额数值越高代表分散度越差，系统性风险越高。</p>
                     </FuzhuModule>
                     {/*分散度诊断 end*/}
 
-                    <FuzhuModule titleText={'人气诊断'} data={popularity} EchartID={'barEchartFuzhuRenqi'}>
-                        <p>说明：1. 投资人数数值越高代表人气越好;</p>
+                    <FuzhuModule data={popularity} dataList={data.listdata} iconName={'zb-renqi'} title={'人气诊断'} field={'bidderNum'} echartID={'barEchartRenqi'} echartName={'投资人数(人)'} echartTitle={'投资人数'} echartX={50}>
+                        <p>1. 投资人数数值越高代表人气越好;</p>
                         <p>2. 投资人数数值越低代表人气越差。</p>
                     </FuzhuModule>
                     {/*人气诊断 end*/}
 
-                    <FuzhuModule titleText={'体量诊断'} data={stayStill} EchartID={'barEchartFuzhuTiliang'}>
-                        <p>说明：1. 累计待还金额数值越高代表体量越大，系统性风险越低;</p>
-                        <p> 2. 累计待还金额数值越低代表体量越低，系统性风险越高。</p>
+                    <FuzhuModule data={stayStill} dataList={data.listdata} iconName={'zb-tiliang'} title={'体量诊断'} field={'stayStillOfTotal'} echartID={'barEchartTiliang'} echartName={'累计待还金额(万元)'} echartTitle={'累计待还金额'} echartX={75}>
+                        <p>1. 累计待还金额数值越高代表体量越大，系统性风险越低;</p>
+                        <p>2. 累计待还金额数值越低代表体量越低，系统性风险越高。</p>
                     </FuzhuModule>
                     {/*体量诊断 end*/}
 
-                    <FuzhuModule titleText={'忠诚度诊断'} data={loyalty} EchartID={'barEchartFuzhuZhongchengdu'}>
-                        <p>说明：1. 人均投资金额越高代表用户忠诚度越高，平台越健康;</p>
-                        <p> 2. 人均投资金额越低代表用户忠诚度越低，平台越不健康。</p>
+                    <FuzhuModule data={loyalty} dataList={data.listdata} iconName={'zb-zhongchengdu'} title={'忠诚度诊断'} field={'avgBidMoney'} echartID={'barEchartZHongchengdu'} echartName={'人均投资金额(万元)'} echartTitle={'人均投资金额'} echartX={35}>
+                        <p>1. 人均投资金额越高代表用户忠诚度越高，平台越健康;</p>
+                        <p>2. 人均投资金额越低代表用户忠诚度越低，平台越不健康。</p>
                     </FuzhuModule>
                     {/*忠诚度诊断 end*/}
 
-                    <FuzhuModule titleText={'成长性诊断'} data={growth} EchartID={'barEchartFuzhuChengzhang'}>
-                        <p>说明：1. 待收投资人数数值越高代表用户体量健康，成长性越好;</p>
-                        <p> 2. 待收投资人数数值越低代表用户体量萎靡，成长性越差。</p>
+                    <FuzhuModule data={growth} dataList={data.listdata} iconName={'zb-chengzhang'} title={'成长性诊断'} field={'bidderWaitNum'} echartID={'barEchartChengzhang'} echartName={'待收投资人数(人)'} echartTitle={'待收投资人数'} echartX={60}>
+                        <p>1. 待收投资人数数值越高代表用户体量健康，成长性越好;</p>
+                        <p>2. 待收投资人数数值越低代表用户体量萎靡，成长性越差。</p>
                     </FuzhuModule>
                     {/*成长性诊断 end*/}
 
-                    <FuzhuModule titleText={'收益率诊断'} data={rate} EchartID={'barEchartFuzhuShouyi'}>
-                        <p>说明：利率数据高低与平台安全性没有直接关系，仅作为数据参考</p>
+                    <FuzhuModule data={rate} dataList={data.listdata} iconName={'zb-shouyi'} title={'收益率诊断'} field={'rate'} echartID={'barEchartShouyi'} echartName={'利率(%)'} echartTitle={'利率'} echartX={38}>
+                        <p>利率数据高低与平台安全性没有直接关系，仅作为数据参考</p>
                     </FuzhuModule>
                     {/*收益率诊断 end*/}
 
+
+                    <div className={'diagnoseBox box mt10'}>
+                        <div className="hd">
+                            <div className="l">
+                                <Icon type={require('../../../../assets/icons/new/zb-fumian.svg')} color={'#b8c1c7'} size={'lg'} />
+                            </div>
+                            <div className="r">
+                                <h6 className="tit">负面事件诊断</h6>
+                            </div>
+                        </div>
+                        <div className="bdFumian">
+                            {
+                                data.dataDetail != null && data.dataDetail != '' && data.dataDetail.negative != '' && data.dataDetail.negative != null ?
+                                    negative.split('<p>').map((text, i) => {
+                                        let list = text.split('<href>');
+                                        return (
+                                            <a key={i} className='fumianList' href={list[1]} >
+                                                {list[0]}
+                                            </a>
+                                        )
+                                    })
+                                    :
+                                    <div className='nullF'>暂无负面数据</div>
+                            }
+
+                        </div>
+                        <div className='instruction'>
+                            <p>说明：不断有负面信息的平台，往往是出事的前兆。</p>
+                        </div>
+                    </div>
                 </div>
             )
         }
         else {
             return (
-                <div className='dataNull'>暂无数据</div>
+                <div className="detailHealthFuzhu">
+                    <div className='null'>暂无数据</div>
+                </div>
+
             )
         }
 
     }
-    componentDidMount() {
-        var data = this.props.data;
 
-        if (data.listdata != null && data.listdata.length > 0) {
-            var dateTimeAll = [] //时间列表
-            var dataLoanPeriod = [] //流动性
-            var dataAvgBorrowMoney = []  //分散度
-            var dataBidderNum = []     //人气
-            var dataStayStillOfTotal = []     //体量
-            var dataAvgBidMoney = []  //忠诚度
-            var dataBidderWaitNum = []  //成长性
-            var dataRate = []   //收益率
-
-            for (var i = 0; i < data.listdata.length; i++) {
-                dateTimeAll.push(data.listdata[i].date_str.substring(5));
-                dataLoanPeriod.push(data.listdata[i].loanPeriod)
-                dataAvgBorrowMoney.push(data.listdata[i].avgBorrowMoney)
-                dataBidderNum.push(data.listdata[i].bidderNum)
-                dataStayStillOfTotal.push(data.listdata[i].stayStillOfTotal)
-                dataAvgBidMoney.push(data.listdata[i].avgBidMoney)
-                dataBidderWaitNum.push(data.listdata[i].bidderWaitNum)
-                dataRate.push(data.listdata[i].rate)
-            }
-            const barEchartFuzhuLiudong = document.getElementById('barEchartFuzhuLiudong');
-            const barEchartFuzhuFensan = document.getElementById('barEchartFuzhuFensan');
-            const barEchartFuzhuRenqi = document.getElementById('barEchartFuzhuRenqi');
-            const barEchartFuzhuTiliang = document.getElementById('barEchartFuzhuTiliang');
-            const barEchartFuzhuZhongchengdu = document.getElementById('barEchartFuzhuZhongchengdu');
-            const barEchartFuzhuChengzhang = document.getElementById('barEchartFuzhuChengzhang');
-            const barEchartFuzhuShouyi = document.getElementById('barEchartFuzhuShouyi');
-
-
-            echarts.init(barEchartFuzhuLiudong).setOption(barChartHealth('借款期限(月)', '借款期限', dateTimeAll, dataLoanPeriod, 30));
-
-            echarts.init(barEchartFuzhuFensan).setOption(barChartHealth('人均借款金额(万元)', '人均借款金额', dateTimeAll, dataAvgBorrowMoney, 30));
-
-            echarts.init(barEchartFuzhuRenqi).setOption(barChartHealth('投资人数(人)', '投资人数', dateTimeAll, dataBidderNum, 50));
-
-            echarts.init(barEchartFuzhuTiliang).setOption(barChartHealth('累计待还金额(万元)', '累计待还金额', dateTimeAll, dataStayStillOfTotal, 75));
-
-            echarts.init(barEchartFuzhuZhongchengdu).setOption(barChartHealth('人均投资金额(万元)', '人均投资金额', dateTimeAll, dataAvgBidMoney, 35));
-
-            echarts.init(barEchartFuzhuChengzhang).setOption(barChartHealth('待收投资人数(人)', '待收投资人数', dateTimeAll, dataBidderWaitNum, 60));
-
-            echarts.init(barEchartFuzhuShouyi).setOption(barChartHealth('利率(%)', '利率', dateTimeAll, dataRate, 38));
-        }
-
-    }
 }

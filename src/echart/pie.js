@@ -1,4 +1,4 @@
-export function pieFund(data) {
+export function pieFund(data,color) {
     return {
         tooltip: {
             trigger: 'item',
@@ -13,16 +13,14 @@ export function pieFund(data) {
                 center: ['50%', '50%'],
                 data: data
             }
-        ]
+        ],
+        color: color
     }
 }
 
 export function pieYulun(data) {
     return {
-        title: {
-            text: '过去48小时舆论热点分布',
-            x: 'center'
-        },
+      
         tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b} ({d}%)"
@@ -33,7 +31,7 @@ export function pieYulun(data) {
                 name: '舆论分布',
                 type: 'pie',
                 radius: '55%',
-                center: ['50%', '60%'],
+                center: ['50%', '50%'],
                 data: data,
                 itemStyle: {
                     emphasis: {

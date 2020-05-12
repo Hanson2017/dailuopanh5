@@ -1,0 +1,147 @@
+.detailDataYunyingContainer{
+    .list{
+        padding: 0.2rem 0 0.2rem 0.34rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        span{
+            color: #666;
+            width: 50%;
+            line-height: 0.48rem;
+        }
+    }
+    .null{
+        padding-left:50%;
+        padding-bottom: 0.4rem;
+        margin-left: -2.1rem; 
+        background-color: #fff;
+    }
+}
+
+.detailDataFlowContainer{
+    .score{
+        padding-bottom: 0.4rem;
+    }
+    .listContainer{
+        padding:  0 0 0 0.3rem;
+        .list{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 1.3rem;
+            border-bottom: 1px solid #eee;
+            .name{
+                margin-right: 0.4rem;
+                width: 1.2rem;
+                height: 0.44rem;
+                line-height: 0.44rem;
+                text-align: center;
+                border-radius: 0.08rem;
+                background-color: #bbb;
+                color: #fff;
+            }
+            .echart{
+                width: 2.2rem;
+                height: 0.4rem;
+            }
+            .num{
+                margin-left: 0.4rem;
+                color: #999;
+                b{
+                    padding-left: 0.2rem;
+                    font-size: 0.28rem;
+                    color: #333;
+                }
+            }
+        }
+    }
+    .null{
+        padding-left:50%;
+        padding-bottom: 0.4rem;
+        margin-left: -2.1rem; 
+        background-color: #fff;
+    }
+}
+
+.detailDataUserContainer{
+    .sexCon{
+        .content{
+            padding: 0.3rem 0.34rem;
+        }
+        .userSex{
+            margin-top: 0.3rem;
+            padding-top: 0.2rem;
+            border-top: 1px dashed #eee;
+            .male{
+                .label,.bili{
+                    color: #66a8e9;
+                }
+                .progress{
+                    background-color: #66a8e9
+                }
+            }
+            .female{
+                .label,.bili{
+                    color: #f2528c;
+                }
+                .progress{
+                    background-color: #f2528c
+                }
+            }
+            .null{
+                padding-top: 0.1rem;
+            }
+        }
+    }
+    .areaCon{
+        .list{
+            padding: 0.34rem;
+            li{
+                margin: 0.12rem 0;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .number{
+                    display: inline-block;
+                    width: 0.6rem;
+                    height: 0.4rem;
+                    line-height: 0.4rem;
+                    text-align: center;
+                    border-radius: 0.08rem;
+                    background-color: #E3E3E3;
+                    color: #fff;
+                }
+                .platName{
+                    width: 1.0rem;
+                    padding-left:0.3rem;
+                    color: #bbb;
+                }
+                .progress{
+                    border-radius: 0.08rem;
+                    height: 0.32rem;
+                    background-color: #E3E3E3;
+                }
+            }
+            .li0,.li1,.li2{
+                .number{
+                    background-color: #bbb;
+                }
+                .progress{
+                    background-color: #bbb;
+                }
+                
+            }
+        }
+    }
+    .replatCon{
+        .content{
+            padding: 0.34rem;
+        }
+    }
+    .null{
+        padding-left:50%;
+        padding-bottom: 0.4rem;
+        margin-left: -2.1rem; 
+        background-color: #fff;
+    }
+}

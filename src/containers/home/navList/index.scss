@@ -1,7 +1,19 @@
-.NavList{
-   
-    padding: 0.4rem;
-    .am-grid .am-flexbox{
-        background: none;
+@import "../../../style/_mixin.scss";
+
+.homeNavList{
+    display: flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    .link{
+       margin: 0.15rem 0;
+       display: flex;
+       flex-direction:column;
+       align-items:center;
+       width: 20%;
+       .text{
+            padding-top: 0.12rem;
+            display: block;
+            color: #30333b;
+       }
     }
 }

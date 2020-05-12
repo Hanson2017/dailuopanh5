@@ -1,11 +1,12 @@
+@import "../../style/_mixin.scss";
 .tabBarNav{
+    $height: 0.76rem;
     width: 100%;
     position: fixed;
-    top: 1.38rem;
+    top: 0.84rem;
     left: 0;
-    border-top: 1px solid #21272c;
-    height: 0.8rem;
-    background-color:#14191e; 
+    height: $height;
+    background-color:$color; 
     display: flex;
     flex-direction: row;
     justify-content:center;
@@ -13,11 +14,10 @@
     z-index: 999;
     .list,a{
         flex: 1;
-        height: 0.8rem;
-        line-height: 0.8rem;
+        height: $height;
+        line-height: $height;
         text-align: center;
-        color: #646f7c;
-        font-size: 0.24rem;
+        color: #83CAFF;
     }
     .current{
         position: relative;
@@ -34,6 +34,56 @@
             border-left: .12rem solid transparent;
             border-right: .12rem solid transparent;
             border-bottom: .12rem solid #fff;
+        }
+    }
+}
+
+.tabBarNavBlack{
+    top: 1.3rem;
+    background-color:#303030; 
+    .list,a{
+        color: #A1A1A1;
+    } 
+    .current{
+        color: #fff;
+        font-weight: bold;
+    }
+}
+
+.tabBarNavQuery{
+    $height: 0.7rem;
+    width: 100%;
+    position: fixed;
+    top: 1.6rem;
+    left: 0;
+    height: $height;
+    background-color:#fff; 
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    z-index: 999;
+    .list,a{
+        flex: 1;
+        height: $height;
+        line-height: $height;
+        text-align: center;
+        color: #707070;
+    }
+    .current{
+        position: relative;
+        color: #262626;
+        &:before{
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            margin-left: -.12rem;
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: .12rem solid transparent;
+            border-right: .12rem solid transparent;
+            border-bottom: .12rem solid #f2f2f2;
         }
     }
 }

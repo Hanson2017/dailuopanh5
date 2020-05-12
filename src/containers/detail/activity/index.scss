@@ -1,18 +1,132 @@
-.detailActivity{
-    .appText{
-       color: #ABB7C4; 
+.detailActivityContainer{
+    .top{
+        .content{
+            padding: 0.3rem 0 0.3rem 0.34rem;
+        }
+        .list{
+            dl{
+                display: flex;
+                flex-direction: row;
+                padding-bottom:0.2rem;
+                margin-bottom: 0.3rem; 
+                border-bottom: 1px solid #eee;
+                &:last-child{
+                    padding-bottom:0;
+                    margin-bottom: 0; 
+                    border-bottom: none;
+                }
+                dt{
+                    position: relative;
+                    top: 0.08rem;
+                    margin-right: 0.4rem;
+                    width:1.1rem;
+                    height: 0.36rem;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    background-color: #FFBC41;
+                    border-radius: 0.08rem;
+                    .iconOut{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 0.36rem;
+                        height: 0.36rem;
+                        border-radius: 0.08rem;
+                        background-color: #E30A0A;
+                    }
+                    .iconIn{
+                        display: inline-block;
+                        width: 0.16rem;
+                        height: 0.16rem;
+                        border-radius: 0.08rem;
+                        background-color: #FFBC41;
+                    }
+                    .type{
+                        flex: 1;
+                        text-align: center;
+                        color: #fff;
+                    }
+                }
+                dt.ft{
+                    background-color: #FF6F00; 
+                }
+                dd{
+                    display: flex;
+                    flex-direction: column;
+                    .label{
+                        padding-top: 0.1rem;
+                        color: #999;
+                    }
+                    .text{
+                        font-weight: bold;
+                        font-size: 0.4rem;
+                        color: #101010;
+                        line-height: 0.48rem;
+                    }
+                    .rebateText{
+                        color: #D51920;
+                    }
+                    .rateText{
+                        color: #999;
+                    }
+                }
+                dd.invest{
+                    width: 1.7rem;
+                }
+                dd.rebate{
+                    width: 1.6rem;
+                }
+                dd.rate{
+                   flex: 1;
+                }
+                dd.more{
+                    width: 0.7rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
     }
-    .app{
-      display: block;
-      margin-top: 0.2rem;
-      width: 47%;
-      text-align: center;
-      padding: 0.12rem; 
-      background-color: #00a400;
-      color: #fff;
+    .appDown{
+        .content{
+            display: flex;
+            flex-direction: row;
+            padding: 0.3rem 0 0.4rem 0.6rem;
+            .l{
+                margin-right: 0.68rem;
+                .logo{
+                    width: 1.4rem;
+                    height: 188.6;
+                }
+            }
+            .r{
+                padding-right: 0.4rem;
+                font-size: 0.28rem;
+                color: #666;
+                line-height: 0.4rem;
+                .link{
+                    padding-top: 0.3rem;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-end;
+                    font-size: 0.28rem;
+                    color: #A81616;
+                    font-weight: bold;
+                }
+            }
+        }
     }
-}
+    .other{
+        .list{
+            padding: 0.34rem 0.3rem 0 0.34rem;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
 
-.detailActivityBox{
-    padding: 0.2rem;
 }

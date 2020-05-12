@@ -1,31 +1,77 @@
-.detailTitle{
-    position: relative;
-    padding-left: 0.42rem;
-    height: 0.68rem;
-    line-height: 0.68rem;
-    background-color: #dfe5ea;
-    color: #2D3640;
-    font-size: 0.28rem;
-    .titleIcon{
+@import "../../style/_mixin.scss";
+
+.titleContainer{
+    padding: 0.24rem 0.24rem 0.24rem 0.2rem;
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom: 1px solid $bottomColor;
+   .title{
+        display: flex;
+        flex-direction:row;
+        align-items:center;
+        font-size: 0.30rem;
+        color: #333;
+        font-weight: bold;
+       .icon{
+           margin-right: 0.1rem;
+           display: block;
+           width: 0.04rem;
+           height: 0.28rem;
+           background-color: $color;
+       }
+       .mfTag{
+            margin-left: 0.16rem;
+            width: 1.2rem;
+            height: 0.4rem;
+            line-height: 0.4rem;
+            text-align: center;
+            border: 1px solid #ddd;   
+            border-radius: 0.12rem;
+            font-size: 0.24rem;
+            color: #bbb;
+            font-weight: normal;
+       }
+       
+   }
+   .fundType{
+        margin: 0 0.06rem 0 0.2rem;
         display: inline-block;
-        background: #2c3641;    
-        width: 0.08rem;
-        height: 0.32rem;
-        position: absolute;
-        left: 0.2rem;
-        top:0.18rem;
-    }
-    .subtitle{
-        color: #999;
+        width: 0.56rem;
+        height: 0.36rem;
+        line-height: 0.36rem;
+        text-align: center;
+        border-radius: 0.08rem;
+        background-color: #bbb;
         font-size: 0.24rem;
-        padding-left: 0.2rem;
+        color: #fff;
     }
-    .yulunNUm{
-        position: absolute;
-        right: 0.3rem;
-        color: #ABB7C4;
-        i{
-            color: #2E99E8;
+    .fundType1{
+        background-color: $fund1Color;
+    }
+    .fundType2{
+        background-color: $fund2Color;
+    }
+    .fundType3{
+        background-color: $fund3Color;
+    }
+    .fundName{
+        padding-left: 0.10rem;
+        font-size: 0.26rem;
+        color: #999;
+        font-weight: normal;
+    }
+   .more{
+        font-size: 0.26rem;
+        color: #999;
+        .icon{
+            position: relative;
+            top: 0.04rem;
         }
     }
+    
+}
+.borderNot{
+    border-bottom: none;
 }

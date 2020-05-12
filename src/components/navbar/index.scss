@@ -1,3 +1,5 @@
+@import "../../style/_mixin.scss";
+
 .navbar,.navbar-left,.navbar-title,.navbar-right{
     display: flex;
     -webkit-box-align: center;
@@ -9,8 +11,8 @@
     top: 0;
     left: 0;
     color: #fff;
-    height: .9rem;
-    background: #14191e;
+    height: .84rem;
+    background: $color2;
     z-index: 999;
     .navbar-left,.navbar-title,.navbar-right{
         -webkit-box-flex: 1;
@@ -24,8 +26,10 @@
     .navbar-title{ 
         justify-content: center;
         flex:1;
+        font-size: 0.32rem;
+        font-weight: bold;
         .logo{
-            width: 0.48rem;
+            width: 1.817rem;
             height: 0.48rem;
         }
     }
@@ -39,4 +43,15 @@
         height: 0.60rem;
         border-radius: 50%;
     }
+    .navBarOperation{
+        padding-right: 0.3rem;  
+        width: 0.9rem;
+        font-size: 0.32rem;
+        color: #fff;
+        font-weight: bold;
+        text-align: right;
+    }
+}
+.navbarBlack{
+    background-color: #1A1A1A;
 }

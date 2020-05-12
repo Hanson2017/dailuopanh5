@@ -1,5 +1,52 @@
-.containerQuery{
-    .listContainer{
-        margin-top: 0.3rem;
+@import "../../style/_mixin.scss";
+
+.queryEntryContainer{
+    padding-top: 0.2rem;
+    background-color: #fff;
+    .content{
+        padding: 0.4rem 0 0.3rem 0.34rem;
+    }
+    .listCon{
+        margin-bottom: 0.3rem;
+        padding-bottom: 0.06rem;
+        border-bottom: 1px solid $bottomColor;
+        &:last-child{
+            border-bottom: none;
+        }
+        .tit{
+            margin-bottom: 0.3rem;
+            color: $color2;
+            font-size: 0.32rem;
+        }
+        .list{
+            display: flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+            .link{
+                display: inline-block;
+                margin-bottom: 0.24rem;
+                font-size: 0.26rem;
+                color: #666;
+            }
+        }
+    }
+
+}
+.queryContainer{
+    .update{
+        position: fixed;
+        top: 2.3rem;
+        z-index: 999;
+        padding-left: 0.2rem;
+        width: 100%;
+        box-sizing: border-box;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        background-color: #f2f2f2;
+        color: #AFAFAF;
+    }
+    .updateT{
+        padding: 0.2rem;
+        color: #AFAFAF;
     }
 }

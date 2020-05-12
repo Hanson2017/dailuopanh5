@@ -1,109 +1,125 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import { Icon } from 'antd-mobile';
+import { Link } from 'react-router-dom';
+import { Icon, Modal, Toast } from 'antd-mobile';
 import { fetchPosts } from '../../../../../redux/actions/index';
 import Api from '../../../../../utils/api';
+import Theme from '../../../../../utils/theme';
 import Loading from '../../../../../components/loading/index';
 import LoadMore from '../../../../../components/loadMore';
 import './index.scss';
+const alertShow = Modal.alert;
 
 class Item extends React.Component {
     render() {
-        const data = this.props.data;
-        let fundType = null;
-        const url = '/detail/' + data.id_dlp;
-        switch (data.fundtype) {
-            case 1:
-                fundType = '1号'
-                break;
-            case 2:
-                fundType = '2号'
-                break;
-            case 3:
-                fundType = '3号'
-                break;
-            case 4:
-                fundType = '活期'
-                break;
-            default:
-                fundType = null
-        }
+        const { data, guanzhuDel, that } = this.props;
         return (
-            <li>
-                <Link to={url}>
-
-                    <div className='hd'>
-                        <span className='platName'>{data.plat_name}</span>
-                        {
-                            data.platstatus == 1 ?
-
-                                <span className='state'>（正常）</span>
-                                :
-                                data.platstatus == 3 ?
-                                    <span className='state stateZhengyi'>（争议中）</span>
-                                    :
-                                    <span className='state stateBlack'>（黑名单）</span>
-
-                        }
-                        {
-                            fundType != null ?
-                                <span className='shifan'>（示范投资{fundType}）</span>
-                                : null
-                        }
-                    </div>
-                    <div className='bd'>
-                        <div className='rankZh'>
-                            <span>综合排名：</span>
+            <div className="list">
+                <div className="hd">
+                    <div className="left">
+                        <div className="platContainer">
+                            <Link className="plat" to={'/detail/' + data.id_dlp}>{data.plat_name}</Link>
                             {
-                                data.ordernum != 0 ?
-                                    <div>
-                                        <span className='order'>第{data.ordernum}名</span>
-                                        <span className='arrow'>
-                                            <Icon type={data.changnum >= 0 ? require('../../../../../assets/icons/arrow-up.svg') : require('../../../../../assets/icons/arrow-down.svg')} color={data.changnum >= 0 ? '#ff0063' : '#009963'} size={'xxs'} />
-                                        </span>
-                                        <span className='num'>(共{data.countnum}家)</span>
+                                data.fundtype ?
+                                    <div className="fundtype">
+                                        <Icon type={require('../../../../../assets/icons/new/fund-icon.svg')} color={Theme['fund' + data.fundtype + 'Color']} />
+                                        <span className="fundtypeNo">{data.fundtype}</span>
                                     </div>
                                     :
-                                    <span className='null'>暂无</span>
+                                    null
                             }
                         </div>
-                        <dl className='rank'>
-                            {this.item('之家', data.wdzj)}
-                            {this.item('天眼', data.p2peye)}
-                            {this.item('贷罗盘', data.dlp)}
-                            {this.item('融360', data.rong360)}
-                            {this.item('星火', data.xinghuo)}
-                            {this.item('羿飞', data.yifei)}
-                        </dl>
-                        <div className='yulun'>本周新舆论：{data.infonum}条</div>
+                        {
+                            data.platstatus == 1 ?
+                                <span className="state">正常运营</span>
+                                :
+                                data.platstatus == 3 ?
+                                    <span className="state stateBlack zy">争议中</span>
+                                    :
+                                    <span className="state stateBlack">黑名单</span>
+                        }
                     </div>
-
-
-                </Link>
-            </li>
+                    {
+                        data.flmflist.length > 0 ?
+                            <div className={guanzhuDel ? "right right2" : "right"}>
+                                {
+                                    data.flmflist.map((list, i) => {
+                                        let url = 'http://m.fanlimofang.com/Activity/Detail/' + list.activityid;
+                                        return (
+                                            <a className={list.investtype == 1 ? "activityCon activityConFt" : "activityCon"} href={url} target='_blank' key={i}>
+                                                <span className="icon"><i></i></span>
+                                                <span className="text">{list.investtype == 0 ? '首投' : '复投'}{list.invest}奖{list.rebate}</span>
+                                            </a>
+                                        )
+                                    })
+                                }
+                            </div>
+                            :
+                            null
+                    }
+                    {
+                        guanzhuDel ?
+                            <div className="delBtn"
+                                onClick={() => {
+                                    alertShow('提示', '你确认要取消关注该平台?', [
+                                        { text: '取消', onPress: () => console.log('cancel') },
+                                        { text: '确认', onPress: () => { that.attentionDel(data.id_dlp); } },
+                                    ])
+                                }}
+                            >
+                                <Icon type={require('../../../../../assets/icons/new/icon-del.svg')} color={"#D51920"} size={'sm'} />
+                            </div>
+                            :
+                            null
+                    }
+                </div>
+                <div className="bd">
+                    <div className="paimingZh">
+                        <div className="paimingZhList">
+                            <span className="label">综合排名:</span>
+                            {
+                                data.ordernum != 0 ?
+                                    <div className="con">
+                                        <span className="odr">{data.ordernum}</span>
+                                        <Icon type={data.changnum >= 0 ? require('../../../../../assets/icons/new/arrow-up.svg') : require('../../../../../assets/icons/new/arrow-down.svg')} color={data.changnum >= 0 ? Theme.upColor : Theme.downColor} size={'xxs'} />
+                                        <span className="num">(共{data.countnum}家)</span>
+                                    </div>
+                                    :
+                                    <span className="null">暂无</span>
+                            }
+                        </div>
+                        <div className="yulun">本周新舆论：<i>{data.infonum}</i></div>
+                    </div>
+                    <ul className="paiming">
+                        {this.item('网贷之家', data.wdzj)}
+                        {this.item('贷罗盘', data.dlp)}
+                        {this.item('网贷天眼', data.p2peye)}
+                        {this.item('融360', data.rong360)}
+                      
+                        
+                    </ul>
+                </div>
+            </div>
         )
     }
     item(nameText, data) {
         return (
-            <dd>
-                <span className='name'>{nameText}: </span>
+            <li className="paimingList">
+                <span className="label">{nameText}:</span>
                 {
                     data != null ?
-                        <div className='paiming'>
-                            <span className='order'>第{data.ordernum}名</span>
-                            <span className='arrow'>
-                                <Icon type={data.changenum >= 0 ? require('../../../../../assets/icons/arrow-up.svg') : require('../../../../../assets/icons/arrow-down.svg')} color={data.changenum >= 0 ? '#ff0063' : '#009963'} size={'xxs'} />
-                            </span>
-                            <span className='num'>({data.countnum}家)</span>
+                        <div className="con">
+                            <span className="odr">{data.ordernum}名</span>
+                            <Icon type={data.changenum >= 0 ? require('../../../../../assets/icons/new/arrow-up.svg') : require('../../../../../assets/icons/new/arrow-down.svg')} color={data.changenum >= 0 ? Theme.upColor : Theme.downColor} size={'xxs'} />
+                            <span className="num">(共{data.countnum}家)</span>
                         </div>
                         :
-                        <span className='null'>暂无</span>
+                        <span className="nul">暂无</span>
                 }
-            </dd>
+            </li>
         )
-
     }
+
 }
 
 class Guanzhu extends React.Component {
@@ -112,7 +128,7 @@ class Guanzhu extends React.Component {
         this.loadMore = this.loadMore.bind(this);
     }
     render() {
-        const { datas } = this.props;
+        const { datas, guanzhuDel } = this.props;
         if (datas.isFetching) {
             return (
                 <Loading />
@@ -120,20 +136,20 @@ class Guanzhu extends React.Component {
         }
         else {
             return (
-                <div className='guanzhuWp'>
+                <div className='guanzhuContainer'>
                     {
                         datas.items.length != 0 ?
                             <ul className='guanzhuList'>
                                 {
                                     datas.items.map((item, i) => {
                                         return (
-                                            <Item data={item} key={i} />
+                                            <Item data={item} key={i} guanzhuDel={guanzhuDel} that={this} />
                                         )
                                     })
                                 }
                             </ul>
                             :
-                            <span className='nullAtt'>暂无关注平台</span>
+                            <div className='null'>暂无关注平台</div>
                     }
                     {
                         datas.totalNum > 20 ?
@@ -148,14 +164,15 @@ class Guanzhu extends React.Component {
 
     }
     componentDidMount() {
-
+        this.getData()
+    }
+    getData() {
         const loginState = JSON.parse(localStorage.loginState);
         const memberid = loginState.r_id;
         const url = Api.attentionList + '?memberid=' + memberid + '&page=' + 1 + '&pagesize=20';
 
         const { dispatch, datas } = this.props;
         dispatch(fetchPosts('guanzhuList', url, 1, 'dataList'))
-
     }
     loadMore() {
         const { dispatch, datas } = this.props;
@@ -165,6 +182,29 @@ class Guanzhu extends React.Component {
         if (!datas.loadMore && datas.pageCount >= datas.page) {
             dispatch(fetchPosts('guanzhuList', url, 2, 'dataList'))
         }
+    }
+
+    // 取消关注
+    attentionDel(id) {
+        const that = this;
+        const loginState = JSON.parse(localStorage.loginState);
+        const memberid = loginState.r_id;
+
+        const url = Api.attentionDel + '?id_dlp=' + id + '&memberid=' + memberid;
+
+        fetch(url)
+            .then(function (response) {
+                if (response.status >= 400) {
+                    throw new Error("Bad response from server");
+                }
+                return response.json();
+            })
+            .then(function (json) {
+                if (json.result == 1) {
+                    Toast.success('取消关注成功', 2);
+                    that.getData()
+                }
+            });
     }
 }
 

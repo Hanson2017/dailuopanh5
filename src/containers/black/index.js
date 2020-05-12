@@ -8,20 +8,24 @@ import TabBar from '../../components/tabBar/tabs';
 import List from './list/'
 import ListTab from './listTab/'
 
+import './index.scss';
+
 const width = document.body.clientWidth;
 
 const Black = createReactClass({
     render() {
-        const { datas } = this.props;
+        const { totalNum, updatetime, history } = this.props;
         return (
-            <div className='container' style={{ 'padding-top': '2.2rem' }}>
-                <Header title={'黑名单'} location={this.props.location} />
-                <NumBar numText={'黑名单统计平台数量：' + datas + '家'} />
-                <TabBar>
-                    <List name={'列表'} column={'black'} columnID={'blackList'} ctype={'black'} />
-                    <ListTab name={'按省份'} type={'shengfen'} columnID={'blackShengfen'} tabWidth={(width - 0.2 * 50 * 8) / (50 * 6)} />
-                    <ListTab name={'按首字母'} type={'zimu'} columnID={'blackZimu'} tabWidth={(width - 0.2 * 50 * 8) / (50 * 6)} />
-                    <ListTab name={'按出事时间'} type={'shijian'} columnID={'blackShijian'} tabWidth={(width - 0.2 * 50 * 5.5) / (50 * 4)} titleText={'年'} />
+            <div className='blackContainer'>
+                <Header title={'黑名单'} history={history} black={true} />
+                <div className="update">
+                    更新时间：{updatetime}<i>|</i>共{totalNum}家黑名单平台
+                </div>
+                <TabBar black={true}>
+                    <List name={'列表'} column={'black'} columnID={'blackList'} ctype={'black'} history={history} />
+                    <ListTab name={'按地区'} type={'shengfen'} columnID={'blackShengfen'} tabWidth={(width - 0.2 * 50 * 8) / (50 * 6)} history={history} />
+                    <ListTab name={'按首字母'} type={'zimu'} columnID={'blackZimu'} tabWidth={(width - 0.2 * 50 * 8) / (50 * 6)} history={history} />
+                    <ListTab name={'按出事时间'} type={'shijian'} columnID={'blackShijian'} tabWidth={(width - 0.2 * 50 * 5.5) / (50 * 4)} titleText={'年'} history={history} />
                 </TabBar>
             </div>
         )
@@ -29,7 +33,10 @@ const Black = createReactClass({
 })
 
 function mapStateToProps(state) {
-    return { datas: state.totalNum.totalNum };
+    return {
+        totalNum: state.blackList.totalNum,
+        updatetime: state.blackList.updatetime
+    };
 }
 
 export default connect(mapStateToProps)(Black);

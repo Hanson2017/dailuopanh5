@@ -1,42 +1,65 @@
+@import "../../../../../style/_mixin.scss";
+
 .accountSetWp{
-    padding-top: 0.2rem;
-    background-color: #e1e6eb;
+    background-color: $bgColor;
 }
 .accountSet{
-    li{
-        position: relative;
-        padding: 0 0.3rem;
-        border-bottom: 1px solid #e1e6eb;
-        height: 0.9rem;
-        line-height: 0.9rem;
-        text-align: right;
+    .hd{
+        padding: 0.4rem 0 0.3rem 0;
         background-color: #fff;
-        color: #8c96a0;
-        a{
-            display: block;
-            width: 100%;
-            height: 100%;
-            color: #8c96a0;
+        text-align: center;
+        .avatar{
+            width: 1rem;
+            height: 1rem;
+            border-radius: 0.5rem;
         }
-        label{
-            position: absolute;
-            left: 0.3rem;
-            top: 0;
-            color: #28323c;
-            font-weight: bold;
+        .userName{
+            padding: 0.1rem 0;
+            font-size: 0.32rem;
+            color: #101010;
         }
-        svg{
-            position: absolute;
-            right: 0.3rem;
-            top: 0.26rem;
+        .userDay{
+            color: #73C3FF;
         }
     }
+    .accountSetList{
+        margin-top: 0.2rem;
+        li{
+            position: relative;
+            padding: 0 0.3rem;
+            border-bottom: 1px solid #eee;
+            height: 0.9rem;
+            line-height: 0.9rem;
+            text-align: right;
+            background-color: #fff;
+            color: #999;
+            a{
+                display: block;
+                width: 100%;
+                height: 100%;
+                color: #8c96a0;
+            }
+            label{
+                position: absolute;
+                left: 0.3rem;
+                top: 0;
+                color: #666;
+                font-size: 0.32rem;
+            }
+            svg{
+                position: relative;               
+                top: 0.06rem;
+            }
+        }
+    }
+    
     .logout{
         margin-top:0.2rem; 
         width: 100%;
         height: 0.9rem;
         background-color: #fff;
         text-align: center;
-        font-weight: bold;
+        color: #666;
+        font-size: 0.32rem;
     }
 }

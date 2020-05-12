@@ -1,0 +1,93 @@
+
+@import "../../style/_mixin.scss";
+.tabYulunContainer{
+    .pingce{
+        .list{
+            padding: 0.2rem 0 0.2rem 0.34rem;
+            .title{
+                display: block;
+                padding: 0.2rem 0.2rem 0.2rem 0;
+                line-height: 0.36rem;
+                font-size: 0.28rem;
+                color: #101010;
+                border-bottom: 1px solid $bottomColor;
+                &:last-child{
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+    .yulun{
+        .list{
+            padding: 0.24rem 0 0.2rem 0.34rem;
+        }
+    }
+    .comment{
+        .list{
+            padding: 0.3rem 0 0.2rem 0.34rem;
+        }
+    }
+    .bbs{
+        .content{
+            padding:0 0 0.3rem 0.34rem;
+        }
+        .hd{
+            box-sizing: border-box;
+            margin: 0.4rem 0.3rem 0.2rem 0;
+            padding: 0.2rem;
+            display: flex;
+            flex-direction: row;
+            border-radius: 0.16rem;
+            border: 1px solid #eee;
+            .img{
+                width: 1.54rem;
+                height: 1.54rem;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .con{
+                flex:1;
+                margin-left: 0.3rem;
+                .tit{
+                    font-size: 0.32rem;
+                    color: #515151;
+                    font-weight: bold;
+                }
+                p{
+                    padding: 0.12rem 0 0.2rem 0;
+                    color: #999;
+                    line-height: 0.3rem;
+                }
+                .more{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-end;
+                    color: #0096E6;
+                    .am-icon-xxs {
+                        position: relative;
+                        top: -0.02rem;
+                        margin-left: 0.06rem;
+                        width: 0.24rem;
+                        height: 0.24rem;
+                    }
+                }
+            }
+        }
+        .list{
+           .item{
+               display: block;
+               padding: 0.2rem 0.2rem 0.2rem 0;
+               border-bottom: 1px solid #eee;
+               font-size: 0.28rem;
+               color: #101010;
+               line-height: 0.36rem;
+               &:last-child{
+                   border-bottom: none;
+               }
+           } 
+        }
+    }
+}

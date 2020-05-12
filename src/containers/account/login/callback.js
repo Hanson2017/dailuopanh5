@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-import createReactClass from 'create-react-class';
-import { History } from 'react-router';
 import fetch from 'isomorphic-fetch'
 import Util from '../../../utils/util';
 import Api from '../../../utils/api';
 import Loading from '../../../components/loading/index';
 
-const Callback = createReactClass({
-    mixins: [History],
+export default class Callback extends Component{
     render() {
         return (
             <Loading />
         )
-    },
+    }
     componentDidMount() {
         const that = this;
+        const { history } = this.props;
         const code = Util.GetQueryString('code');
         const url = Api.getUserinfo + '?code=' + code + '&state=dlp';
         console.log(url)
@@ -26,19 +24,18 @@ const Callback = createReactClass({
                 return response.json();
             })
             .then(function (json) {
+                console.log(json)
                 if (json.result == 1) {
                     const result = JSON.stringify(json)
                     localStorage.loginState = result
-                    that.history.replaceState(null, '/member/index')
+                    history.replace('/')
+                    // history.goBack(-2)
                 }
                 else {
-                    that.history.replaceState(null, '/member/Login')
                     console.log('登陆失败')
                 }
-                console.log(json)
             });
 
     }
-})
+}
 
-export default Callback;

@@ -1,40 +1,55 @@
+
+@import "../../style/_mixin.scss";
+.yulunContainer{
+    padding-top: 1.3rem;
+    .content{
+        .top{
+            background-color: #fff;
+            .echartsTitle{
+                margin:0.3rem auto;
+                width: 3.2rem;
+                height: 0.44rem;
+                line-height: 0.44rem;
+                text-align: center;
+                background-color: #F5F5F5;
+                border-radius: 0.08rem;
+                color: #999;
+            }
+            .numCon{
+                border-top: 1px solid $bottomColor;
+                display: flex;
+                flex-direction: row;
+                height: 0.64rem;
+                align-items: center;
+                >span{
+                    display: block;
+                    flex: 1;
+                    height: 0.64rem;
+                    line-height: 0.64rem;
+                    text-align: center;
+                    color: #bbb;
+                    &:first-child{
+                        border-right: 1px solid $bottomColor;
+                    }
+                    .num{
+                        color: $color
+                    }
+                }
+            }
+        }
+       
+        .list{
+            margin-top: 0.2rem;
+            background-color: #fff;
+            padding: 0.4rem 0 0 0.34rem;
+        }
+    }
+}
+
+
+
 .pieEchart{
     margin: 0 auto;
     width: 100%;
     height: 3.8rem;
-}
-.yulunList{
-    .link{
-        display: block;
-        padding: 0.2rem;
-        border-bottom: 1px solid #f2f2f2;
-        .title{
-            margin-bottom: 0.1rem;
-            line-height: 0.4rem;
-            font-size: 0.26rem;
-            color: #333;
-            font-weight: normal;
-        }
-        .time{
-            color: #ccc;
-        }
-    }
-    .loadMore{
-        margin: 0.2rem;
-    }
-}
-.yulunNum{
-    margin: 0.3rem 0 0.3rem 0;  
-    text-align: center;
-    color: #ccc;
-    font-size: 0.24rem;
-    .total{
-        padding-right: 0.8rem;
-    }
-}
-.pingceNum{
-    margin-bottom: 0.3ren;
-    padding-left: 0.2rem;
-    font-size: 0.24rem;
-    color: #ccc;
 }

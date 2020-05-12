@@ -1,0 +1,67 @@
+@import "../../../../../style/_mixin.scss";
+
+.commentListAccountContainer{
+    background-color: #fff;
+    .list{
+        padding: 0.4rem 0 0 0.3rem;
+        li{
+            margin-bottom: 0.3rem;
+            padding: 0 0.3rem 0.3rem 0;
+            border-bottom: 1px solid $bottomColor;
+            &:last-child{
+                border-bottom: none;
+                margin-bottom: 0;
+            }
+            .hd{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .type{
+                    margin-right: 0.2rem;
+                    display: inline-block;
+                    width: 0.8rem;
+                    height: 0.32rem;
+                    line-height: 0.32rem;
+                    text-align: center;
+                    border-radius: 0.08rem;
+                    background-color: #F2F2F2;
+                    color: #bbb;
+                }
+                .title{
+                    flex: 1;
+                    @extend %singleline-ellipsis;
+                    color: #999;  
+                }
+            }
+            .bd{
+                padding: 0.2rem 0;
+                color: #333;
+                line-height: 1.6;
+            }
+            .ft{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                .date{
+                    color: #bbb; 
+                }
+                .openCon{
+                    display: flex;
+                    flex-direction: row;
+                    align-items:center;
+                    justify-content:flex-end;
+                    color: #bbb;
+                    .icon{
+                        position: relative;
+                        padding-right: 0.06rem;
+                        top: 0.02rem;
+                    }
+                    .close{
+                        color: $color;
+                    }
+                }
+            }
+        }
+    }
+}

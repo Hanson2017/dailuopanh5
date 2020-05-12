@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 
 
 import Api from '../../../utils/api'
-import ListContainer from '../../listContainer/'
+import ListContainer from '../../listContainer/index2'
 
 export default class List extends React.Component {
     render() {
-       
-        const type=this.props.type;
-        const listCout=this.props.listCout;
-        const url=Api.health+'?type='+type;
-        const columnID=this.props.columnID;
+        const { history, type, field, columnID } = this.props;
+        const url = Api.health + '?type=' + type;
         return (
-            <ListContainer listCout={listCout} url={url} columnID={columnID} dataListName={'dataList'} />
+            <ListContainer field={field} url={url} columnID={columnID} dataListName={'dataList'} history={history} />
         )
     }
 }

@@ -1,0 +1,367 @@
+@import "../../../style/_mixin.scss";
+.detailFundContainer{
+    .info{
+        padding: 0.3rem;
+        .hd{
+            margin-bottom: 0.5rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .plat{
+                padding-left: 0.1rem;
+                font-size: 0.36rem;
+                color: #666;
+                font-weight: bold;
+            }
+            .icon{
+                position: relative;
+                top: 0.06rem;
+            }
+        }
+        .bd{
+           
+            .item{
+                display: flex;
+                flex-direction: row;
+                .ic1{
+                    width: 1.6rem;
+                }
+                .ic2{
+                 width: 1.8rem;
+                 }
+                 .ic3{
+                     width: 1.7rem;
+                 }
+            }
+            dl{
+                dt{
+                    
+                    color: #999;
+                }
+                dd{
+                     margin-top: 0.16rem;
+                    font-size: 0.28rem;
+                    color: #666;
+                }
+            }
+            .reasons{
+                margin-top: 0.3rem;    
+                .h6{
+                    color: #707070;
+                    font-weight: normal;
+                }
+                .con{
+                    margin-top: 0.1rem;
+                    padding: 0.16rem 0.12rem;
+                    background-color: #F5F5F5;
+                    color: #A1A1A1;
+                    font-size: #bbb;
+                    line-height: 0.36rem;
+                }
+            }
+        }
+    }
+    .other{
+        padding:0.3rem 0.3rem 0.4rem 0.3rem;
+        .hd{
+            margin-bottom: 0.3rem;
+            padding-left: 0.3rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .type{                
+                margin-right: 0.2rem;
+                display: inline-block;
+                width: 0.8rem;
+                height: 0.48rem;
+                line-height: 0.48rem;
+                text-align: center;
+                border-radius: 0.08rem;
+                font-size: 0.32rem;
+                color: #fff;
+            }
+            .type1{
+                background-color: $fund1Color;
+            }
+            .type2{
+                background-color: $fund2Color;
+            }
+            .type3{
+                background-color: $fund3Color;
+            }
+            .tit{
+                font-size: 0.36rem;
+                color: #333;
+                font-weight: bold;
+            }
+        }
+        .echart{
+            margin: 0 auto;
+            width: 100%;
+            height: 3.5rem;
+        }
+        .sm{
+            padding:0.3rem 0.3rem 0 0.3rem;
+            dl{
+                margin-bottom: 0.2rem;
+                display: flex;
+                flex-direction: row;
+            }
+            dt{
+                padding-right: 0.1rem;
+                width: 1.1rem;
+                color: #A1A1A1;
+            }
+            dd{
+              
+                flex: 1;
+                color: #707070;
+            }
+        }
+        .list{
+            margin-top: 0.4rem;
+            padding: 0.4rem 0 0 0.3rem;
+            display: flex;
+            flex-direction: row;
+            border-top: 1px solid $bottomColor;
+            .left{
+                padding-right: 0.1rem;
+                margin-right: 0.5rem;
+                border-right: 1px dashed #f2f2f2;
+            }
+            .item{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .ic1{
+                    width: 1.68rem;
+                }
+                .ic2{
+                    width: 1.2rem;
+                }
+            }
+            dt{
+                margin-bottom: 0.2rem;
+                color: #A1A1A1
+            }
+            dd{
+                margin-top: 0.1rem;
+                font-size: 0.28rem;
+                .ic1{
+                    color: #707070;
+                }
+               
+                .icc1{
+                    color: $fund1Color;
+                }
+                .icc2{
+                    color: $fund2Color;
+                }
+                .icc3{
+                    color: $fund3Color;
+                }
+            }
+           
+        }
+        .null{
+            padding: 0.2rem 0.6rem;
+            color: #bbb;
+        }
+    }
+}
+
+.detailFundContainerNew{
+    .info{
+        padding: 0 0 0.34rem 0.2rem;
+        .state{
+            $color:#15BE6E;
+            margin-bottom: 0.34rem;
+            padding: 0.34rem 0 0.34rem 0.14rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            .icon{
+                margin-right: 0.2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 1rem;
+                height: 1rem;
+                background-color:  $color;
+                border-radius: 0.16rem;
+                .am-icon-lg {
+                    width: 0.68rem;
+                    height: 0.68rem;
+                }
+            }           
+            .text{
+               line-height: 1.4;
+                color: $color;
+                .t1{
+                    font-size: 0.28rem;
+                }
+                .t2{
+                    font-size: 0.24rem;
+                }
+            }
+        }
+        .state.zy{
+            $color:#A81611;
+            .icon{
+                background-color:  $color;
+            }           
+            .text{        
+                color: $color;
+            }
+        }
+        .state.black{
+            $color:#090000;
+            .icon{
+                background-color:  $color;
+            }           
+            .text{        
+                color: $color;
+            }
+        }
+        .list{
+            padding: 0 0 0 0.14rem;
+            .item{
+                display: flex;
+                flex-direction: row;
+                .ic1{
+                    width: 1.6rem;
+                }
+                .ic2{
+                    width: 1.8rem;
+                }
+                .ic3{
+                    width: 2rem;
+                }
+            }
+            dt{
+                margin-bottom: 0.15rem;
+                font-size: 0.24rem;
+                color: #999;
+            }
+            dd{
+                font-size: 0.28rem;
+                color: #666;
+            }
+        }
+        .reason{
+            margin: 0.4rem 0.34rem 0.3rem 0.14rem;
+            padding: 0.16rem;
+            background-color: #F5F5F5;
+            color: #707070;
+            font-size: 0.24rem;
+            line-height: 0.4rem;
+        }
+        .showHt{
+            padding-left: 0.14rem;
+            font-size: 0.24rem;
+            color: #999;
+            text-decoration: underline;
+        }
+    }
+    
+}
+
+.fundliucheng{
+    .list{
+        &:first{
+            padding-top: 0.2rem;
+        }
+        &:first-child{
+            padding-top: 0.2rem;
+        }
+        .hd{
+            padding-left: 0.3rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 0.6rem;
+            border-bottom: 1px solid #eee;
+            .am-icon-md {
+                width: 0.4rem;
+                height: 0.4rem;
+            }
+            .date{
+                padding-left: 0.06rem;
+                color: #A1A1A1;
+            }
+        }
+        .bd{
+            padding: 0.3rem 0.34rem;
+            .platName{
+                display: block;
+                margin-bottom: 0.2rem;
+                font-size: 0.32rem;
+                color: #0096E6;
+                font-weight: bold;
+            }
+            .cc{
+                color: #666;
+                font-weight: bold;
+                line-height: 1.6;
+            }
+            .bz{
+                margin-top: 0.26rem;
+                padding:0.2rem 0 0 0; 
+                border-top: 1px solid #eee;
+                line-height: 1.6;
+                color: #999;
+            }
+        }
+    }
+    .list.first{
+        padding-top: 0.2rem;
+    }
+    .relatePic{
+        padding-top: 0.3rem;
+        margin-top: 0.3rem;
+        border-top: 1px solid #eee;
+        .tit{
+            margin-bottom: 0.2rem;
+            color: #666;
+            font-weight: bold;
+        }
+        .picList{
+            flex-wrap: wrap;
+            display: flex;
+            flex-direction: row;
+            li{
+               margin:0 0.3rem 0.2rem 0;
+               border: 1px solid #eee;
+               &:nth-child(3n){
+                margin-right: 0;
+               }
+            }
+            li.more{
+                
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background: #eee;
+                color: #999;
+                line-height: 1.6;
+            }
+        }
+    }
+    .relateHt{
+        margin-top: 0.4rem;
+        .tit{
+            margin-bottom: 0.2rem;
+            color: #666;
+            font-weight: bold;
+        }
+        .showHt {
+            font-size: 0.24rem;
+            color: #999;
+            text-decoration: underline;
+        }
+    }
+    
+    
+}

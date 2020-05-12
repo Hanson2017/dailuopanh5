@@ -1,4 +1,26 @@
-
+.listupDateTime{
+    padding: 0.2rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #BBE2FF;
+    .icon{
+        position: relative;
+        top: 0.02rem;
+    }
+    .time{
+        padding:0 0.3rem 0 0.05rem;
+    }
+    .am-icon-xxs{
+        width: 0.32rem;
+        height: 0.32rem;
+    }
+}
+.listContainer{
+    position: relative;
+    
+}
 .table{
     display: flex;
     position: relative;
@@ -8,76 +30,84 @@
     z-index:1;    
 }
 .tabList{
-     
-    dt,dd{   
-        display: flex;
-    }
-    dt{
-        height: 0.8rem;   
-        align-items:center;  
-        background: #e2e6ea;
-    }
-    .doubleItem{
-        height: 1rem;
-        line-height: 0.4rem;
-    }
-    dd{
-        background: #fff;
-        padding: 0.3rem 0;
-        height: 0.28rem;  
-        border-bottom: 1px solid #e2e6ea;
-    }
-    dd.itemRowH{
-       padding-bottom: 0.72rem;       
+    background-color: #fff;
+    .isbest{
+        background-color: #E3F3FB;
     }
     .item{
         span{
           position: relative;
           display: flex;          
           font-size: 0.24rem;
-          color: #8c96a0;
+          color: #999;
         }
-        .ic1,.ic2{
-            color: #28323c;
-        }
+        
         .ic1{
             padding-left: 0.3rem;
-            width: 1.18rem;
+            width: 1rem;
         }
         .ic2{
-            width: 2rem;
+            width: 1.78rem;
         }
         .icon{
            position: relative;
-           top: -0.02rem;
+           top: 0;
            left: 0;
+           .am-icon-xxs{
+            width: 0.24rem;
+            height: 0.24rem;
+           }
         }
         .tabTag{
             height: 0.38rem;
             position: absolute;
             bottom: 0.2rem;
             left: 0.3rem;
-            .hongbao,.tType{
-                display: inline-block;
-                float: left;  
+            .hongbao{
+                display: inline-block; 
+                width: 2.1rem;
                 height: 0.38rem;
                 line-height: 0.38rem;   
+                text-align:  center; 
+                background: #FFBC41;     
+                border-radius: 0.08rem;  
                 color: #fff;
                 font-size: 0.24rem;
-                text-align:  center;
             }
-            .hongbao{
-                padding: 0 0.1rem;
-                background: #ff9900;
-            }
-            .tType{
-                margin-right:0.1rem;
-                width: 0.72rem;
-                background-color: #d7d7d7;          
-            }
+        }        
+        .icc3{
+            font-weight: bold;
+            color: #0096e6;
         }
-        
     }
+    dt,dd{   
+        display: flex;
+    }
+    dt{
+        height: 0.8rem;   
+        align-items:center;
+        border-bottom: 1px solid #eee;
+    }
+    .doubleItem{
+        height: 1rem;
+        line-height: 0.4rem;
+       
+    }
+    dt.doubleItem{
+        align-items:flex-start;
+    }
+    dd{
+        padding: 0.3rem 0;
+        height: 0.28rem;  
+        border-bottom: 1px solid #eee;
+        .ic1,.ic2{
+            color: #333;
+        }
+    }
+    dd.itemRowH{
+       padding-bottom: 0.72rem;       
+    }
+    
 }
 
 .doubleTabList{
@@ -96,12 +126,12 @@
 .tabList-Left{
     z-index:2;    
     background: #fff;
-    width: 3.48rem;
+    width: 3.08rem;
     position: absolute;
     top:0;
     left: 0;
     dd,dt{
-        width: 3.48rem; 
+       
        position: relative;
     }
 }
@@ -112,4 +142,68 @@
 .listBotttom{
     padding: 0.3rem;
     background-color: #fff;
+}
+
+
+.tabListTag{
+     dd{
+         padding: 0.25rem 0;
+         height: 0.82rem;
+     }
+     .item .tabTag{
+         bottom: 0.25rem;
+     }
+     .up2{
+         margin-top: 0.24rem;
+         display: flex;
+         font-size: 0.24rem;
+         color: #999;
+         font-weight: normal;
+     }
+}
+
+
+.tagsTab{
+    .tags{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+        padding-left:0.54rem; 
+        .icon{
+            position: absolute;
+            top: -0.04rem;
+            left: 0;
+            .am-icon-xxs{
+                width: 0.44rem;
+                height: 0.44rem;
+            }
+        }
+        .tag{
+            padding: 0 0.1rem;
+            margin:0 0.12rem 0 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: 0.36rem;
+            background-color: #0096E6;
+            border-radius: 0.08rem;
+            color: #fff;
+            svg{
+                margin-left: 0.06rem;
+            }
+        }
+        .null{
+          background-color:transparent;
+          color: #999;
+          line-height: 0.36rem;
+        }
+    }
+    .tags.bad{
+        margin-top: 0.1rem;
+        .tag{
+            background-color: #bbb;
+        }
+    }
 }

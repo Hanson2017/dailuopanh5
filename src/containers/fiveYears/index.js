@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import createReactClass from 'create-react-class';
 import { connect } from 'react-redux';
 import ListContainer from '../listContainer/'
 import Api from '../../utils/api'
@@ -16,21 +15,22 @@ const listCout = [
     { title: '羿飞', field: 'score_yifei', 'isArrow': false, width: '1' }
 ];
 
-const FiveYears = createReactClass({
+class FiveYears extends React.Component {
     render() {
-        const { datas } = this.props;
+        const { datas, history } = this.props;
+        const pathname = this.props.location.pathname;
         const url = Api.fiveYears + '?type=all'
         return (
             <div className='container'>
-                <Header title={'5年老平台'} location={this.props.location} />
+                <Header title={'5年老平台'} history={history} pathname={pathname} />
                 <NumBar numText={'5年老平台数量：' + datas + '家'} />
                 <div className='noTabContainer'>
-                    <ListContainer listCout={listCout} url={url} columnID={'fiveYears'} dataListName={'gradeList'} />
+                    <ListContainer listCout={listCout} url={url} columnID={'fiveYears'} dataListName={'gradeList'} history={history} />
                 </div>
             </div>
         )
     }
-})
+}
 
 function mapStateToProps(state) {
     return { datas: state.totalNum.totalNum };

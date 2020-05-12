@@ -10,11 +10,12 @@ import './index.scss';
 class ReportsDetail extends React.Component {
 
     render() {
-        const { dataSource } = this.props;
+        const { dataSource, history } = this.props;
+        const pathname = this.props.location.pathname;
         const data = dataSource.dataSource;
         return (
-            <div className='containerReportDetail'>
-                <Header title={'数据报表'} location={this.props.location} />
+            <div className='ptNoTab reportDetailContainer'>
+                <Header title={'数据报表'} search='null' history={history} pathname={pathname} />
                 {
                     dataSource.isFetching ?
                         <Load />
@@ -26,7 +27,7 @@ class ReportsDetail extends React.Component {
                             </div>
                             {data.type !== 'dlp' ?
 
-                                <div className='content' dangerouslySetInnerHTML={{ __html: data.con_str.replace(/\/ueditor_net/g,  Api.domain+'/ueditor_net').replace(/.png\\/g, '.png') }} />
+                                <div className='content' dangerouslySetInnerHTML={{ __html: data.con_str.replace(/\/ueditor_net/g, Api.domain + '/ueditor_net').replace(/.png\\/g, '.png') }} />
                                 :
                                 <div className='contentDlp'>
                                     <p>本文因为数据过多，暂时只支持PC端查看。</p>
@@ -42,8 +43,8 @@ class ReportsDetail extends React.Component {
     }
     componentDidMount() {
         const { dispatch } = this.props;
-        const type = this.props.location.state;
-        const id = this.props.params.id;
+        const type = this.props.location.state.type;
+        const id = this.props.match.params.id;
         var url;
         if (type == 'dlp') {
             url = Api.getReportsDetail_dlp + '?id=' + id

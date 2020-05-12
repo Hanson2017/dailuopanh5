@@ -1,0 +1,54 @@
+@import "../../../style/_mixin.scss";
+.homePingceContainer{
+   
+    .content{
+        padding-left: 0.34rem;
+        .list{
+            li{
+                margin-top: 0.3rem;
+                padding: 0 0.3rem 0.3rem 0;
+                display: flex;
+                flex-direction:row;
+                border-bottom: 1px solid $bottomColor;
+            &:last-child{
+                border-bottom: none;
+            } 
+                .img{
+                    width: 2.2rem;
+                    height: 1.3rem;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .con{
+                    padding-left: 0.2rem;
+                    flex: 1;
+                    display: flex;
+                    flex-direction:column;
+                    justify-content:space-between;
+                    .title{
+                        font-size: 0.28rem;
+                        color: #101010;
+                        line-height: 0.36rem;
+                    }
+                    .ft{
+                        display: flex;
+                        flex-direction:row;
+                        align-items:center;
+                        justify-content:space-between;
+                        .date{
+                            color: #bbb;
+                        }
+                    }
+                }
+            }
+        }
+        .null{
+            padding: 0.34rem 0;
+            color: #999;
+            font-size: 0.26rem;
+        }
+    }
+   
+}

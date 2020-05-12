@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import fetch from 'isomorphic-fetch';
 import { fetchPosts } from '../../redux/actions/index'
 import Load from '../../components/loading'
-import UpDateTime from '../../components/upDateTime';
+import UpDateTime from './update';
 
 import TabList from './component/tabList';
 import TabListFixed from './component/tabListFixed';
@@ -19,7 +19,7 @@ const ListContainer = createReactClass({
         }
     },
     render() {
-        const { dispatch, datas, updatetime } = this.props;
+        const { datas, updatetime, totalNum, history } = this.props;
 
         return (
             <div>
@@ -27,16 +27,24 @@ const ListContainer = createReactClass({
                     this.props.noupdate ?
                         null
                         :
-                        <UpDateTime updatetime={updatetime} />
+                        datas.isFetching ?
+                            null
+                            :
+                            <UpDateTime updatetime={updatetime} totalNum={totalNum} />
                 }
-
+                {
+                    this.props.updateQuery ?
+                        <div className="update">更新时间：{updatetime}</div>
+                        :
+                        null
+                }
                 <div className='listContainer'>
                     <div className='table' ref={'tabList'} >
                         {
                             datas.isFetching ?
                                 <Load />
                                 :
-                                <TabList pageName={this.props.pageName ? this.props.pageName : null} listCout={this.props.listCout} data={datas} Ttype={this.props.Ttype} />
+                                <TabList pageName={this.props.pageName ? this.props.pageName : null} listCout={this.props.listCout} data={datas} Ttype={this.props.Ttype} history={history} />
                         }
                     </div>
                     {
@@ -44,7 +52,7 @@ const ListContainer = createReactClass({
                             null
                             :
                             <div className='listBotttom'>
-                                <TabListFixed pageName={this.props.pageName ? this.props.pageName : null} data={datas} isFixed={this.state.fixed} Ttype={this.props.Ttype} />
+                                <TabListFixed pageName={this.props.pageName ? this.props.pageName : null} data={datas} isFixed={this.state.fixed} Ttype={this.props.Ttype} history={history} />
                                 <LoadMore onClick={this.loadMore} data={datas} />
                             </div>
                     }
@@ -94,7 +102,8 @@ const ListContainer = createReactClass({
 function mapStateToProps(state, ownProps) {
     return {
         datas: state[ownProps.columnID],
-        updatetime: state[ownProps.columnID].updatetime
+        updatetime: state[ownProps.columnID].updatetime,
+        totalNum: state[ownProps.columnID].totalNum
     };
 }
 

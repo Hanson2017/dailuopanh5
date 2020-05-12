@@ -6,21 +6,25 @@ import List from '../black/list/index';
 
 class Zhengyi extends React.Component {
     render() {
-        const { totalNum } = this.props;
+        const { totalNum ,updatetime,history} = this.props;
         return (
-            <div className='container'>
-                <Header title={'争议中名单'} location={this.props.location} />
-                <NumBar numText={'争议状态统计平台数量：' + totalNum + '家'} />
-                <div className='noTabContainer'>
-                    <List column={'zhengyi'} columnID={'zhengyiList'} ctype={'zhengyi'} />
+            <div className='zhengyiContainer'>
+                <Header title={'争议中名单'} history={history} black={true}/>
+                <div className="update">
+                    更新时间：{updatetime}<i>|</i>共{totalNum}家争议平台
                 </div>
+                <List column={'zhengyi'} columnID={'zhengyiList'} ctype={'zhengyi'} history={history} />
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    return { totalNum: state.totalNum.totalNum };
+    return {
+         totalNum: state.totalNum.totalNum,
+         updatetime: state.zhengyiList.updatetime
+        };
+    
 }
 
 export default connect(mapStateToProps)(Zhengyi);

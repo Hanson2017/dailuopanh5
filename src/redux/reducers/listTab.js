@@ -1,4 +1,4 @@
-import { REQUEST_POSTS, RECEIVE_POSTS, REQUEST_LOADMORE, RECEIVE_LOADMORE, TOTALNUM, CHANGETOTALNUM, CHANGETABINDEX ,CHANGEPATHNAME} from '../actions/index';
+import { REQUEST_POSTS, RECEIVE_POSTS, REQUEST_LOADMORE, RECEIVE_LOADMORE, TOTALNUM, CHANGETOTALNUM, CHANGETABINDEX, CHANGEPATHNAME } from '../actions/index';
 
 function cd(_id) {
     return (state = {
@@ -30,7 +30,7 @@ function cd(_id) {
                     return state;
             }
         }
-        else if (_id == 'yulunList' || _id == 'pingceList' || _id == 'guanzhuList' || _id == 'guanzhuListSider') {
+        else if (_id == 'yulunList' || _id == 'pingceList' || _id == 'guanzhuList' || _id == 'guanzhuListSider' || _id == 'commentListAccount' == _id == 'gongshangList') {
             switch (action.type) {
                 case REQUEST_POSTS:
                     return Object.assign({}, state, {
@@ -145,6 +145,7 @@ export const pjDlp = cd('pjDlp')
 export const pjR360 = cd('pjR360')
 export const pjXinghuo = cd('pjXinghuo')
 export const pjYifei = cd('pjYifei')
+export const pjYuanwang = cd('pjYuanwang')
 
 // 健康度
 export const healthAll = cd('healthAll')
@@ -160,6 +161,10 @@ export const healthChengzhang = cd('healthChengzhang')
 // 舆论
 export const yulunList = cd('yulunList')
 export const pingceList = cd('pingceList')
+export const pingceListHot = cd('pingceListHot')
+export const commentList = cd('commentList')
+export const commentPCList = cd('commentPCList')
+export const gongshangList = cd('gongshangList')
 
 // 流量
 export const flowAll = cd('flowAll')
@@ -205,5 +210,10 @@ export const reportsOther = cd('reportsOther')
 
 export const flmfList = cd('flmfList')
 
+
+// 账户中心
+
 export const guanzhuList = cd('guanzhuList')
 export const guanzhuListSider = cd('guanzhuListSider')
+export const commentListAccount = cd('commentListAccount')
+export const collectionListAccount = cd('collectionListAccount')

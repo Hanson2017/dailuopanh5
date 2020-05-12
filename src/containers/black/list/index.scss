@@ -1,65 +1,74 @@
-.blackList{
+@import "../../../style/_mixin.scss";
+.blackListContainer{
+    position: relative;
+    padding-top: 2.16rem;
+    background-color: #fff;
     .loadMore{
-        margin: 0.2rem;
+        padding: 0.2rem 0;
+    }
+    
+    .tabBlack{
+        display: flex;
+        position: relative;
+        width: 100%;
+        overflow-x: auto;
+        z-index: 1; 
+    }
+    .tabListBlack{
+        .item{
+            display: flex; 
+            span{
+                line-height: 0.32rem;
+            }
+            .ic1{
+                padding-left: 0.4rem;
+                width: 2.2rem;
+            }
+            .ic2{
+                width: 2rem;
+            }
+            .ic3{
+                width: 2rem;
+            }
+            .ic4{
+                padding-right: 0.3rem;
+                width: 3.6rem;
+            }
+            .ic5{
+                width: 1.2rem;
+            }
+            .ic6{
+                width: 1.4rem;
+            }
+
+        }
+        dt{
+            padding: 0.2rem 0;
+            border-bottom: 1px solid $bottomColor;
+            span{
+                color: #999;
+            }
+        }
+        dd{
+            padding-top: 0.24rem;
+            height: 0.86rem;
+            background: #fff;
+            border-bottom: 1px solid $bottomColor;
+            span{
+                color: #28323c;
+            }
+        }
+    }
+    .tabListBlackLeft{
+        z-index: 2;
+        background: #fff;
+        width: 2.6rem;
+        position: absolute;
+        top: 2.16rem;
+        left: 0;
     }
 }
-.tabListBlack{
-   dt{
-       height: 0.8rem;   
-       line-height: 0.8rem;     
-       background: #e2e6ea;
-   }
-   dd{
-       padding:0.2rem 0;
-       background: #fff;
-       border-bottom: 1px solid #e2e6ea;
-       .info{
-           margin-top: 0.2rem;
-           padding-left: 0.2rem;
-           display: flex; 
-           .url,.yygs{
-               color: #ccc;
-               font-size: 0.24rem;
-           }
-           .url{
-               width: 40%;
-               overflow: hidden;
-               text-overflow: ellipsis;
-               white-space: nowrap;
-           }
-           .yygs{
-            width: 55%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            }
-       }
-       .item{
-        .ic3,.ic2{
-            color: #8c96a0;
-        }
-       }
-   }
-   dd.itemRowH{
-       height: 1.34rem;      
-   }
-   .item{
-        display: flex; 
-       span{
-         position: relative;
-         display: flex;          
-         font-size: 0.24rem;
-         color: #28323c;
-       }
-       .ic1,.ic2{
-           color: #28323c;
-       }
-       .ic1{
-           padding-left: 0.2rem;
-           width: 2.4rem;
-       }
-       .ic2{
-           width: 2rem;
-       }
-   }
-}
+
+
+
+
